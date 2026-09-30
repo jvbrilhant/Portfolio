@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Album from './Album.astro';
+import Flag from './Flag.astro';
 import { projects, type Lang } from '../data/projects';
 import { t, url, homePath, projectPath, experience, contact } from '../data/i18n';
 
@@ -154,11 +155,16 @@ const name = 'Brilhante';
               <a class="val" href={`mailto:${contact.email}`}>{contact.email}</a>
               <button class="copy" type="button" data-copy={contact.email} data-done={s.contact.copied}>{s.contact.copy}</button>
             </div>
-            <div class="channel">
-              <span class="k">{s.contact.phone}</span>
-              <a class="val" href={contact.phoneHref}>{contact.phone}</a>
-              <button class="copy" type="button" data-copy={contact.phone} data-done={s.contact.copied}>{s.contact.copy}</button>
-            </div>
+            {contact.phones.map((ph) => (
+              <div class="channel">
+                <span class="k">{s.contact.phone}</span>
+                <a class="val phone" href={ph.href}>
+                  <Flag code={ph.flag} label={ph.country[lang]} />
+                  {ph.number}
+                </a>
+                <button class="copy" type="button" data-copy={ph.number} data-done={s.contact.copied}>{s.contact.copy}</button>
+              </div>
+            ))}
           </div>
           <div class="socials reveal">
             <a href={contact.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>

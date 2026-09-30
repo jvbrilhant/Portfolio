@@ -172,15 +172,17 @@ export const ui = {
 export const experience = [
   { company: 'Fóton Informática', role: { en: 'UX/UI Designer', pt: 'UX/UI Designer' }, from: '2025', to: null },
   { company: 'Instituto Cerrados', role: { en: 'Senior Product Designer', pt: 'Senior Product Designer' }, from: '2024', to: '2024' },
-  { company: 'GIM Digital', role: { en: 'Senior Product Designer', pt: 'Senior Product Designer' }, from: '2021', to: null },
+  { company: 'GIM Digital', role: { en: 'Senior Product Designer', pt: 'Senior Product Designer' }, from: '2021', to: '2026' },
   { company: 'Freelance', role: { en: 'UX/UI Designer', pt: 'UX/UI Designer' }, from: '2020', to: '2025' },
   { company: 'BRASAS English Course', role: { en: 'English Teacher', pt: 'Professor de inglês' }, from: '2017', to: '2018' },
 ];
 
 export const contact = {
   email: 'joaobrilho@gmail.com',
-  phone: '+353 85 780 4701',
-  phoneHref: 'tel:+353857804701',
+  phones: [
+    { flag: 'ie', country: { en: 'Ireland', pt: 'Irlanda' }, number: '+353 85 780 4701', href: 'tel:+353857804701' },
+    { flag: 'br', country: { en: 'Brazil', pt: 'Brasil' }, number: '+55 61 99391-1956', href: 'tel:+5561993911956' },
+  ],
   whatsapp: 'https://wa.me/5561993911956',
   linkedin: 'https://www.linkedin.com/in/joao-victor-brilhante/',
   instagram: 'https://www.instagram.com/jvbrilhant',

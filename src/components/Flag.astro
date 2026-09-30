@@ -1,0 +1,25 @@
+---
+interface Props {
+  code: 'ie' | 'br' | string;
+  label: string;
+}
+const { code, label } = Astro.props;
+---
+
+<span class="flag" role="img" aria-label={label} title={label}>
+  {code === 'ie' && (
+    <svg viewBox="0 0 30 20" aria-hidden="true">
+      <rect width="10" height="20" fill="#169b62" />
+      <rect x="10" width="10" height="20" fill="#fff" />
+      <rect x="20" width="10" height="20" fill="#ff883e" />
+    </svg>
+  )}
+  {code === 'br' && (
+    <svg viewBox="0 0 30 20" aria-hidden="true">
+      <rect width="30" height="20" fill="#009c3b" />
+      <path d="M15 2.5 27 10 15 17.5 3 10Z" fill="#ffdf00" />
+      <circle cx="15" cy="10" r="4.6" fill="#002776" />
+      <path d="M10.6 9.1c2.9-.5 6-.1 8.8 1.2" stroke="#fff" stroke-width=".8" fill="none" />
+    </svg>
+  )}
+</span>
