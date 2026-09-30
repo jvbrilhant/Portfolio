@@ -1,0 +1,34 @@
+---
+import { url } from '../data/i18n';
+
+interface Props {
+  img: { src: string; w: number; h: number; video?: string };
+  alt: string;
+  eager?: boolean;
+}
+const { img, alt, eager = false } = Astro.props;
+---
+
+{img.video ? (
+  <video
+    src={url(img.video)}
+    poster={url(img.src)}
+    width={img.w}
+    height={img.h}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-label={alt}
+  />
+) : (
+  <img
+    src={url(img.src)}
+    width={img.w}
+    height={img.h}
+    alt={alt}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+  />
+)}

@@ -1,0 +1,621 @@
+{
+ "design-system": {
+  "hero": {
+   "src": "work/design-system/hero.webp",
+   "w": 1440,
+   "h": 1050
+  },
+  "overview": [
+   {
+    "src": "work/design-system/01.webp",
+    "w": 2000,
+    "h": 1125
+   },
+   {
+    "src": "work/design-system/02.webp",
+    "w": 1440,
+    "h": 675
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/design-system/03.webp",
+    "w": 903,
+    "h": 1142
+   },
+   {
+    "src": "work/design-system/04.webp",
+    "w": 1064,
+    "h": 1291
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/design-system/05.webp",
+    "w": 2000,
+    "h": 877
+   },
+   {
+    "src": "work/design-system/06.webp",
+    "w": 2000,
+    "h": 660
+   },
+   {
+    "src": "work/design-system/07.webp",
+    "w": 2000,
+    "h": 685
+   }
+  ],
+  "result": [
+   {
+    "src": "work/design-system/08.webp",
+    "w": 1460,
+    "h": 2389
+   },
+   {
+    "src": "work/design-system/09.webp",
+    "w": 1780,
+    "h": 1937
+   }
+  ]
+ },
+ "redesigning-legal-filing-workflows": {
+  "hero": {
+   "src": "work/redesigning-legal-filing-workflows/hero.webp",
+   "w": 1920,
+   "h": 1080
+  },
+  "overview": [],
+  "discovery": [
+   {
+    "src": "work/redesigning-legal-filing-workflows/01.webp",
+    "w": 1767,
+    "h": 1011
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/02.webp",
+    "w": 1160,
+    "h": 643
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/redesigning-legal-filing-workflows/03.webp",
+    "w": 2000,
+    "h": 2499
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/04.webp",
+    "w": 2000,
+    "h": 2188
+   }
+  ],
+  "result": [
+   {
+    "src": "work/redesigning-legal-filing-workflows/05.webp",
+    "w": 2000,
+    "h": 2188
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/06.webp",
+    "w": 2000,
+    "h": 2182
+   }
+  ]
+ },
+ "bioeconomy-challenge": {
+  "hero": {
+   "src": "work/bioeconomy-challenge/hero.webp",
+   "w": 2000,
+   "h": 1500
+  },
+  "overview": [
+   {
+    "src": "work/bioeconomy-challenge/01.webp",
+    "w": 2000,
+    "h": 1299,
+    "video": "work/bioeconomy-challenge/01.mp4"
+   },
+   {
+    "src": "work/bioeconomy-challenge/02.webp",
+    "w": 2000,
+    "h": 1158
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/bioeconomy-challenge/03.webp",
+    "w": 1298,
+    "h": 3086
+   },
+   {
+    "src": "work/bioeconomy-challenge/04.webp",
+    "w": 1299,
+    "h": 3086
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/bioeconomy-challenge/05.webp",
+    "w": 2000,
+    "h": 1299,
+    "video": "work/bioeconomy-challenge/05.mp4"
+   },
+   {
+    "src": "work/bioeconomy-challenge/06.webp",
+    "w": 2000,
+    "h": 1299
+   },
+   {
+    "src": "work/bioeconomy-challenge/07.webp",
+    "w": 2000,
+    "h": 1299,
+    "video": "work/bioeconomy-challenge/07.mp4"
+   }
+  ],
+  "result": [
+   {
+    "src": "work/bioeconomy-challenge/08.webp",
+    "w": 1299,
+    "h": 3086
+   },
+   {
+    "src": "work/bioeconomy-challenge/09.webp",
+    "w": 1298,
+    "h": 3086
+   }
+  ]
+ },
+ "bioeconomia-brasil": {
+  "hero": {
+   "src": "work/bioeconomia-brasil/hero.webp",
+   "w": 2000,
+   "h": 1500
+  },
+  "overview": [
+   {
+    "src": "work/bioeconomia-brasil/01.webp",
+    "w": 2000,
+    "h": 1299
+   },
+   {
+    "src": "work/bioeconomia-brasil/02.webp",
+    "w": 2000,
+    "h": 1299
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/bioeconomia-brasil/03.webp",
+    "w": 1320,
+    "h": 2868
+   },
+   {
+    "src": "work/bioeconomia-brasil/04.webp",
+    "w": 1320,
+    "h": 2868
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/bioeconomia-brasil/05.webp",
+    "w": 2000,
+    "h": 1299
+   },
+   {
+    "src": "work/bioeconomia-brasil/06.webp",
+    "w": 2000,
+    "h": 1299
+   },
+   {
+    "src": "work/bioeconomia-brasil/07.webp",
+    "w": 2000,
+    "h": 1299
+   }
+  ],
+  "result": [
+   {
+    "src": "work/bioeconomia-brasil/08.webp",
+    "w": 1892,
+    "h": 4096
+   },
+   {
+    "src": "work/bioeconomia-brasil/09.webp",
+    "w": 1892,
+    "h": 4096
+   }
+  ]
+ },
+ "abrace": {
+  "hero": {
+   "src": "work/abrace/hero.webp",
+   "w": 2000,
+   "h": 1125
+  },
+  "overview": [
+   {
+    "src": "work/abrace/01.webp",
+    "w": 2000,
+    "h": 1253
+   },
+   {
+    "src": "work/abrace/02.webp",
+    "w": 2000,
+    "h": 1297
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/abrace/03.webp",
+    "w": 1488,
+    "h": 1477
+   },
+   {
+    "src": "work/abrace/04.webp",
+    "w": 650,
+    "h": 1543
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/abrace/05.webp",
+    "w": 2000,
+    "h": 1253
+   },
+   {
+    "src": "work/abrace/06.webp",
+    "w": 2000,
+    "h": 1253
+   },
+   {
+    "src": "work/abrace/07.webp",
+    "w": 2000,
+    "h": 1253
+   }
+  ],
+  "result": [
+   {
+    "src": "work/abrace/08.webp",
+    "w": 649,
+    "h": 1543
+   },
+   {
+    "src": "work/abrace/09.webp",
+    "w": 650,
+    "h": 1543
+   }
+  ]
+ },
+ "stag": {
+  "hero": {
+   "src": "work/stag/hero.webp",
+   "w": 2000,
+   "h": 1116
+  },
+  "overview": [
+   {
+    "src": "work/stag/01.webp",
+    "w": 1728,
+    "h": 1117
+   },
+   {
+    "src": "work/stag/02.webp",
+    "w": 1728,
+    "h": 1117
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/stag/03.webp",
+    "w": 649,
+    "h": 1543
+   },
+   {
+    "src": "work/stag/04.webp",
+    "w": 650,
+    "h": 1543
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/stag/05.webp",
+    "w": 1786,
+    "h": 644
+   },
+   {
+    "src": "work/stag/06.webp",
+    "w": 1728,
+    "h": 1117
+   },
+   {
+    "src": "work/stag/07.webp",
+    "w": 1728,
+    "h": 1117
+   }
+  ],
+  "result": [
+   {
+    "src": "work/stag/08.webp",
+    "w": 650,
+    "h": 1543
+   },
+   {
+    "src": "work/stag/09.webp",
+    "w": 649,
+    "h": 1543
+   }
+  ]
+ },
+ "cepel-nzeb": {
+  "hero": {
+   "src": "work/cepel-nzeb/hero.webp",
+   "w": 2000,
+   "h": 1334
+  },
+  "overview": [
+   {
+    "src": "work/cepel-nzeb/01.webp",
+    "w": 2000,
+    "h": 1299,
+    "video": "work/cepel-nzeb/01.mp4"
+   }
+  ],
+  "discovery": [],
+  "solution": [
+   {
+    "src": "work/cepel-nzeb/02.webp",
+    "w": 2000,
+    "h": 1299,
+    "video": "work/cepel-nzeb/02.mp4"
+   },
+   {
+    "src": "work/cepel-nzeb/03.webp",
+    "w": 2000,
+    "h": 1158
+   },
+   {
+    "src": "work/cepel-nzeb/04.webp",
+    "w": 2000,
+    "h": 1299,
+    "video": "work/cepel-nzeb/04.mp4"
+   }
+  ],
+  "result": []
+ },
+ "universo-paralello": {
+  "hero": {
+   "src": "work/universo-paralello/hero.webp",
+   "w": 1920,
+   "h": 1080
+  },
+  "overview": [
+   {
+    "src": "work/universo-paralello/01.webp",
+    "w": 1919,
+    "h": 1030
+   },
+   {
+    "src": "work/universo-paralello/02.webp",
+    "w": 1919,
+    "h": 1030
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/universo-paralello/03.webp",
+    "w": 251,
+    "h": 561
+   },
+   {
+    "src": "work/universo-paralello/04.webp",
+    "w": 325,
+    "h": 772
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/universo-paralello/05.webp",
+    "w": 1919,
+    "h": 1031
+   },
+   {
+    "src": "work/universo-paralello/06.webp",
+    "w": 1919,
+    "h": 1031
+   },
+   {
+    "src": "work/universo-paralello/07.webp",
+    "w": 1919,
+    "h": 1030
+   }
+  ],
+  "result": [
+   {
+    "src": "work/universo-paralello/08.webp",
+    "w": 325,
+    "h": 772
+   },
+   {
+    "src": "work/universo-paralello/09.webp",
+    "w": 325,
+    "h": 772
+   }
+  ]
+ },
+ "logali": {
+  "hero": {
+   "src": "work/logali/hero.webp",
+   "w": 984,
+   "h": 501
+  },
+  "overview": [
+   {
+    "src": "work/logali/01.webp",
+    "w": 2000,
+    "h": 621
+   },
+   {
+    "src": "work/logali/02.webp",
+    "w": 2000,
+    "h": 621
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/logali/03.webp",
+    "w": 600,
+    "h": 880
+   },
+   {
+    "src": "work/logali/04.webp",
+    "w": 600,
+    "h": 880
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/logali/05.webp",
+    "w": 2000,
+    "h": 1333
+   },
+   {
+    "src": "work/logali/06.webp",
+    "w": 2000,
+    "h": 621
+   },
+   {
+    "src": "work/logali/07.webp",
+    "w": 2000,
+    "h": 445
+   }
+  ],
+  "result": [
+   {
+    "src": "work/logali/08.webp",
+    "w": 600,
+    "h": 880
+   },
+   {
+    "src": "work/logali/09.webp",
+    "w": 600,
+    "h": 880
+   }
+  ]
+ },
+ "suindara-app": {
+  "hero": {
+   "src": "work/suindara-app/hero.webp",
+   "w": 2000,
+   "h": 1500
+  },
+  "overview": [
+   {
+    "src": "work/suindara-app/01.webp",
+    "w": 2000,
+    "h": 1000
+   },
+   {
+    "src": "work/suindara-app/02.webp",
+    "w": 2000,
+    "h": 677
+   }
+  ],
+  "discovery": [
+   {
+    "src": "work/suindara-app/03.webp",
+    "w": 846,
+    "h": 1741
+   },
+   {
+    "src": "work/suindara-app/04.webp",
+    "w": 842,
+    "h": 1737
+   }
+  ],
+  "solution": [
+   {
+    "src": "work/suindara-app/05.webp",
+    "w": 2000,
+    "h": 1331
+   },
+   {
+    "src": "work/suindara-app/06.webp",
+    "w": 2000,
+    "h": 677
+   },
+   {
+    "src": "work/suindara-app/07.webp",
+    "w": 2000,
+    "h": 1000
+   }
+  ],
+  "result": [
+   {
+    "src": "work/suindara-app/08.webp",
+    "w": 650,
+    "h": 1544
+   },
+   {
+    "src": "work/suindara-app/09.webp",
+    "w": 650,
+    "h": 1544
+   }
+  ]
+ },
+ "suindara-dashboard": {
+  "hero": {
+   "src": "work/suindara-dashboard/hero.webp",
+   "w": 2000,
+   "h": 1500
+  },
+  "overview": [
+   {
+    "src": "work/suindara-dashboard/01.webp",
+    "w": 2000,
+    "h": 848
+   }
+  ],
+  "discovery": [],
+  "solution": [
+   {
+    "src": "work/suindara-dashboard/02.webp",
+    "w": 2000,
+    "h": 1406
+   },
+   {
+    "src": "work/suindara-dashboard/03.webp",
+    "w": 2000,
+    "h": 848
+   }
+  ],
+  "result": []
+ },
+ "e-statis": {
+  "hero": {
+   "src": "work/e-statis/hero.webp",
+   "w": 2000,
+   "h": 1000
+  },
+  "overview": [
+   {
+    "src": "work/e-statis/01.webp",
+    "w": 1903,
+    "h": 597
+   },
+   {
+    "src": "work/e-statis/02.webp",
+    "w": 2000,
+    "h": 1000
+   }
+  ],
+  "discovery": [],
+  "solution": [
+   {
+    "src": "work/e-statis/03.webp",
+    "w": 2000,
+    "h": 1000
+   }
+  ],
+  "result": []
+ }
+}

@@ -1,0 +1,171 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '@fontsource-variable/archivo/wdth.css';
+import '../styles/global.css';
+import type { Lang } from '../data/projects';
+import { t, url, homePath } from '../data/i18n';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  /** Same page in the other language. */
+  altPath: string;
+  image?: string;
+}
+
+const { lang, title, description, altPath, image } = Astro.props;
+const s = t(lang);
+const pageTitle = title ? `${title} — Brilhante` : s.metaTitle;
+const desc = description ?? s.metaDescription;
+const home = homePath(lang);
+const other: Lang = lang === 'en' ? 'pt' : 'en';
+const ogImage = new URL(url(image ?? 'og.jpg'), Astro.site).href;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const altHref = new URL(altPath, Astro.site).href;
+---
+
+<!doctype html>
+<html lang={lang === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <meta name="theme-color" content="#0b0a10" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang === 'pt' ? 'pt-BR' : 'en'} href={canonical} />
+    <link rel="alternate" hreflang={other === 'pt' ? 'pt-BR' : 'en'} href={altHref} />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <ClientRouter />
+  </head>
+  <body>
+    <a class="skip" href="#main">{s.skip}</a>
+
+    <div class="atmosphere" aria-hidden="true" transition:persist>
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="blob b3"></span>
+      <span class="blob b4"></span>
+    </div>
+
+    <header class="site-header">
+      <a class="logo" href={home} aria-label="Brilhante — home">
+        <span class="logo-disc" aria-hidden="true"></span>
+        Brilhante
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href={`${home}#work`}>{s.nav.work}</a>
+        <a href={`${home}#shipped`}>{s.nav.shipped}</a>
+        <a href={`${home}#about`}>{s.nav.about}</a>
+        <a href={`${home}#services`}>{s.nav.services}</a>
+        <a href={`${home}#contact`}>{s.nav.contact}</a>
+      </nav>
+      <a class="lang" href={altPath} hreflang={other} aria-label={s.langLabel} data-lang-switch>
+        <span class:list={{ on: lang === 'en' }}>EN</span>
+        <span class="lang-sep" aria-hidden="true"></span>
+        <span class:list={{ on: lang === 'pt' }}>PT</span>
+      </a>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>© {new Date().getFullYear()} · {s.footer.made}</span>
+        <a href="#top" data-top>{s.footer.top} ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      import Lenis from 'lenis';
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let lenis: Lenis | null = null;
+      if (!reduce) {
+        lenis = new Lenis({ lerp: 0.11, anchors: { offset: -72 } });
+        const raf = (time: number) => {
+          lenis?.raf(time);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+      }
+
+      function scrollToHash(hash: string, immediate = false) {
+        const el = hash && hash.length > 1 ? document.querySelector(hash) : null;
+        if (!el) return;
+        if (lenis) lenis.scrollTo(el as HTMLElement, { offset: -72, immediate });
+        else (el as HTMLElement).scrollIntoView({ behavior: immediate ? 'auto' : 'smooth' });
+      }
+
+      function init() {
+        // Header state once the hero scrolls away.
+        const header = document.querySelector('.site-header');
+        const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 24);
+        onScroll();
+        window.onscroll = onScroll;
+
+        // Keep the section anchor when switching language.
+        document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) => {
+          a.onclick = () => {
+            const base = a.href.split('#')[0];
+            if (location.hash) a.href = base + location.hash;
+          };
+        });
+
+        // Header anchors on the same page scroll smoothly instead of navigating.
+        document.querySelectorAll<HTMLAnchorElement>('.nav a, [data-top], a[href^="#"]').forEach((a) => {
+          a.addEventListener('click', (e) => {
+            const target = new URL(a.href, location.href);
+            if (target.pathname !== location.pathname) return;
+            e.preventDefault();
+            if (target.hash === '#top') {
+              lenis ? lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              scrollToHash(target.hash);
+            }
+            history.replaceState(null, '', target.hash === '#top' ? target.pathname : target.hash);
+          });
+        });
+
+        // Reveal on scroll.
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((en) => {
+              if (en.isIntersecting) {
+                en.target.classList.add('in');
+                io.unobserve(en.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+        // Touch screens have no hover: slide the record out when it scrolls into view.
+        if (window.matchMedia('(hover: none)').matches) {
+          const io2 = new IntersectionObserver(
+            (entries) => entries.forEach((en) => en.target.classList.toggle('playing', en.isIntersecting)),
+            { rootMargin: '-30% 0px -30% 0px' },
+          );
+          document.querySelectorAll('[data-album]').forEach((el) => io2.observe(el));
+        }
+
+        if (location.hash) requestAnimationFrame(() => scrollToHash(location.hash, true));
+      }
+
+      document.addEventListener('astro:page-load', init);
+      document.addEventListener('astro:after-swap', () => {
+        lenis?.resize();
+        if (!location.hash) lenis?.scrollTo(0, { immediate: true });
+      });
+    </script>
+  </body>
+</html>

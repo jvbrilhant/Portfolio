@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Album from './Album.astro';
+import Media from './Media.astro';
+import { projects, projectImages, type Lang, type Project } from '../data/projects';
+import { t, homePath, projectPath } from '../data/i18n';
+
+interface Props {
+  lang: Lang;
+  project: Project;
+}
+const { lang, project } = Astro.props;
+const s = t(lang);
+const c = project[lang];
+const imgs = projectImages(project.slug);
+const other: Lang = lang === 'en' ? 'pt' : 'en';
+const idx = projects.findIndex((p) => p.slug === project.slug);
+const next = projects[(idx + 1) % projects.length];
+const sides = (['overview', 'discovery', 'solution', 'result'] as const).map((key, i) => ({
+  key,
+  no: `${i < 2 ? 'A' : 'B'}${(i % 2) + 1}`,
+  title: s.project.sections[key],
+  text: c[key],
+  images: imgs[key],
+}));
+const galleryClass = (n: number) => (n === 2 ? 'two' : n >= 3 ? 'three' : '');
+---
+
+<Layout
+  lang={lang}
+  title={c.title}
+  description={c.subtitle}
+  altPath={projectPath(other, project.slug)}
+  image={imgs.hero.src}
+>
+  <article>
+    <header class="p-hero">
+      <div class="wrap">
+        <a class="back" href={`${homePath(lang)}#work`}><span>←</span> {s.project.back}</a>
+        <div class="p-head">
+          <div class="p-album">
+            <Album project={project} out eager />
+          </div>
+          <div>
+            <p class="p-cat reveal">{project.cat} · {project.year} · {project.kind[lang]}</p>
+            <h1 class="p-title reveal" style="--d:.08s">{c.title}</h1>
+            <p class="p-sub reveal" style="--d:.16s">{c.subtitle}</p>
+            {project.link && (
+              <a class="visit reveal" style="--d:.24s" href={project.link} target="_blank" rel="noopener">
+                {s.project.visit} ↗
+              </a>
+            )}
+          </div>
+        </div>
+
+        <dl class="credits reveal">
+          <div><dt>{s.project.client}</dt><dd>{c.client}</dd></div>
+          <div><dt>{s.project.role}</dt><dd>{c.role}</dd></div>
+          <div><dt>{s.project.year}</dt><dd>{project.year}</dd></div>
+          <div><dt>{s.project.services}</dt><dd>{c.services}</dd></div>
+          {c.tools && <div><dt>{s.project.tools}</dt><dd>{c.tools}</dd></div>}
+        </dl>
+
+        <figure class="p-cover reveal">
+          <Media img={imgs.hero} alt={c.title} eager />
+        </figure>
+      </div>
+    </header>
+
+    <div class="wrap">
+      {sides.map((sd) => (
+        <section class="side-wrap">
+          <div class="side">
+            <div class="side-head reveal">
+              <span class="side-no">{s.project.side} {sd.no}</span>
+              <h2>{sd.title}</h2>
+            </div>
+            <div class="side-body reveal">
+              {sd.text.map((p) => <p>{p}</p>)}
+            </div>
+          </div>
+          {sd.images.length > 0 && (
+            <div class:list={['gallery', galleryClass(sd.images.length)]}>
+              {sd.images.map((im, i) => (
+                <figure class="reveal" style={`--d:${(i % 2) * 0.08}s`}>
+                  <Media img={im} alt={`${c.title} — ${sd.title} ${i + 1}`} />
+                </figure>
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
+    </div>
+
+    <div class="wrap">
+      <section class="next">
+        <a class="next-link" href={projectPath(lang, next.slug)}>
+          <Album project={next} />
+          <div>
+            <p class="next-label">{s.project.next} · {next.cat}</p>
+            <p class="next-title">{next[lang].title}</p>
+            <p class="next-sub">{next[lang].subtitle}</p>
+          </div>
+        </a>
+      </section>
+      <div class="talk">
+        <p>{s.project.talk}</p>
+        <a class="visit" style="margin-top:0" href={`${homePath(lang)}#contact`}>{s.project.talkCta} →</a>
+      </div>
+    </div>
+  </article>
+</Layout>

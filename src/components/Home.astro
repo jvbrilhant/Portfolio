@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Album from './Album.astro';
+import { projects, type Lang } from '../data/projects';
+import { t, url, homePath, projectPath, experience, contact } from '../data/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const s = t(lang);
+const other: Lang = lang === 'en' ? 'pt' : 'en';
+const name = 'Brilhante';
+---
+
+<Layout lang={lang} altPath={homePath(other)}>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-eyebrow reveal">
+        <span>{s.hero.eyebrow}</span>
+        <span class="available">{s.hero.available}</span>
+      </div>
+      <h1 class="hero-name" aria-label={name}>
+        <span class="clip" aria-hidden="true">
+          {name.split('').map((c, i) => <span class="char" style={`--i:${i}`}>{c}</span>)}
+        </span>
+      </h1>
+      <div class="hero-bottom">
+        <div class="reveal" style="--d:.5s">
+          <p class="hero-lead">{s.hero.lead}</p>
+          <p class="hero-based">{s.hero.based}</p>
+        </div>
+        <a class="hero-cta reveal" style="--d:.65s" href="#work">
+          {s.hero.cta}
+          <span class="spin" aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="work-head reveal">
+        <div>
+          <span class="label">{s.work.label}</span>
+          <h2 class="section-title">{s.work.title}</h2>
+        </div>
+        <p class="section-intro">{s.work.intro}</p>
+      </div>
+      <ul class="crate">
+        {projects.map((p, i) => (
+          <li class="reveal" style={`--d:${(i % 3) * 0.08}s`}>
+            <a href={projectPath(lang, p.slug)} aria-label={`${s.work.open}: ${p[lang].title}`}>
+              <Album project={p} eager={i < 3} />
+              <div class="album-meta">
+                <div class="row">
+                  <span>{p.cat}</span>
+                  <span>{p.year}</span>
+                </div>
+                <h3>{p[lang].title}</h3>
+                <p>{p.kind[lang]}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="shipped">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="label">{s.shipped.label}</span>
+        <h2 class="section-title">{s.shipped.title}</h2>
+        <p class="section-intro">{s.shipped.intro}</p>
+      </div>
+      <div class="stats">
+        {s.shipped.stats.map((st, i) => (
+          <div class="stat reveal" style={`--d:${(i % 3) * 0.08}s`}>
+            <span class="n">{String(i + 1).padStart(2, '0')}</span>
+            <div class="v">
+              {st.value}
+              {st.unit && <small>{st.unit}</small>}
+            </div>
+            <p>{st.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <span class="label reveal">{s.about.label}</span>
+      <div class="about-grid">
+        <figure class="about-photo reveal">
+          <img src={url('me/tree.webp')} width="1200" height="1600" alt={s.about.photoAlt} decoding="async" />
+          <figcaption>Dublin</figcaption>
+        </figure>
+        <div>
+          <h2 class="section-title reveal" style="margin-top:0">{s.about.title}</h2>
+          <div class="about-text reveal" style="margin-top:32px">
+            {s.about.body.map((p) => <p>{p}</p>)}
+          </div>
+          <div class="tracklist reveal">
+            <h3 style="margin-top:24px">{s.about.experience}</h3>
+            <ol style="list-style:none;padding:0;margin:0">
+              {experience.map((e, i) => (
+                <li class="track">
+                  <span class="no">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="who">
+                    {e.company}
+                    <span>{e.role[lang]}</span>
+                  </span>
+                  <span class="when">
+                    {e.from === e.to ? e.from : `${e.from} — ${e.to ?? s.about.now}`}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="label">{s.services.label}</span>
+        <h2 class="section-title">{s.services.title}</h2>
+      </div>
+      <ul class="services">
+        {s.services.items.map((it) => (
+          <li class="service reveal">
+            <h3>{it.title}</h3>
+            <p>{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <span class="label reveal">{s.contact.label}</span>
+      <div class="contact-grid">
+        <div>
+          <h2 class="contact-title reveal">{s.contact.title}</h2>
+          <p class="contact-text reveal">{s.contact.text}</p>
+          <div class="channels reveal">
+            <div class="channel">
+              <span class="k">{s.contact.email}</span>
+              <a class="val" href={`mailto:${contact.email}`}>{contact.email}</a>
+              <button class="copy" type="button" data-copy={contact.email} data-done={s.contact.copied}>{s.contact.copy}</button>
+            </div>
+            <div class="channel">
+              <span class="k">{s.contact.phone}</span>
+              <a class="val" href={contact.phoneHref}>{contact.phone}</a>
+              <button class="copy" type="button" data-copy={contact.phone} data-done={s.contact.copied}>{s.contact.copy}</button>
+            </div>
+          </div>
+          <div class="socials reveal">
+            <a href={contact.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href={contact.whatsapp} target="_blank" rel="noopener">WhatsApp ↗</a>
+            <a href={contact.instagram} target="_blank" rel="noopener">Instagram ↗</a>
+          </div>
+        </div>
+        <figure class="contact-photo reveal">
+          <img src={url('me/mirror.webp')} width="1000" height="1250" alt={s.contact.photoAlt} decoding="async" />
+        </figure>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function initCopy() {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+      const label = btn.textContent;
+      btn.onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+          btn.textContent = btn.dataset.done ?? '✓';
+          btn.classList.add('done');
+          setTimeout(() => {
+            btn.textContent = label;
+            btn.classList.remove('done');
+          }, 1800);
+        } catch {
+          /* clipboard blocked: the mailto/tel link still works */
+        }
+      };
+    });
+  }
+  document.addEventListener('astro:page-load', initCopy);
+</script>

@@ -1,0 +1,279 @@
+---
+/**
+ * Typographic album covers, one composition per project.
+ * Each cover is a 400×400 SVG so it stays sharp at any size.
+ *
+ * To replace a cover with an image: add a square image to public/covers/
+ * and set `coverImage` on the project in src/data/projects.ts.
+ */
+import type { Project } from '../data/projects';
+import { url } from '../data/i18n';
+
+interface Props {
+  project: Project;
+  eager?: boolean;
+}
+const { project, eager = false } = Astro.props;
+const v = project.cover;
+
+// Bioeconomy Challenge: 60 dots on the outer ring, one per coalition member.
+const ring = Array.from({ length: 60 }, (_, i) => {
+  const a = (i / 60) * Math.PI * 2 - Math.PI / 2;
+  return { x: 200 + Math.cos(a) * 150, y: 200 + Math.sin(a) * 150 };
+});
+
+// Design system: 5×4 grid of "components".
+const dsCells = [
+  'fill', 'line', 'pill', 'fill', 'dot',
+  'line', 'accent', 'fill', 'line', 'pill',
+  'dot', 'fill', 'line', 'accent-sq', 'fill',
+  'pill', 'line', 'dot', 'fill', 'line',
+];
+
+// Logali: city grid of dots; a few events light up.
+const lit: Record<string, number> = { '2-3': 9, '5-1': 6, '6-6': 7, '1-6': 5, '4-4': 14 };
+const logaliDots = [] as { x: number; y: number; r: number; on: boolean; pin: boolean }[];
+for (let r = 0; r < 8; r++) {
+  for (let c = 0; c < 8; c++) {
+    const key = `${c}-${r}`;
+    logaliDots.push({ x: 60 + c * 40, y: 50 + r * 34, r: lit[key] ?? 2.4, on: key in lit, pin: key === '4-4' });
+  }
+}
+
+// Legal filing: many scattered rows on the left, one solid row on the right.
+const legalRows = [0.9, 0.55, 0.75, 0.4, 0.85, 0.6, 0.3, 0.7, 0.5, 0.8];
+
+// Suindara dashboard bars.
+const bars = [62, 94, 78, 130, 110, 158, 142, 188];
+
+// e-Statis bracket.
+const bracketY = [70, 110, 150, 190, 230, 270, 310, 350];
+---
+
+<div class="cover" data-cover={v}>
+  {project.coverImage ? (
+    <img src={url(project.coverImage)} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  ) : (
+    <svg viewBox="0 0 400 400" role="img" aria-label={`${project.en.title} cover`} xmlns="http://www.w3.org/2000/svg">
+      {v === 'design-system' && (
+        <g>
+          <rect width="400" height="400" fill="#ecebe4" />
+          {dsCells.map((c, i) => {
+            const x = 32 + (i % 5) * 68;
+            const y = 32 + Math.floor(i / 5) * 58;
+            if (c === 'fill') return <rect x={x} y={y} width="56" height="46" rx="6" fill="#121212" />;
+            if (c === 'line') return <rect x={x + 0.75} y={y + 0.75} width="54.5" height="44.5" rx="6" fill="none" stroke="#121212" stroke-width="1.5" />;
+            if (c === 'pill') return <rect x={x} y={y + 13} width="56" height="20" rx="10" fill="#121212" />;
+            if (c === 'dot') return <circle cx={x + 28} cy={y + 23} r="14" fill="none" stroke="#121212" stroke-width="1.5" />;
+            if (c === 'accent') return <circle cx={x + 28} cy={y + 23} r="23" fill="#ff5a1f" />;
+            return <rect x={x} y={y} width="56" height="46" rx="6" fill="#ff5a1f" />;
+          })}
+          <text x="32" y="330" class="t" font-size="44" font-weight="800" fill="#121212" style="font-stretch:72%" letter-spacing="-1">DESIGN SYSTEM</text>
+          <text x="32" y="366" class="t" font-size="13" font-weight="500" fill="#121212">GIM Digital</text>
+          <text x="368" y="366" class="t" font-size="13" font-weight="500" fill="#121212" text-anchor="end">−60%</text>
+        </g>
+      )}
+
+      {v === 'legal' && (
+        <g>
+          <rect width="400" height="400" fill="#0f1b3f" />
+          {legalRows.map((w, i) => (
+            <rect x="32" y={40 + i * 17} width={150 * w} height="5" rx="2.5" fill="#f3efe4" opacity={0.25 + (i % 3) * 0.15} />
+          ))}
+          <path d="M196 124 H 236" stroke="#f3efe4" stroke-width="1.5" />
+          <path d="M228 116 L 236 124 L 228 132" fill="none" stroke="#f3efe4" stroke-width="1.5" />
+          <rect x="252" y="104" width="116" height="40" rx="4" fill="#2f5bea" />
+          <rect x="264" y="121" width="60" height="6" rx="3" fill="#f3efe4" />
+          <text x="32" y="300" class="t" font-size="60" font-weight="800" fill="#f3efe4" style="font-stretch:110%" letter-spacing="-2">Legal</text>
+          <text x="32" y="356" class="t" font-size="60" font-weight="300" fill="#f3efe4" style="font-stretch:110%" letter-spacing="-2">Filing</text>
+          <text x="368" y="356" class="t" font-size="12" font-weight="500" fill="#f3efe4" text-anchor="end" opacity=".7">CAIXA</text>
+        </g>
+      )}
+
+      {v === 'bioeconomy-challenge' && (
+        <g>
+          <rect width="400" height="400" fill="#0b2016" />
+          <circle cx="200" cy="200" r="150" fill="none" stroke="#b8f24a" stroke-width="0.75" opacity=".35" />
+          <circle cx="200" cy="200" r="110" fill="none" stroke="#b8f24a" stroke-width="0.75" opacity=".5" />
+          <circle cx="200" cy="200" r="70" fill="#b8f24a" />
+          {ring.map((d) => <circle cx={d.x} cy={d.y} r="3.2" fill="#b8f24a" />)}
+          <text x="200" y="214" class="t" font-size="40" font-weight="800" fill="#0b2016" text-anchor="middle" style="font-stretch:80%">COP30</text>
+          <text x="24" y="30" class="t" font-size="12" font-weight="600" fill="#b8f24a" letter-spacing="1.5">BIOECONOMY</text>
+          <text x="376" y="30" class="t" font-size="12" font-weight="600" fill="#b8f24a" letter-spacing="1.5" text-anchor="end">CHALLENGE</text>
+          <text x="24" y="382" class="t" font-size="12" font-weight="500" fill="#b8f24a" opacity=".7">60+ organisations</text>
+          <text x="376" y="382" class="t" font-size="12" font-weight="500" fill="#b8f24a" opacity=".7" text-anchor="end">Belém</text>
+        </g>
+      )}
+
+      {v === 'bioeconomia-brasil' && (
+        <g>
+          <rect width="400" height="400" fill="#e9dcc0" />
+          <text x="28" y="92" class="t" font-size="50" font-weight="800" fill="#1d3b2a" style="font-stretch:88%" letter-spacing="-1.5">Bioeconomia</text>
+          <text x="28" y="148" class="t" font-size="50" font-weight="300" fill="#1d3b2a" style="font-stretch:88%" letter-spacing="-1.5">Bioeconomy</text>
+          <text x="28" y="204" class="t" font-size="50" font-weight="500" fill="#1d3b2a" style="font-stretch:88%" letter-spacing="-1.5">Bioéconomie</text>
+          <text x="28" y="260" class="t" font-size="50" font-weight="200" fill="#1d3b2a" style="font-stretch:88%" letter-spacing="-1.5">Bioökonomie</text>
+          <text x="372" y="324" font-size="44" font-weight="700" fill="#c4502e" text-anchor="end" direction="rtl" font-family="'Noto Sans Arabic','Geeza Pro','Segoe UI',sans-serif">الاقتصاد الحيوي</text>
+          <line x1="28" y1="354" x2="372" y2="354" stroke="#1d3b2a" stroke-width="1" />
+          <text x="28" y="378" class="t" font-size="12" font-weight="600" fill="#1d3b2a" letter-spacing="1">PT · EN · FR · DE · AR</text>
+          <text x="372" y="378" class="t" font-size="12" font-weight="500" fill="#1d3b2a" text-anchor="end">GIZ</text>
+        </g>
+      )}
+
+      {v === 'abrace' && (
+        <g>
+          <rect width="400" height="400" fill="#3b1016" />
+          <circle cx="160" cy="176" r="104" fill="#ff7a59" />
+          <circle cx="244" cy="176" r="104" fill="#ffc2b0" style="mix-blend-mode:multiply" />
+          <text x="32" y="366" class="t" font-size="64" font-weight="700" fill="#ffc2b0" style="font-stretch:95%" letter-spacing="-2.5">abrace</text>
+          <text x="368" y="366" class="t" font-size="12" font-weight="500" fill="#ffc2b0" text-anchor="end" opacity=".75">+47%</text>
+        </g>
+      )}
+
+      {v === 'stag' && (
+        <g>
+          <rect width="400" height="400" fill="#121212" />
+          <text x="200" y="300" class="t" font-size="300" font-weight="900" fill="#ffd23f" text-anchor="middle" style="font-stretch:125%" letter-spacing="-18">40</text>
+          <text x="28" y="44" class="t" font-size="22" font-weight="800" fill="#ffd23f" style="font-stretch:125%">STAG</text>
+          <text x="372" y="44" class="t" font-size="12" font-weight="500" fill="#ffd23f" text-anchor="end">Website redesign</text>
+          <text x="28" y="376" class="t" font-size="12" font-weight="500" fill="#ffd23f" opacity=".7">years of trust, one new voice</text>
+          <text x="372" y="376" class="t" font-size="12" font-weight="500" fill="#ffd23f" text-anchor="end" opacity=".7">30 days</text>
+        </g>
+      )}
+
+      {v === 'cepel' && (
+        <g>
+          <rect width="400" height="400" fill="#dff1fb" />
+          <circle cx="306" cy="86" r="34" fill="none" stroke="#0f2b46" stroke-width="1.5" />
+          <g fill="none" stroke="#0f2b46" stroke-width="1.5" stroke-linejoin="round">
+            <path d="M92 230 L 200 168 L 308 230 L 200 292 Z" />
+            <path d="M92 230 V 170 L 200 108 L 308 170 V 230" stroke-dasharray="5 5" />
+            <path d="M200 108 V 168" stroke-dasharray="5 5" />
+            <path d="M92 170 L 146 110 L 254 48 L 308 170" />
+            <path d="M146 110 L 200 168" stroke-dasharray="5 5" />
+            <path d="M130 196 L 130 216 L 160 233 L 160 213 Z" />
+          </g>
+          <text x="28" y="354" class="t" font-size="72" font-weight="800" fill="#0f2b46" style="font-stretch:70%" letter-spacing="-1">NZEB</text>
+          <text x="372" y="332" class="t" font-size="12" font-weight="500" fill="#0f2b46" text-anchor="end">Near Zero</text>
+          <text x="372" y="348" class="t" font-size="12" font-weight="500" fill="#0f2b46" text-anchor="end">Energy Building</text>
+          <text x="28" y="378" class="t" font-size="12" font-weight="600" fill="#0f2b46" letter-spacing="1.5" opacity=".7">CEPEL</text>
+        </g>
+      )}
+
+      {v === 'universo-paralello' && (
+        <g>
+          <rect width="400" height="400" fill="#1a0826" />
+          {[190, 164, 138, 112, 86, 60].map((r, i) => (
+            <circle cx="200" cy="200" r={r} fill={['#ff4fa3', '#ff8a3d', '#ffd84d', '#ff4fa3', '#7b2cbf', '#ff8a3d'][i]} />
+          ))}
+          <circle cx="200" cy="200" r="36" fill="#1a0826" />
+          <text x="200" y="212" class="t" font-size="32" font-weight="800" fill="#ffd84d" text-anchor="middle">19</text>
+          <path id={`up-${project.slug}`} d="M 200 200 m -176 0 a 176 176 0 1 1 352 0 a 176 176 0 1 1 -352 0" fill="none" />
+          <text class="t" font-size="11" font-weight="700" fill="#1a0826" letter-spacing="4">
+            <textPath href={`#up-${project.slug}`}>UNIVERSO PARALELLO · VILA MUNDO · UNIVERSO PARALELLO · VILA MUNDO ·</textPath>
+          </text>
+        </g>
+      )}
+
+      {v === 'logali' && (
+        <g>
+          <rect width="400" height="400" fill="#10200e" />
+          {logaliDots.map((d) =>
+            d.pin ? (
+              <g>
+                <circle cx={d.x} cy={d.y} r="30" fill="none" stroke="#c6ff3d" stroke-width="1" opacity=".5" />
+                <circle cx={d.x} cy={d.y} r={d.r} fill="#c6ff3d" />
+              </g>
+            ) : (
+              <circle cx={d.x} cy={d.y} r={d.r} fill={d.on ? '#c6ff3d' : '#3f5a36'} />
+            ),
+          )}
+          <text x="28" y="372" class="t" font-size="56" font-weight="800" fill="#c6ff3d" letter-spacing="-2" style="font-stretch:100%">logali</text>
+          <text x="372" y="372" class="t" font-size="12" font-weight="500" fill="#c6ff3d" text-anchor="end" opacity=".7">Brasília</text>
+        </g>
+      )}
+
+      {v === 'suindara-app' && (
+        <g>
+          <rect width="400" height="400" fill="#111a33" />
+          <path d="M200 70 C 120 40, 50 110, 76 196 C 98 268, 160 300, 200 330 C 240 300, 302 268, 324 196 C 350 110, 280 40, 200 70 Z" fill="#f4e9d8" />
+          <circle cx="150" cy="170" r="30" fill="#111a33" />
+          <circle cx="250" cy="170" r="30" fill="#111a33" />
+          <circle cx="158" cy="162" r="9" fill="#ffb347" />
+          <circle cx="258" cy="162" r="9" fill="#ffb347" />
+          <path d="M200 212 L 188 236 L 200 256 L 212 236 Z" fill="#c9a27a" />
+          <text x="28" y="44" class="t" font-size="12" font-weight="600" fill="#ffb347" letter-spacing="1.5">VOL. 1</text>
+          <text x="372" y="44" class="t" font-size="12" font-weight="500" fill="#ffb347" text-anchor="end">App</text>
+          <text x="200" y="378" class="t" font-size="34" font-weight="800" fill="#f4e9d8" text-anchor="middle" style="font-stretch:125%" letter-spacing="2">SUINDARA</text>
+        </g>
+      )}
+
+      {v === 'suindara-dashboard' && (
+        <g>
+          <rect width="400" height="400" fill="#ffb347" />
+          {bars.map((h, i) => (
+            <rect x={40 + i * 42} y={290 - h} width="28" height={h} fill="#111a33" opacity={i === bars.length - 1 ? 1 : 0.85} />
+          ))}
+          <line x1="28" y1="290" x2="372" y2="290" stroke="#111a33" stroke-width="1.5" />
+          <circle cx="330" cy="60" r="12" fill="#111a33" />
+          <circle cx="358" cy="60" r="12" fill="#111a33" />
+          <circle cx="333" cy="57" r="4" fill="#ffb347" />
+          <circle cx="361" cy="57" r="4" fill="#ffb347" />
+          <text x="28" y="44" class="t" font-size="12" font-weight="600" fill="#111a33" letter-spacing="1.5">VOL. 2</text>
+          <text x="28" y="62" class="t" font-size="12" font-weight="500" fill="#111a33">Dashboard</text>
+          <text x="200" y="352" class="t" font-size="34" font-weight="800" fill="#111a33" text-anchor="middle" style="font-stretch:125%" letter-spacing="2">SUINDARA</text>
+          <text x="200" y="378" class="t" font-size="12" font-weight="500" fill="#111a33" text-anchor="middle">Instituto Cerrados</text>
+        </g>
+      )}
+
+      {v === 'e-statis' && (
+        <g>
+          <rect width="400" height="400" fill="#07080c" />
+          <g fill="none" stroke="#35f2ff" stroke-width="1.5">
+            {bracketY.map((y) => <path d={`M200 ${y} H 250`} opacity=".5" />)}
+            {[0, 2, 4, 6].map((i) => <path d={`M250 ${bracketY[i]} V ${bracketY[i + 1]} M250 ${(bracketY[i] + bracketY[i + 1]) / 2} H 300`} opacity=".7" />)}
+            {[0, 4].map((i) => <path d={`M300 ${(bracketY[i] + bracketY[i + 1]) / 2} V ${(bracketY[i + 2] + bracketY[i + 3]) / 2} M300 ${(bracketY[i] + bracketY[i + 3]) / 2} H 340`} />)}
+            <path d="M340 110 V 290 M340 210 H 376" stroke-width="3" />
+          </g>
+          <text x="28" y="100" class="t" font-size="54" font-weight="900" fill="#35f2ff" style="font-stretch:62%">E-</text>
+          <text x="28" y="160" class="t" font-size="54" font-weight="900" fill="#35f2ff" style="font-stretch:62%">STA</text>
+          <text x="28" y="220" class="t" font-size="54" font-weight="900" fill="#35f2ff" style="font-stretch:62%">TIS</text>
+          <text x="28" y="378" class="t" font-size="12" font-weight="500" fill="#35f2ff" opacity=".7">Best Digital Project · CEUB</text>
+        </g>
+      )}
+
+    </svg>
+  )}
+</div>
+
+<style>
+  .cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #111;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+  .cover::after {
+    /* subtle printed-sleeve sheen + wear on the edge */
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(115deg, rgba(255, 255, 255, 0.07) 0%, transparent 35%, transparent 70%, rgba(0, 0, 0, 0.12) 100%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  .cover svg,
+  .cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .t {
+    font-family: var(--font);
+  }
+</style>
