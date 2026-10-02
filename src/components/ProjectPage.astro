@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Album from './Album.astro';
 import Frame from './Frame.astro';
+import Tonearm from './Tonearm.astro';
+import { decor } from '../data/decor';
 import { projects, projectImages, type Lang, type Project } from '../data/projects';
 import { t, homePath, projectPath } from '../data/i18n';
 
@@ -41,13 +43,20 @@ const rows = <T,>(list: T[]): T[][] => {
   altPath={projectPath(other, project.slug)}
   image={imgs.hero.src}
 >
-  <article>
+  {decor.progress && (
+    <div class="player" role="progressbar" aria-label={s.project.reading} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-player>
+      <div class="player-bar"><span data-player-fill></span></div>
+      <span class="player-time"><span class="player-icon" aria-hidden="true"></span><span data-player-time>0:00 / 0:00</span></span>
+    </div>
+  )}
+  <article data-article>
     <header class="p-hero">
       <div class="wrap">
         <a class="back" href={`${homePath(lang)}#work`}><span>←</span> {s.project.back}</a>
         <div class="p-head">
           <div class="p-album">
             <Album project={project} out eager />
+            {decor.tonearm && <Tonearm />}
           </div>
           <div>
             <p class="p-cat reveal">{project.cat} · {project.year} · {project.kind[lang]}</p>
@@ -202,4 +211,28 @@ const rows = <T,>(list: T[]): T[][] => {
     });
   }
   document.addEventListener('astro:page-load', initLightbox);
+
+  // Reading progress as a player: total = estimated reading time (200 words/min).
+  function initPlayer() {
+    const player = document.querySelector<HTMLElement>('[data-player]');
+    const article = document.querySelector<HTMLElement>('[data-article]');
+    if (!player || !article) return;
+    const fill = player.querySelector<HTMLElement>('[data-player-fill]')!;
+    const time = player.querySelector<HTMLElement>('[data-player-time]')!;
+    const words = (article.innerText.match(/\S+/g) ?? []).length;
+    const total = Math.max(60, Math.round((words / 200) * 60));
+    const fmt = (sec: number) => `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, '0')}`;
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      fill.style.transform = `scaleX(${p})`;
+      time.textContent = `${fmt(p * total)} / ${fmt(total)}`;
+      player.setAttribute('aria-valuenow', String(Math.round(p * 100)));
+      player.classList.toggle('is-playing', p > 0.002 && p < 0.998);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    document.addEventListener('astro:before-swap', () => window.removeEventListener('scroll', update), { once: true });
+  }
+  document.addEventListener('astro:page-load', initPlayer);
 </script>

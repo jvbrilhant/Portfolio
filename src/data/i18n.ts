@@ -44,6 +44,7 @@ export const ui = {
       ],
       photoAlt: 'João Victor Brilhante looking up under a tree in Dublin',
       experience: 'Experience',
+      lengthHint: 'Track length: one minute per year',
       now: 'now',
     },
     services: {
@@ -80,6 +81,7 @@ export const ui = {
       side: 'Side',
       next: 'Next record',
       zoom: 'Open image',
+      reading: 'Reading progress',
       gallery: 'Image viewer',
       close: 'Close',
       prev: 'Previous image',
@@ -131,6 +133,7 @@ export const ui = {
       ],
       photoAlt: 'João Victor Brilhante olhando para cima debaixo de uma árvore em Dublin',
       experience: 'Experiência',
+      lengthHint: 'Duração da faixa: um minuto por ano',
       now: 'hoje',
     },
     services: {
@@ -167,6 +170,7 @@ export const ui = {
       side: 'Lado',
       next: 'Próximo disco',
       zoom: 'Ampliar imagem',
+      reading: 'Progresso da leitura',
       gallery: 'Visualizador de imagens',
       close: 'Fechar',
       prev: 'Imagem anterior',

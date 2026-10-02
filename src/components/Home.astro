@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Album from './Album.astro';
 import Flag from './Flag.astro';
+import Eq from './Eq.astro';
+import { decor } from '../data/decor';
 import { projects, type Lang } from '../data/projects';
 import { t, url, homePath, projectPath, experience, contact } from '../data/i18n';
 
@@ -28,6 +30,7 @@ const name = 'Brilhante';
           ))}
         </p>
       </div>
+      {decor.grooves && <div class="grooves" aria-hidden="true"></div>}
       <h1 class="hero-name" aria-label={name}>
         <span class="clip" aria-hidden="true">
           {name.split('').map((c, i) => <span class="char" style={`--i:${i}`}>{c}</span>)}
@@ -50,7 +53,7 @@ const name = 'Brilhante';
     <div class="wrap">
       <div class="work-head reveal">
         <div>
-          <span class="label">{s.work.title}</span>
+          <span class="label">{s.work.title}{decor.equalizer && <Eq />}</span>
           <h2 class="section-title">{s.work.label}</h2>
         </div>
         <p class="section-intro">{s.work.intro}</p>
@@ -122,6 +125,11 @@ const name = 'Brilhante';
                   </span>
                   <span class="when">
                     {e.from === e.to ? e.from : `${e.from} — ${e.to ?? s.about.now}`}
+                    {decor.trackTimes && (
+                      <span class="length" title={s.about.lengthHint}>
+                        {Math.max(1, Number(e.to ?? new Date().getFullYear()) - Number(e.from))}:00
+                      </span>
+                    )}
                   </span>
                 </li>
               ))}
@@ -141,7 +149,11 @@ const name = 'Brilhante';
       <ul class="services">
         {s.services.items.map((it) => (
           <li class="service reveal">
-            <span class="service-no">{String(s.services.items.indexOf(it) + 1).padStart(2, '0')}</span>
+            <span class="service-no">
+              {decor.trackTimes
+                ? `${s.services.items.indexOf(it) < 3 ? 'A' : 'B'}${(s.services.items.indexOf(it) % 3) + 1}`
+                : String(s.services.items.indexOf(it) + 1).padStart(2, '0')}
+            </span>
             <h3>{it.title}</h3>
             <p>{it.text}</p>
           </li>
@@ -198,7 +210,7 @@ const name = 'Brilhante';
     <div class="wrap">
       <div class="contact-foot">
         <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        <span>© {new Date().getFullYear()} · {s.footer.made}</span>
+        <span class="foot-made">{decor.equalizer && <Eq />}© {new Date().getFullYear()} · {s.footer.made}</span>
         <a href="#top" data-top>↑ {s.footer.top}</a>
       </div>
     </div>

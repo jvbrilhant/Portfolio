@@ -4,6 +4,8 @@ import '@fontsource-variable/archivo/wdth.css';
 import '../styles/global.css';
 import type { Lang } from '../data/projects';
 import { t, url, homePath } from '../data/i18n';
+import Eq from '../components/Eq.astro';
+import { decor } from '../data/decor';
 
 interface Props {
   lang: Lang;
@@ -88,7 +90,7 @@ const altHref = new URL(altPath, Astro.site).href;
     {footer && (
       <footer class="site-footer">
         <div class="wrap footer-inner">
-          <span>© {new Date().getFullYear()} · {s.footer.made}</span>
+          <span class="foot-made">{decor.equalizer && <Eq />}© {new Date().getFullYear()} · {s.footer.made}</span>
           <a href="#top" data-top>{s.footer.top} ↑</a>
         </div>
       </footer>
