@@ -81,7 +81,7 @@ const name = 'Brilhante';
   <section class="section" id="shipped">
     <div class="wrap">
       <div class="reveal">
-        <span class="label">{s.shipped.label}</span>
+        <span class="label">{s.shipped.label}{decor.equalizer && <Eq />}</span>
         <h2 class="section-title">{s.shipped.title}</h2>
         <p class="section-intro">{s.shipped.intro}</p>
       </div>
@@ -108,7 +108,7 @@ const name = 'Brilhante';
           <figcaption>Dublin</figcaption>
         </figure>
         <div>
-          <span class="label reveal">{s.about.label}</span>
+          <span class="label reveal">{s.about.label}{decor.equalizer && <Eq />}</span>
           <h2 class="section-title reveal">{s.about.title}</h2>
           <div class="about-text reveal" style="margin-top:32px">
             {s.about.body.map((p) => <p>{p}</p>)}
@@ -125,11 +125,6 @@ const name = 'Brilhante';
                   </span>
                   <span class="when">
                     {e.from === e.to ? e.from : `${e.from} — ${e.to ?? s.about.now}`}
-                    {decor.trackTimes && (
-                      <span class="length" title={s.about.lengthHint}>
-                        {Math.max(1, Number(e.to ?? new Date().getFullYear()) - Number(e.from))}:00
-                      </span>
-                    )}
                   </span>
                 </li>
               ))}
@@ -143,17 +138,13 @@ const name = 'Brilhante';
   <section class="section" id="services">
     <div class="wrap">
       <div class="reveal">
-        <span class="label">{s.services.label}</span>
+        <span class="label">{s.services.label}{decor.equalizer && <Eq />}</span>
         <h2 class="section-title">{s.services.title}</h2>
       </div>
       <ul class="services">
         {s.services.items.map((it) => (
           <li class="service reveal">
-            <span class="service-no">
-              {decor.trackTimes
-                ? `${s.services.items.indexOf(it) < 3 ? 'A' : 'B'}${(s.services.items.indexOf(it) % 3) + 1}`
-                : String(s.services.items.indexOf(it) + 1).padStart(2, '0')}
-            </span>
+            <span class="service-no">{String(s.services.items.indexOf(it) + 1).padStart(2, '0')}</span>
             <h3>{it.title}</h3>
             <p>{it.text}</p>
           </li>
@@ -178,7 +169,7 @@ const name = 'Brilhante';
 
     <div class="wrap contact-grid">
       <div>
-        <span class="label">{s.contact.label}</span>
+        <span class="label">{s.contact.label}{decor.equalizer && <Eq />}</span>
         <div class="channels">
           <div class="channel">
             <span class="k">{s.contact.email}</span>

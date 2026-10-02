@@ -44,7 +44,6 @@ export const ui = {
       ],
       photoAlt: 'João Victor Brilhante looking up under a tree in Dublin',
       experience: 'Experience',
-      lengthHint: 'Track length: one minute per year',
       now: 'now',
     },
     services: {
@@ -133,7 +132,6 @@ export const ui = {
       ],
       photoAlt: 'João Victor Brilhante olhando para cima debaixo de uma árvore em Dublin',
       experience: 'Experiência',
-      lengthHint: 'Duração da faixa: um minuto por ano',
       now: 'hoje',
     },
     services: {

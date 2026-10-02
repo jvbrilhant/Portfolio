@@ -1827,25 +1827,11 @@ html.has-cursor .cursor.is-visible {
   border-radius: 50%;
   pointer-events: none;
   background:
-    conic-gradient(from 0deg, transparent 0 30deg, rgba(195, 164, 255, 0.05) 50deg, transparent 80deg, transparent 210deg, rgba(195, 164, 255, 0.04) 230deg, transparent 260deg),
-    repeating-radial-gradient(circle, transparent 0 5px, rgba(241, 237, 247, 0.045) 5.5px 6px);
+    conic-gradient(from 0deg, transparent 0 30deg, rgba(195, 164, 255, 0.08) 50deg, transparent 80deg, transparent 210deg, rgba(195, 164, 255, 0.065) 230deg, transparent 260deg),
+    repeating-radial-gradient(circle, transparent 0 5px, rgba(241, 237, 247, 0.075) 5.5px 6px);
   -webkit-mask: radial-gradient(circle, transparent 0 9%, #000 10% 60%, transparent 71%);
   mask: radial-gradient(circle, transparent 0 9%, #000 10% 60%, transparent 71%);
   animation: spin 90s linear infinite;
-}
-
-/* 4. Track lengths */
-.track .when {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 14px;
-}
-.track .length {
-  min-width: 3.2em;
-  text-align: right;
-  font-weight: 600;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
 }
 
 /* 5. Reading progress as a player */
@@ -1873,7 +1859,7 @@ html.has-cursor .cursor.is-visible {
 .player-time {
   position: absolute;
   right: var(--gutter);
-  top: 10px;
+  top: 20px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
