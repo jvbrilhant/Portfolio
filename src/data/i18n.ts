@@ -5,7 +5,7 @@ export const ui = {
     metaTitle: 'Brilhante — Product Designer & UX/UI Designer',
     metaDescription:
       'João Victor Brilhante is a product designer and UX/UI designer based in Dublin, designing digital products for legacy systems, tight constraints and high stakes.',
-    nav: { work: 'Work', shipped: 'Shipped', about: 'About', services: 'Services', contact: 'Contact' },
+    nav: { work: 'Work', shipped: 'Results', about: 'About', services: 'Services', contact: 'Contact' },
     langLabel: 'Ver em português',
     skip: 'Skip to content',
     hero: {
@@ -93,7 +93,7 @@ export const ui = {
     metaTitle: 'Brilhante — Product Designer e UX/UI Designer',
     metaDescription:
       'João Victor Brilhante é product designer e UX/UI designer em Dublin, criando produtos digitais para sistemas legados, prazos apertados e decisões de alto impacto.',
-    nav: { work: 'Projetos', shipped: 'Entregas', about: 'Sobre', services: 'Serviços', contact: 'Contato' },
+    nav: { work: 'Projetos', shipped: 'Resultados', about: 'Sobre', services: 'Serviços', contact: 'Contato' },
     langLabel: 'View in English',
     skip: 'Pular para o conteúdo',
     hero: {
