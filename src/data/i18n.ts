@@ -62,7 +62,7 @@ export const ui = {
       label: 'Contact',
       title: 'Let’s work together.',
       email: 'Email',
-      phone: 'Phone',
+      phone: 'WhatsApp',
       copy: 'Copy',
       copied: 'Copied',
       photoAlt: 'João Victor Brilhante taking a mirror selfie',
@@ -150,7 +150,7 @@ export const ui = {
       label: 'Contato',
       title: 'Vamos trabalhar juntos.',
       email: 'E-mail',
-      phone: 'Telefone',
+      phone: 'WhatsApp',
       copy: 'Copiar',
       copied: 'Copiado',
       photoAlt: 'João Victor Brilhante tirando uma selfie no espelho',
@@ -190,12 +190,10 @@ export const experience = [
 export const contact = {
   email: 'joaobrilho@gmail.com',
   phones: [
-    { flag: 'ie', country: { en: 'Ireland', pt: 'Irlanda' }, number: '+353 85 780 4701', href: 'tel:+353857804701' },
-    { flag: 'br', country: { en: 'Brazil', pt: 'Brasil' }, number: '+55 61 99391-1956', href: 'tel:+5561993911956' },
+    { flag: 'ie', country: { en: 'Ireland', pt: 'Irlanda' }, number: '+353 85 780 4701', href: 'https://wa.me/353857804701' },
+    { flag: 'br', country: { en: 'Brazil', pt: 'Brasil' }, number: '+55 61 99391-1956', href: 'https://wa.me/5561993911956' },
   ],
-  whatsapp: 'https://wa.me/5561993911956',
   linkedin: 'https://www.linkedin.com/in/joao-victor-brilhante/',
-  instagram: 'https://www.instagram.com/jvbrilhant',
 };
 
 export function t(lang: Lang) {
