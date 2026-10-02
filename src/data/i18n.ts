@@ -36,7 +36,7 @@ export const ui = {
     },
     about: {
       label: 'About',
-      title: 'Hi, I’m João Victor.',
+      title: 'Hi, I’m João Victor Brilhante.',
       body: [
         'I’ve spent the last nine years figuring out how to make complex ideas feel simple, first in advertising, then fully in product design.',
         'I like the projects people usually find intimidating. A banking dashboard sitting on 100+ legacy products. A nonprofit site losing donors when nobody knows why. The kind of work where you have to dig before you can design anything.',
@@ -124,7 +124,7 @@ export const ui = {
     },
     about: {
       label: 'Sobre',
-      title: 'Oi, eu sou o João Victor.',
+      title: 'Oi, eu sou o João Victor Brilhante.',
       body: [
         'Passei os últimos nove anos descobrindo como fazer ideias complexas parecerem simples, primeiro na publicidade e depois só em product design.',
         'Gosto dos projetos que costumam intimidar as pessoas. Um dashboard bancário apoiado em mais de 100 produtos legados. O site de uma ONG perdendo doadores sem que ninguém saiba por quê. O tipo de trabalho em que é preciso cavar antes de desenhar qualquer coisa.',

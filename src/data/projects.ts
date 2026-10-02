@@ -43,7 +43,7 @@ export const projects: Project[] = [
     year: '2026',
     kind: { en: 'Design system', pt: 'Design system' },
     cover: 'design-system',
-    label: '#ff5a1f',
+    label: '#a7d8fb',
     en: {
       title: 'Design System for GIM Digital',
       subtitle: 'A self-initiated Figma system that cut wireframe production time by 60%',
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     year: '2026',
     kind: { en: 'Dashboard', pt: 'Dashboard' },
     cover: 'legal',
-    label: '#2f5bea',
+    label: '#9ad7ce',
     en: {
       title: 'Redesigning legal filing workflows',
       subtitle: 'Centralising data and reducing cognitive load for Caixa’s judicial filing team',
@@ -141,7 +141,7 @@ export const projects: Project[] = [
     year: '2025',
     kind: { en: 'Web platform', pt: 'Plataforma web' },
     cover: 'bioeconomy-challenge',
-    label: '#b8f24a',
+    label: '#e2a549',
     link: 'https://bioeconomychallenge.org/',
     en: {
       title: 'Bioeconomy Challenge',
@@ -192,7 +192,7 @@ export const projects: Project[] = [
     year: '2022',
     kind: { en: 'Multilingual website', pt: 'Site multilíngue' },
     cover: 'bioeconomia-brasil',
-    label: '#e9c46a',
+    label: '#e9a07c',
     en: {
       title: 'Bioeconomia Brasil',
       subtitle: 'A platform where five languages, including Arabic right-to-left, all feel equally native',
@@ -240,7 +240,7 @@ export const projects: Project[] = [
     year: '2025',
     kind: { en: 'Website & donations', pt: 'Site e doações' },
     cover: 'abrace',
-    label: '#ff7a59',
+    label: '#feb837',
     en: {
       title: 'Abrace',
       subtitle: 'Supporting families of children with cancer through careful design and resilient engineering',
@@ -288,7 +288,7 @@ export const projects: Project[] = [
     year: '2026',
     kind: { en: 'Website redesign', pt: 'Redesign de site' },
     cover: 'stag',
-    label: '#ffd23f',
+    label: '#e9661b',
     link: 'https://stagestagios.com.br/',
     en: {
       title: 'Stag — Website redesign',
@@ -337,7 +337,7 @@ export const projects: Project[] = [
     year: '2025',
     kind: { en: 'Virtual tour', pt: 'Tour virtual' },
     cover: 'cepel',
-    label: '#7fd1ff',
+    label: '#bcf215',
     en: {
       title: 'Cepel NZEB',
       subtitle: 'Bringing a building that didn’t exist yet to life through an interactive virtual tour',
@@ -385,7 +385,7 @@ export const projects: Project[] = [
     year: '2025',
     kind: { en: 'Festival website', pt: 'Site de festival' },
     cover: 'universo-paralello',
-    label: '#ff4fa3',
+    label: '#ffc323',
     link: 'https://vilamundo.com/universo-paralello/',
     en: {
       title: 'Universo Paralello — Vila Mundo',
@@ -434,7 +434,7 @@ export const projects: Project[] = [
     year: '2022',
     kind: { en: 'Mobile app', pt: 'App mobile' },
     cover: 'logali',
-    label: '#c6ff3d',
+    label: '#ec4677',
     en: {
       title: 'Logali',
       subtitle: 'Event discovery that gives a small poetry night the same shot as a major festival',
@@ -482,7 +482,7 @@ export const projects: Project[] = [
     year: '2024',
     kind: { en: 'Mobile app', pt: 'App mobile' },
     cover: 'suindara-app',
-    label: '#ffb347',
+    label: '#daa421',
     en: {
       title: 'Suindara — App',
       subtitle: 'Turning everyday people into part of the Cerrado’s real-time monitoring network',
@@ -530,7 +530,7 @@ export const projects: Project[] = [
     year: '2024',
     kind: { en: 'Dashboard', pt: 'Dashboard' },
     cover: 'suindara-dashboard',
-    label: '#16213e',
+    label: '#daa421',
     en: {
       title: 'Suindara — Dashboard',
       subtitle: 'Giving program leads a live, readable picture of Cerrado conservation',
@@ -578,7 +578,7 @@ export const projects: Project[] = [
     year: '2022',
     kind: { en: 'App prototype', pt: 'Protótipo de app' },
     cover: 'e-statis',
-    label: '#35f2ff',
+    label: '#f2f229',
     en: {
       title: 'e-Statis',
       subtitle: 'Every e-sports league, across every game, in one place',

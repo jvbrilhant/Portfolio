@@ -14,6 +14,7 @@ const { project, out = false, eager = false } = Astro.props;
 <div class:list={['album', { out }]} data-album style={`--label:${project.label}`}>
   <div class="record" aria-hidden="true">
     <div class="record-disc"></div>
+    <div class="record-spin"></div>
     <div class="record-label"><span>{project.cat}</span></div>
   </div>
   <div class="sleeve" transition:name={`sleeve-${project.slug}`}>

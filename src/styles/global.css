@@ -1899,3 +1899,48 @@ html.has-cursor .cursor.is-visible {
     transform: scaleY(0.6);
   }
 }
+
+/* Spinning record: uneven reflections in the grooves make the rotation visible.
+   On project pages it starts when the tonearm lands (~2s). */
+.record-spin {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.09) 10deg,
+    transparent 22deg,
+    transparent 70deg,
+    rgba(255, 255, 255, 0.05) 82deg,
+    transparent 96deg,
+    transparent 150deg,
+    rgba(195, 164, 255, 0.08) 165deg,
+    transparent 178deg,
+    transparent 240deg,
+    rgba(255, 255, 255, 0.06) 256deg,
+    transparent 268deg,
+    transparent 315deg,
+    rgba(255, 255, 255, 0.04) 330deg,
+    transparent 345deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 0 36%, #000 37% 94%, transparent 95%);
+  mask: radial-gradient(circle, transparent 0 36%, #000 37% 94%, transparent 95%);
+  animation: spin 1.8s linear infinite;
+  animation-play-state: paused;
+}
+@media (hover: hover) {
+  .album:hover .record-spin,
+  a:hover .album .record-spin {
+    animation-play-state: running;
+  }
+}
+.album.playing .record-spin {
+  animation-play-state: running;
+}
+.album.out .record-spin,
+.album.out .record-label {
+  animation: spin 1.8s linear 1.9s infinite;
+  animation-play-state: running;
+}
