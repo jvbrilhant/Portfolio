@@ -881,13 +881,16 @@ h3 {
   letter-spacing: -0.05em;
   line-height: 1;
   white-space: nowrap;
-  padding-right: 0.35em;
 }
+/* Same space on both sides of the dot. */
 .marquee-group i {
-  font-style: normal;
-  font-size: 0.22em;
-  margin-left: 0.6em;
-  color: #6a3fc4;
+  display: block;
+  width: 0.12em;
+  height: 0.12em;
+  margin: 0 0.32em;
+  border-radius: 50%;
+  background: #6a3fc4;
+  font-size: inherit;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
@@ -1214,23 +1217,43 @@ h3 {
 
 .gallery {
   display: grid;
-  grid-template-columns: 1fr;
   gap: clamp(12px, 1.6vw, 20px);
   margin-top: clamp(40px, 5vw, 64px);
 }
-@media (min-width: 760px) {
-  .gallery.two {
-    grid-template-columns: 1fr 1fr;
+
+/* Images keep their real proportions on a transparent background.
+   Paired images share one height; a lone image is capped so it never gets oversized. */
+.g-row {
+  --gap: clamp(12px, 1.6vw, 20px);
+  display: flex;
+  gap: var(--gap);
+  align-items: flex-start;
+  /* A row never gets taller than ~72% of the screen: wide rows shrink and centre. */
+  max-width: calc(72vh * var(--sum, 10) + var(--gap));
+  margin-inline: auto;
+}
+.g-row .frame {
+  flex: var(--r) 1 0;
+  min-width: 0;
+}
+.g-row.single {
+  justify-content: center;
+}
+.g-row.single .frame {
+  flex: 0 1 auto;
+  width: min(100%, calc(72vh * var(--r)));
+}
+@media (max-width: 759px) {
+  .g-row {
+    max-width: none;
+    flex-direction: column;
+    align-items: center;
   }
-  .gallery.three {
-    grid-template-columns: 1fr 1fr;
-  }
-  .gallery.three .frame:first-child {
-    grid-column: 1 / -1;
+  .g-row .frame {
+    flex: none;
+    width: min(100%, calc(70vh * var(--r)));
   }
 }
-
-/* One frame ratio for every project image. */
 .frame {
   margin: 0;
 }
@@ -1238,69 +1261,66 @@ h3 {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
   padding: 0;
   border: 0;
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--bg-2);
+  background: transparent;
   cursor: zoom-in;
   font: inherit;
   color: inherit;
+  border-radius: 6px;
 }
 .frame-btn img,
 .frame-btn video {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 0%;
-  transition: transform 0.8s var(--ease);
-}
-.frame.fit .frame-btn {
-  background:
-    radial-gradient(circle at 50% 40%, rgba(195, 164, 255, 0.08), transparent 70%),
-    #16131f;
-}
-.frame.fit .frame-btn img,
-.frame.fit .frame-btn video {
-  object-fit: contain;
-  object-position: 50% 50%;
-  padding: clamp(12px, 3%, 32px);
+  height: auto;
+  border-radius: 6px;
+  transition: filter 0.4s var(--ease);
 }
 .frame-btn:hover img,
 .frame-btn:hover video {
-  transform: scale(1.02);
+  filter: brightness(1.06);
 }
+/* Always-visible hint that the image opens larger. */
 .frame-zoom {
   position: absolute;
-  right: 14px;
-  bottom: 14px;
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(11, 10, 16, 0.7);
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 32px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(11, 10, 16, 0.72);
   color: var(--ink);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  opacity: 0;
-  transform: translateY(4px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
   transition:
-    opacity 0.3s,
-    transform 0.3s var(--ease);
+    gap 0.3s var(--ease),
+    padding 0.3s var(--ease);
+}
+.frame-zoom-text {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width 0.35s var(--ease),
+    opacity 0.25s;
 }
 .frame-btn:hover .frame-zoom,
 .frame-btn:focus-visible .frame-zoom {
-  opacity: 1;
-  transform: none;
+  gap: 8px;
+  padding: 0 12px;
 }
-@media (hover: none) {
-  .frame-zoom {
-    opacity: 1;
-    transform: none;
-  }
+.frame-btn:hover .frame-zoom-text,
+.frame-btn:focus-visible .frame-zoom-text {
+  max-width: 160px;
+  opacity: 1;
 }
 
 /* Lightbox */
@@ -1610,5 +1630,98 @@ html.lb-open {
   .lb-stage img,
   .lb-stage video {
     max-height: calc(100dvh - 152px);
+  }
+}
+
+/* ---------- Custom cursor (mouse/trackpad only) ---------- */
+
+.cursor {
+  display: none;
+}
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+/* The lightbox lives in the browser's top layer, above the custom cursor. */
+html.has-cursor .lightbox,
+html.has-cursor .lightbox * {
+  cursor: auto !important;
+}
+html.has-cursor .lightbox button {
+  cursor: pointer !important;
+}
+html.has-cursor.lb-open .cursor {
+  opacity: 0 !important;
+}
+html.has-cursor .cursor {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+html.has-cursor .cursor.is-visible {
+  opacity: 0.9;
+}
+.cursor-disc,
+.cursor-icon {
+  position: absolute;
+  max-width: none;
+  left: 0;
+  top: 0;
+}
+.cursor-disc {
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #0b0a10 0 1.5px, var(--accent) 2px 5px, transparent 5.5px),
+    conic-gradient(from 20deg, transparent 0 40deg, rgba(255, 255, 255, 0.22) 60deg, transparent 90deg, transparent 220deg, rgba(255, 255, 255, 0.16) 240deg, transparent 270deg),
+    repeating-radial-gradient(circle, #15131b 0 1px, #2b2735 1.4px 2.2px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 4px 14px rgba(0, 0, 0, 0.4);
+  animation: spin 2.4s linear infinite;
+  transition:
+    width 0.35s var(--ease),
+    height 0.35s var(--ease),
+    margin 0.35s var(--ease),
+    background 0.3s,
+    transform 0.2s var(--ease);
+}
+.cursor-icon {
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  color: #0b0a10;
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.2s,
+    transform 0.3s var(--ease);
+}
+.cursor.is-link .cursor-disc,
+.cursor.is-zoom .cursor-disc {
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  background: var(--accent);
+  animation-play-state: paused;
+}
+.cursor.is-link .cursor-play,
+.cursor.is-zoom .cursor-zoom {
+  opacity: 1;
+  transform: none;
+}
+.cursor.is-down .cursor-disc {
+  transform: scale(0.85);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-disc {
+    animation: none;
   }
 }

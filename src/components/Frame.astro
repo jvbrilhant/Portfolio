@@ -1,8 +1,7 @@
 ---
 /**
- * Every project image sits in the same 16:10 frame so the pages keep one rhythm.
- * Landscape screenshots fill the frame; tall or square ones (phones, mockups)
- * are shown whole on a soft panel. Clicking opens the full image in the lightbox.
+ * Project image at its natural proportions (never cropped). Rows of images
+ * share one height (see .g-row in global.css). Clicking opens the lightbox.
  */
 import Media from './Media.astro';
 import { url } from '../data/i18n';
@@ -15,12 +14,11 @@ interface Props {
   style?: string;
   zoomLabel: string;
 }
-const { img, alt, eager = false, class: cls, style, zoomLabel } = Astro.props;
-const ratio = img.w / img.h;
-const fill = ratio >= 1.4 && ratio <= 1.95;
+const { img, alt, eager = false, class: cls, style = '', zoomLabel } = Astro.props;
+const ratio = (img.w / img.h).toFixed(4);
 ---
 
-<figure class:list={['frame', fill ? 'fill' : 'fit', cls]} style={style}>
+<figure class:list={['frame', cls]} style={`--r:${ratio};${style}`}>
   <button
     type="button"
     class="frame-btn"
@@ -34,7 +32,8 @@ const fill = ratio >= 1.4 && ratio <= 1.95;
   >
     <Media img={img} alt={alt} eager={eager} />
     <span class="frame-zoom" aria-hidden="true">
-      <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
+      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      <span class="frame-zoom-text">{zoomLabel}</span>
     </span>
   </button>
 </figure>

@@ -23,7 +23,15 @@ const sides = (['overview', 'discovery', 'solution', 'result'] as const).map((ke
   text: c[key],
   images: imgs[key],
 }));
-const galleryClass = (n: number) => (n === 2 ? 'two' : n >= 3 ? 'three' : '');
+// Gallery rows: a lone image gets its own row, the rest go in pairs.
+// Images in a row share one height, so nothing is cropped and nothing floats in empty space.
+const rows = <T,>(list: T[]): T[][] => {
+  const out: T[][] = [];
+  let i = 0;
+  if (list.length % 2 === 1) out.push([list[i++]]);
+  for (; i < list.length; i += 2) out.push(list.slice(i, i + 2));
+  return out;
+};
 ---
 
 <Layout
@@ -61,7 +69,7 @@ const galleryClass = (n: number) => (n === 2 ? 'two' : n >= 3 ? 'three' : '');
           {c.tools && <div><dt>{s.project.tools}</dt><dd>{c.tools}</dd></div>}
         </dl>
 
-        <Frame class="p-cover reveal" img={imgs.hero} alt={c.title} eager zoomLabel={s.project.zoom} />
+        <div class="g-row single p-cover"><Frame class="reveal" img={imgs.hero} alt={c.title} eager zoomLabel={s.project.zoom} /></div>
       </div>
     </header>
 
@@ -78,15 +86,22 @@ const galleryClass = (n: number) => (n === 2 ? 'two' : n >= 3 ? 'three' : '');
             </div>
           </div>
           {sd.images.length > 0 && (
-            <div class:list={['gallery', galleryClass(sd.images.length)]}>
-              {sd.images.map((im, i) => (
-                <Frame
-                  class="reveal"
-                  style={`--d:${(i % 2) * 0.08}s`}
-                  img={im}
-                  alt={`${c.title} — ${sd.title} ${i + 1}`}
-                  zoomLabel={s.project.zoom}
-                />
+            <div class="gallery">
+              {rows(sd.images.map((im, i) => ({ im, i }))).map((row) => (
+                <div
+                  class:list={['g-row', { single: row.length === 1 }]}
+                  style={`--sum:${row.reduce((t, { im }) => t + im.w / im.h, 0).toFixed(4)}`}
+                >
+                  {row.map(({ im, i }) => (
+                    <Frame
+                      class="reveal"
+                      style={`--d:${(i % 2) * 0.08}s`}
+                      img={im}
+                      alt={`${c.title} — ${sd.title} ${i + 1}`}
+                      zoomLabel={s.project.zoom}
+                    />
+                  ))}
+                </div>
               ))}
             </div>
           )}

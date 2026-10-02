@@ -49,6 +49,12 @@ const altHref = new URL(altPath, Astro.site).href;
   <body>
     <a class="skip" href="#main">{s.skip}</a>
 
+    <div class="cursor" aria-hidden="true" transition:persist>
+      <span class="cursor-disc"></span>
+      <svg class="cursor-icon cursor-play" viewBox="0 0 24 24"><path d="M8 5v14l12-7z" fill="currentColor" /></svg>
+      <svg class="cursor-icon cursor-zoom" viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
+    </div>
+
     <div class="atmosphere" aria-hidden="true" transition:persist>
       <span class="blob b1"></span>
       <span class="blob b2"></span>
@@ -100,6 +106,29 @@ const altHref = new URL(altPath, Astro.site).href;
           requestAnimationFrame(raf);
         };
         requestAnimationFrame(raf);
+      }
+
+      // Custom cursor: a small spinning record; turns into "play" over links
+      // and into "expand" over images that open in the lightbox.
+      const cursor = document.querySelector<HTMLElement>('.cursor');
+      if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.documentElement.classList.add('has-cursor');
+        const clickable = 'a, button, [role="button"], label, summary, select, [data-copy]';
+        window.addEventListener(
+          'pointermove',
+          (e) => {
+            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            const t = e.target as Element | null;
+            const zoom = !!t?.closest?.('[data-lb]');
+            cursor.classList.toggle('is-zoom', zoom);
+            cursor.classList.toggle('is-link', !zoom && !!t?.closest?.(clickable));
+            cursor.classList.add('is-visible');
+          },
+          { passive: true },
+        );
+        document.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
+        window.addEventListener('pointerdown', () => cursor.classList.add('is-down'));
+        window.addEventListener('pointerup', () => cursor.classList.remove('is-down'));
       }
 
       function scrollToHash(hash: string, immediate = false) {
