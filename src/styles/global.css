@@ -4,7 +4,7 @@
   --bg-2: #13111b;
   --ink: #f1edf7;
   --muted: #a49db4;
-  --dim: #6f6882;
+  --dim: #938ca8; /* ≥5.4:1 on the darkest and the purple-stained areas */
   --line: rgba(241, 237, 247, 0.1);
   --accent: #c3a4ff;
   --wrap: 1280px;
@@ -38,7 +38,7 @@ body {
   font-family: var(--font);
   font-size: 17px;
   line-height: 1.6;
-  font-weight: 380;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -654,7 +654,7 @@ h3 {
   font-variant-numeric: tabular-nums;
 }
 .stat .v {
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(44px, 5vw, 68px);
   font-weight: 800;
   font-stretch: 118%;
   letter-spacing: -0.04em;
@@ -1040,8 +1040,8 @@ h3 {
 .site-footer {
   border-top: 1px solid var(--line);
   padding: 28px 0;
-  font-size: 13px;
-  color: var(--dim);
+  font-size: 14px;
+  color: var(--muted);
 }
 .footer-inner {
   display: flex;
@@ -1090,11 +1090,11 @@ h3 {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
-  color: var(--dim);
+  color: var(--muted);
 }
 .p-title {
   margin-top: 16px;
-  font-size: clamp(40px, 6.2vw, 92px);
+  font-size: clamp(36px, 5vw, 72px);
   font-weight: 780;
   font-stretch: 112%;
   letter-spacing: -0.04em;
@@ -1131,16 +1131,18 @@ h3 {
   border-top: 1px solid var(--line);
 }
 .credits dt {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: var(--muted);
 }
 .credits dd {
-  margin: 8px 0 0;
-  font-size: 15px;
-  line-height: 1.5;
+  margin: 10px 0 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
 }
 @media (min-width: 760px) {
   .credits {
@@ -1491,7 +1493,7 @@ html.lb-open {
 }
 .next-title {
   margin-top: 14px;
-  font-size: clamp(34px, 5vw, 72px);
+  font-size: clamp(30px, 4vw, 56px);
   font-weight: 780;
   font-stretch: 112%;
   letter-spacing: -0.04em;
