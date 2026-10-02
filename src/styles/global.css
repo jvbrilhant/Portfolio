@@ -1655,7 +1655,7 @@ html.has-cursor .lightbox button {
 html.has-cursor.lb-open .cursor {
   opacity: 0 !important;
 }
-html.has-cursor .cursor {
+html.cursor-ready .cursor {
   display: block;
   position: fixed;
   left: 0;
@@ -1665,7 +1665,7 @@ html.has-cursor .cursor {
   opacity: 0;
   transition: opacity 0.2s;
 }
-html.has-cursor .cursor.is-visible {
+html.cursor-ready .cursor.is-visible {
   opacity: 0.9;
 }
 .cursor-disc,

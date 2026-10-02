@@ -23,7 +23,7 @@ export const ui = {
     },
     shipped: {
       label: 'Liner notes',
-      title: 'What I’ve shipped',
+      title: 'Results',
       intro: 'Numbers from real launches, measured after delivery, not promised before it.',
       stats: [
         { value: '9', unit: 'years', text: 'Making complex ideas feel simple, first in advertising, then fully in product design.' },
@@ -111,7 +111,7 @@ export const ui = {
     },
     shipped: {
       label: 'Encarte',
-      title: 'O que já entreguei',
+      title: 'Resultados',
       intro: 'Números de lançamentos reais, medidos depois da entrega e não prometidos antes dela.',
       stats: [
         { value: '9', unit: 'anos', text: 'Tornando simples ideias complexas, primeiro na publicidade e depois só em product design.' },
