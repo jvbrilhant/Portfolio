@@ -14,7 +14,7 @@ const other: Lang = lang === 'en' ? 'pt' : 'en';
 const name = 'Brilhante';
 ---
 
-<Layout lang={lang} altPath={homePath(other)}>
+<Layout lang={lang} altPath={homePath(other)} footer={false}>
   <section class="hero" id="top">
     <div class="wrap hero-grid">
       <div class="hero-id reveal">
@@ -150,38 +150,56 @@ const name = 'Brilhante';
     </div>
   </section>
 
-  <section class="section contact" id="contact">
-    <div class="wrap">
-      <span class="label reveal">{s.contact.label}</span>
-      <div class="contact-grid">
-        <div>
-          <h2 class="contact-title reveal">{s.contact.title}</h2>
-          <div class="channels reveal">
-            <div class="channel">
-              <span class="k">{s.contact.email}</span>
-              <a class="val" href={`mailto:${contact.email}`}>{contact.email}</a>
-              <button class="copy" type="button" data-copy={contact.email} data-done={s.contact.copied}>{s.contact.copy}</button>
-            </div>
-            {contact.phones.map((ph) => (
-              <div class="channel">
-                <span class="k">{s.contact.phone}</span>
-                <a class="val phone" href={ph.href}>
-                  <Flag code={ph.flag} label={ph.country[lang]} />
-                  {ph.number}
-                </a>
-                <button class="copy" type="button" data-copy={ph.number} data-done={s.contact.copied}>{s.contact.copy}</button>
-              </div>
+  <section class="contact" id="contact">
+    <h2 class="sr-only">{s.contact.title}</h2>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        {[0, 1].map(() => (
+          <span class="marquee-group">
+            {[0, 1, 2].map(() => (
+              <span>{s.contact.title.replace(/\.$/, '')}<i>●</i></span>
             ))}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="wrap contact-grid">
+      <div>
+        <span class="label">{s.contact.label}</span>
+        <div class="channels">
+          <div class="channel">
+            <span class="k">{s.contact.email}</span>
+            <a class="val" href={`mailto:${contact.email}`}>{contact.email}</a>
+            <button class="copy" type="button" data-copy={contact.email} data-done={s.contact.copied}>{s.contact.copy}</button>
           </div>
-          <div class="socials reveal">
-            <a href={contact.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a href={contact.whatsapp} target="_blank" rel="noopener">WhatsApp ↗</a>
-            <a href={contact.instagram} target="_blank" rel="noopener">Instagram ↗</a>
-          </div>
+          {contact.phones.map((ph) => (
+            <div class="channel">
+              <span class="k">{s.contact.phone}</span>
+              <a class="val phone" href={ph.href}>
+                <Flag code={ph.flag} label={ph.country[lang]} />
+                {ph.number}
+              </a>
+              <button class="copy" type="button" data-copy={ph.number} data-done={s.contact.copied}>{s.contact.copy}</button>
+            </div>
+          ))}
         </div>
-        <figure class="contact-photo reveal">
-          <img src={url('me/mirror.webp')} width="1000" height="1250" alt={s.contact.photoAlt} decoding="async" />
-        </figure>
+        <div class="socials">
+          <a href={contact.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href={contact.whatsapp} target="_blank" rel="noopener">WhatsApp ↗</a>
+          <a href={contact.instagram} target="_blank" rel="noopener">Instagram ↗</a>
+        </div>
+      </div>
+      <figure class="contact-photo">
+        <img src={url('me/mirror.webp')} width="1000" height="1250" alt={s.contact.photoAlt} loading="lazy" decoding="async" />
+      </figure>
+    </div>
+
+    <div class="wrap">
+      <div class="contact-foot">
+        <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        <span>© {new Date().getFullYear()} · {s.footer.made}</span>
+        <a href="#top" data-top>↑ {s.footer.top}</a>
       </div>
     </div>
   </section>

@@ -12,9 +12,11 @@ interface Props {
   /** Same page in the other language. */
   altPath: string;
   image?: string;
+  /** The home page renders its own footer inside the contact block. */
+  footer?: boolean;
 }
 
-const { lang, title, description, altPath, image } = Astro.props;
+const { lang, title, description, altPath, image, footer = true } = Astro.props;
 const s = t(lang);
 const pageTitle = title ? `${title} — Brilhante` : s.metaTitle;
 const desc = description ?? s.metaDescription;
@@ -77,12 +79,14 @@ const altHref = new URL(altPath, Astro.site).href;
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <span>© {new Date().getFullYear()} · {s.footer.made}</span>
-        <a href="#top" data-top>{s.footer.top} ↑</a>
-      </div>
-    </footer>
+    {footer && (
+      <footer class="site-footer">
+        <div class="wrap footer-inner">
+          <span>© {new Date().getFullYear()} · {s.footer.made}</span>
+          <a href="#top" data-top>{s.footer.top} ↑</a>
+        </div>
+      </footer>
+    )}
 
     <script>
       import Lenis from 'lenis';
@@ -161,10 +165,23 @@ const altHref = new URL(altPath, Astro.site).href;
         if (location.hash) requestAnimationFrame(() => scrollToHash(location.hash, true));
       }
 
-      document.addEventListener('astro:page-load', init);
+      // Always open a new page from the top (unless it targets a section).
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      document.addEventListener('astro:before-swap', () => lenis?.stop());
       document.addEventListener('astro:after-swap', () => {
+        if (!location.hash) {
+          window.scrollTo(0, 0);
+          lenis?.scrollTo(0, { immediate: true, force: true });
+        }
         lenis?.resize();
-        if (!location.hash) lenis?.scrollTo(0, { immediate: true });
+        lenis?.start();
+      });
+      document.addEventListener('astro:page-load', () => {
+        init();
+        if (!location.hash) {
+          window.scrollTo(0, 0);
+          lenis?.scrollTo(0, { immediate: true, force: true });
+        }
       });
     </script>
   </body>

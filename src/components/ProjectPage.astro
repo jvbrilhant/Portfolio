@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Album from './Album.astro';
-import Media from './Media.astro';
+import Frame from './Frame.astro';
 import { projects, projectImages, type Lang, type Project } from '../data/projects';
 import { t, homePath, projectPath } from '../data/i18n';
 
@@ -61,9 +61,7 @@ const galleryClass = (n: number) => (n === 2 ? 'two' : n >= 3 ? 'three' : '');
           {c.tools && <div><dt>{s.project.tools}</dt><dd>{c.tools}</dd></div>}
         </dl>
 
-        <figure class="p-cover reveal">
-          <Media img={imgs.hero} alt={c.title} eager />
-        </figure>
+        <Frame class="p-cover reveal" img={imgs.hero} alt={c.title} eager zoomLabel={s.project.zoom} />
       </div>
     </header>
 
@@ -82,9 +80,13 @@ const galleryClass = (n: number) => (n === 2 ? 'two' : n >= 3 ? 'three' : '');
           {sd.images.length > 0 && (
             <div class:list={['gallery', galleryClass(sd.images.length)]}>
               {sd.images.map((im, i) => (
-                <figure class="reveal" style={`--d:${(i % 2) * 0.08}s`}>
-                  <Media img={im} alt={`${c.title} — ${sd.title} ${i + 1}`} />
-                </figure>
+                <Frame
+                  class="reveal"
+                  style={`--d:${(i % 2) * 0.08}s`}
+                  img={im}
+                  alt={`${c.title} — ${sd.title} ${i + 1}`}
+                  zoomLabel={s.project.zoom}
+                />
               ))}
             </div>
           )}
@@ -109,4 +111,80 @@ const galleryClass = (n: number) => (n === 2 ? 'two' : n >= 3 ? 'three' : '');
       </div>
     </div>
   </article>
+
+  <dialog class="lightbox" data-lenis-prevent aria-label={s.project.gallery}>
+    <button type="button" class="lb-btn lb-close" data-lb-close aria-label={s.project.close}>✕</button>
+    <button type="button" class="lb-btn lb-prev" data-lb-prev aria-label={s.project.prev}>←</button>
+    <div class="lb-stage" data-lb-stage></div>
+    <button type="button" class="lb-btn lb-next" data-lb-next aria-label={s.project.nextImage}>→</button>
+    <p class="lb-count" data-lb-count></p>
+  </dialog>
 </Layout>
+
+<script>
+  function initLightbox() {
+    const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+    if (!dialog) return;
+    const items = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-lb]'));
+    const stage = dialog.querySelector<HTMLElement>('[data-lb-stage]')!;
+    const count = dialog.querySelector<HTMLElement>('[data-lb-count]')!;
+    let index = 0;
+
+    const show = (i: number) => {
+      index = (i + items.length) % items.length;
+      const d = items[index].dataset;
+      stage.innerHTML = '';
+      const el = d.video ? document.createElement('video') : document.createElement('img');
+      if (el instanceof HTMLVideoElement) {
+        el.src = d.video!;
+        el.autoplay = el.loop = el.muted = el.playsInline = true;
+        el.controls = true;
+      } else {
+        el.src = d.src!;
+        el.alt = d.alt ?? '';
+      }
+      el.width = Number(d.w);
+      el.height = Number(d.h);
+      stage.append(el);
+      count.textContent = `${index + 1} / ${items.length}`;
+    };
+
+    const close = () => {
+      dialog.close();
+    };
+
+    items.forEach((btn, i) =>
+      btn.addEventListener('click', () => {
+        show(i);
+        dialog.showModal();
+        document.documentElement.classList.add('lb-open');
+      }),
+    );
+    dialog.addEventListener('close', () => {
+      document.documentElement.classList.remove('lb-open');
+      stage.innerHTML = '';
+      items[index]?.focus({ preventScroll: true });
+    });
+    dialog.querySelector('[data-lb-close]')!.addEventListener('click', close);
+    dialog.querySelector('[data-lb-prev]')!.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('[data-lb-next]')!.addEventListener('click', () => show(index + 1));
+    // Clicking the dark area around the image closes it.
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog || e.target === stage) close();
+    });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') show(index + 1);
+      if (e.key === 'ArrowLeft') show(index - 1);
+    });
+    // Swipe on touch screens.
+    let x0: number | null = null;
+    stage.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+  }
+  document.addEventListener('astro:page-load', initLightbox);
+</script>
