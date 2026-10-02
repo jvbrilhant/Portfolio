@@ -115,6 +115,8 @@ const altHref = new URL(altPath, Astro.site).href;
       const cursor = document.querySelector<HTMLElement>('.cursor');
       if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         document.documentElement.classList.add('has-cursor');
+        // Page navigation replaces <html>'s attributes; put the cursor class back every time.
+        document.addEventListener('astro:after-swap', () => document.documentElement.classList.add('has-cursor'));
         const clickable = 'a, button, [role="button"], label, summary, select, [data-copy]';
         window.addEventListener(
           'pointermove',
