@@ -11,14 +11,14 @@ export const ui = {
     hero: {
       eyebrow: 'Product Designer · UX/UI Designer',
       lead: 'I design digital products for places where things get complicated fast: legacy systems, tight deadlines, high stakes.',
-      based: 'Based in Dublin. Working with teams across Europe and Brazil.',
-      available: 'Available for new work',
+      based: 'Based in Dublin. Working with companies all over the world.',
+      avatarAlt: 'Portrait of João Victor Brilhante',
       cta: 'Browse the records',
     },
     work: {
       label: 'Discography',
       title: 'Selected work',
-      intro: 'Twelve projects, 2022 to now. Pick a record.',
+      intro: 'More than 100 projects shipped. Twelve of them are on this shelf. Pick a record.',
       open: 'Open project',
     },
     shipped: {
@@ -26,7 +26,7 @@ export const ui = {
       title: 'What I’ve shipped',
       intro: 'Numbers from real launches, measured after delivery, not promised before it.',
       stats: [
-        { value: '9', unit: 'years', text: 'Making complicated things feel simple, first in advertising, then fully in product design.' },
+        { value: '9', unit: 'years', text: 'Making complex ideas feel simple, first in advertising, then fully in product design.' },
         { value: '−60%', unit: '', text: 'Wireframe production time at GIM Digital after I built their design system. Seven days down to three.' },
         { value: '+47%', unit: '', text: 'Monthly active users for Abrace since relaunch, migrated with zero downtime.' },
         { value: '2', unit: 'weeks', text: 'From contract to live site for the Bioeconomy Challenge, launched at COP30.' },
@@ -38,9 +38,9 @@ export const ui = {
       label: 'About',
       title: 'Hi, I’m João Victor.',
       body: [
-        'I’ve spent the last nine years figuring out how to make complicated things feel simple, first in advertising, then fully in product design.',
+        'I’ve spent the last nine years figuring out how to make complex ideas feel simple, first in advertising, then fully in product design.',
         'I like the projects people usually find intimidating. A banking dashboard sitting on 100+ legacy products. A nonprofit site losing donors when nobody knows why. The kind of work where you have to dig before you can design anything.',
-        'I moved to Dublin to be closer to that kind of challenge, in teams that treat design as more than a final coat of paint. When I’m not in Figma, I’m probably building some automation that saves me time later, or arguing that a feature doesn’t need to be as complicated as everyone thinks.',
+        'I moved to Dublin to be closer to that kind of challenge, in teams that treat design as more than a final coat of paint. When I’m not in Figma, I’m probably building some automation that saves me time later, or understanding that a feature doesn’t need to be as complicated as everyone thinks.',
       ],
       photoAlt: 'João Victor Brilhante looking up under a tree in Dublin',
       experience: 'Experience',
@@ -61,7 +61,6 @@ export const ui = {
     contact: {
       label: 'Contact',
       title: 'Let’s work together.',
-      text: 'I’m available for new work. If you need a product designer who is comfortable with complex problems, send me a message.',
       email: 'Email',
       phone: 'Phone',
       copy: 'Copy',
@@ -94,14 +93,14 @@ export const ui = {
     hero: {
       eyebrow: 'Product Designer · UX/UI Designer',
       lead: 'Desenho produtos digitais para contextos que ficam complicados rápido: sistemas legados, prazos apertados, decisões de alto impacto.',
-      based: 'Moro em Dublin e trabalho com times da Europa e do Brasil.',
-      available: 'Disponível para novos projetos',
+      based: 'Moro em Dublin e trabalho com empresas do mundo todo.',
+      avatarAlt: 'Retrato de João Victor Brilhante',
       cta: 'Ver os discos',
     },
     work: {
       label: 'Discografia',
       title: 'Projetos selecionados',
-      intro: 'Doze projetos, de 2022 até hoje. Escolha um disco.',
+      intro: 'Mais de 100 projetos entregues. Doze deles estão nesta prateleira. Escolha um disco.',
       open: 'Abrir projeto',
     },
     shipped: {
@@ -109,7 +108,7 @@ export const ui = {
       title: 'O que já entreguei',
       intro: 'Números de lançamentos reais, medidos depois da entrega e não prometidos antes dela.',
       stats: [
-        { value: '9', unit: 'anos', text: 'Tornando simples o que é complicado, primeiro na publicidade e depois só em product design.' },
+        { value: '9', unit: 'anos', text: 'Tornando simples ideias complexas, primeiro na publicidade e depois só em product design.' },
         { value: '−60%', unit: '', text: 'No tempo de produção de wireframes da GIM Digital depois que criei o design system. De sete dias para três.' },
         { value: '+47%', unit: '', text: 'Em usuários ativos mensais da Abrace desde o relançamento, com migração sem nenhum minuto fora do ar.' },
         { value: '2', unit: 'semanas', text: 'Do contrato ao site no ar para o Bioeconomy Challenge, lançado na COP30.' },
@@ -121,9 +120,9 @@ export const ui = {
       label: 'Sobre',
       title: 'Oi, eu sou o João Victor.',
       body: [
-        'Passei os últimos nove anos descobrindo como fazer coisas complicadas parecerem simples, primeiro na publicidade e depois só em product design.',
+        'Passei os últimos nove anos descobrindo como fazer ideias complexas parecerem simples, primeiro na publicidade e depois só em product design.',
         'Gosto dos projetos que costumam intimidar as pessoas. Um dashboard bancário apoiado em mais de 100 produtos legados. O site de uma ONG perdendo doadores sem que ninguém saiba por quê. O tipo de trabalho em que é preciso cavar antes de desenhar qualquer coisa.',
-        'Me mudei para Dublin para ficar mais perto desse tipo de desafio, em times que tratam design como mais do que uma camada de tinta no final. Quando não estou no Figma, provavelmente estou montando alguma automação que vai me poupar tempo depois, ou defendendo que uma funcionalidade não precisa ser tão complicada quanto todo mundo acha.',
+        'Me mudei para Dublin para ficar mais perto desse tipo de desafio, em times que tratam design como mais do que uma camada de tinta no final. Quando não estou no Figma, provavelmente estou montando alguma automação que vai me poupar tempo depois, ou entendendo que uma funcionalidade não precisa ser tão complicada quanto todo mundo acha.',
       ],
       photoAlt: 'João Victor Brilhante olhando para cima debaixo de uma árvore em Dublin',
       experience: 'Experiência',
@@ -144,7 +143,6 @@ export const ui = {
     contact: {
       label: 'Contato',
       title: 'Vamos trabalhar juntos.',
-      text: 'Estou disponível para novos projetos. Se você precisa de um product designer que se sente à vontade com problemas complexos, me mande uma mensagem.',
       email: 'E-mail',
       phone: 'Telefone',
       copy: 'Copiar',

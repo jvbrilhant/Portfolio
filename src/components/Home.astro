@@ -17,9 +17,16 @@ const name = 'Brilhante';
 <Layout lang={lang} altPath={homePath(other)}>
   <section class="hero" id="top">
     <div class="wrap hero-grid">
-      <div class="hero-eyebrow reveal">
-        <span>{s.hero.eyebrow}</span>
-        <span class="available">{s.hero.available}</span>
+      <div class="hero-id reveal">
+        <img class="avatar" src={url('me/avatar.webp')} width="400" height="400" alt={s.hero.avatarAlt} />
+        <p class="hero-role">
+          {s.hero.eyebrow.split(' · ').map((r, i) => (
+            <>
+              {i > 0 && <span class="role-sep" aria-hidden="true"> · </span>}
+              <span class="role">{r}</span>
+            </>
+          ))}
+        </p>
       </div>
       <h1 class="hero-name" aria-label={name}>
         <span class="clip" aria-hidden="true">
@@ -92,14 +99,14 @@ const name = 'Brilhante';
 
   <section class="section" id="about">
     <div class="wrap">
-      <span class="label reveal">{s.about.label}</span>
       <div class="about-grid">
         <figure class="about-photo reveal">
           <img src={url('me/tree.webp')} width="1200" height="1600" alt={s.about.photoAlt} decoding="async" />
           <figcaption>Dublin</figcaption>
         </figure>
         <div>
-          <h2 class="section-title reveal" style="margin-top:0">{s.about.title}</h2>
+          <span class="label reveal">{s.about.label}</span>
+          <h2 class="section-title reveal">{s.about.title}</h2>
           <div class="about-text reveal" style="margin-top:32px">
             {s.about.body.map((p) => <p>{p}</p>)}
           </div>
@@ -134,6 +141,7 @@ const name = 'Brilhante';
       <ul class="services">
         {s.services.items.map((it) => (
           <li class="service reveal">
+            <span class="service-no">{String(s.services.items.indexOf(it) + 1).padStart(2, '0')}</span>
             <h3>{it.title}</h3>
             <p>{it.text}</p>
           </li>
@@ -148,7 +156,6 @@ const name = 'Brilhante';
       <div class="contact-grid">
         <div>
           <h2 class="contact-title reveal">{s.contact.title}</h2>
-          <p class="contact-text reveal">{s.contact.text}</p>
           <div class="channels reveal">
             <div class="channel">
               <span class="k">{s.contact.email}</span>
