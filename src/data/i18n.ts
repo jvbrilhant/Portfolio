@@ -11,7 +11,7 @@ export const ui = {
     skip: 'Skip to content',
     hero: {
       eyebrow: 'Product Designer · UX/UI Designer',
-      lead: 'I design digital products for places where things get complicated fast: legacy systems, tight deadlines, high stakes.',
+      lead: 'I design digital products for complex contexts, like legacy banking systems and public platforms with tight deadlines.',
       based: 'Based in Dublin. Working with companies all over the world.',
       avatarAlt: 'Portrait of João Victor Brilhante',
       cta: 'Browse the records',
@@ -30,7 +30,7 @@ export const ui = {
     shipped: {
       label: 'Liner notes',
       title: 'Results',
-      intro: 'Numbers from real launches, measured after delivery, not promised before it.',
+      intro: 'Numbers measured after launch, from the projects on this site.',
       stats: [
         { icon: 'years', value: '9', unit: 'years', text: 'Making complex ideas feel simple, first in advertising, then fully in product design.' },
         { icon: 'time', value: '−60%', unit: '', text: 'Wireframe production time at GIM Digital after I built their design system. Seven days down to three.' },
@@ -58,9 +58,9 @@ export const ui = {
       items: [
         { title: 'Product design', text: 'From the messy first conversation to the screen that ships. I like being in the room early.' },
         { title: 'Design systems', text: 'I’ve built more than one from scratch, out of frustration with starting every project from zero. Both are still in use.' },
-        { title: 'Research and accessibility', text: 'Usability testing, stakeholder workshops, WCAG 2.1 built in from the start, not added at the end.' },
+        { title: 'Research and accessibility', text: 'Usability testing, stakeholder workshops, and WCAG 2.1 accessibility from the first wireframe.' },
         { title: 'Data over guessing', text: 'Google Analytics, Hotjar, Mixpanel. I don’t redesign something until I know what’s actually broken.' },
-        { title: 'AI as a tool, not a shortcut', text: 'I build automation agents that save real hours every month. AI helps me move faster, not skip the thinking.' },
+        { title: 'AI in the workflow', text: 'I build automation agents that save hours every month, so more time goes into research and design decisions.' },
         { title: 'Technical enough to ship alone', text: 'WordPress, hosting, DNS, SSL. I don’t need to wait for a developer to get something live.' },
       ],
     },
@@ -105,7 +105,7 @@ export const ui = {
     skip: 'Pular para o conteúdo',
     hero: {
       eyebrow: 'Product Designer · UX/UI Designer',
-      lead: 'Desenho produtos digitais para contextos que ficam complicados rápido: sistemas legados, prazos apertados, decisões de alto impacto.',
+      lead: 'Desenho produtos digitais para contextos complexos, como sistemas bancários legados e plataformas públicas com prazos curtos.',
       based: 'Moro em Dublin e trabalho com empresas do mundo todo.',
       avatarAlt: 'Retrato de João Victor Brilhante',
       cta: 'Ver os discos',
@@ -124,7 +124,7 @@ export const ui = {
     shipped: {
       label: 'Encarte',
       title: 'Resultados',
-      intro: 'Números de lançamentos reais, medidos depois da entrega e não prometidos antes dela.',
+      intro: 'Números medidos depois do lançamento, dos projetos deste site.',
       stats: [
         { icon: 'years', value: '9', unit: 'anos', text: 'Tornando simples ideias complexas, primeiro na publicidade e depois só em product design.' },
         { icon: 'time', value: '−60%', unit: '', text: 'No tempo de produção de wireframes da GIM Digital depois que criei o design system. De sete dias para três.' },
@@ -152,9 +152,9 @@ export const ui = {
       items: [
         { title: 'Product design', text: 'Da primeira conversa confusa até a tela que vai para produção. Gosto de estar na sala desde o começo.' },
         { title: 'Design systems', text: 'Já construí mais de um do zero, cansado de começar cada projeto do nada. Os dois continuam em uso.' },
-        { title: 'Pesquisa e acessibilidade', text: 'Testes de usabilidade, workshops com stakeholders, WCAG 2.1 desde o início e não como remendo no final.' },
+        { title: 'Pesquisa e acessibilidade', text: 'Testes de usabilidade, workshops com stakeholders e acessibilidade WCAG 2.1 desde o primeiro wireframe.' },
         { title: 'Dados em vez de achismo', text: 'Google Analytics, Hotjar, Mixpanel. Não redesenho nada antes de saber o que realmente está quebrado.' },
-        { title: 'IA como ferramenta, não como atalho', text: 'Crio agentes de automação que economizam horas de verdade todo mês. Uso IA para ir mais rápido, não para pular a parte de pensar.' },
+        { title: 'IA no fluxo de trabalho', text: 'Crio agentes de automação que economizam horas todo mês, e esse tempo vai para pesquisa e decisões de design.' },
         { title: 'Técnico o bastante para publicar sozinho', text: 'WordPress, hospedagem, DNS, SSL. Não preciso esperar um desenvolvedor para colocar algo no ar.' },
       ],
     },
