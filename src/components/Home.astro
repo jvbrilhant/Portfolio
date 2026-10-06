@@ -4,6 +4,7 @@ import Album from './Album.astro';
 import Flag from './Flag.astro';
 import Eq from './Eq.astro';
 import Intro from './Intro.astro';
+import StatIcon from './StatIcon.astro';
 import { decor } from '../data/decor';
 import { projects, type Lang } from '../data/projects';
 import { t, url, homePath, projectPath, experience, contact } from '../data/i18n';
@@ -116,7 +117,8 @@ const name = 'Brilhante';
       </div>
       <div class="stats">
         {s.shipped.stats.map((st, i) => (
-          <div class="stat reveal" style={`--d:${(i % 3) * 0.08}s`}>
+          <div class="stat reveal" style={`--d:${(i % 3) * 0.08}s;--i:${i}`}>
+            <span class="stat-icon"><StatIcon name={st.icon} /></span>
             <span class="n">{String(i + 1).padStart(2, '0')}</span>
             <div class="v">
               {st.value}
@@ -485,4 +487,53 @@ const name = 'Brilhante';
     }
   }
   document.addEventListener('astro:page-load', initCrate);
+
+  // Results on phones: stacked cards. As the next card slides over, the one beneath
+  // shrinks slightly and dims, like records stacking up.
+  function initStack() {
+    const section = document.querySelector<HTMLElement>('#shipped');
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.stat'));
+    if (!section || !cards.length) return;
+    const mq = window.matchMedia('(max-width: 759px)');
+    const ctrl = new AbortController();
+    document.addEventListener('astro:before-swap', () => ctrl.abort(), { once: true });
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      if (!mq.matches) {
+        cards.forEach((c) => (c.style.removeProperty('--s'), c.style.removeProperty('--cover')));
+        return;
+      }
+      // Read everything first, then write (no layout thrashing). offsetHeight ignores the scale.
+      const tops = cards.map((c) => c.getBoundingClientRect().top);
+      const heights = cards.map((c) => c.offsetHeight);
+      cards.forEach((c, i) => {
+        const next = tops[i + 1];
+        const k = next === undefined ? 0 : Math.min(1, Math.max(0, (tops[i] + heights[i] - next) / heights[i]));
+        c.style.setProperty('--s', (1 - k * 0.06).toFixed(4));
+        c.style.setProperty('--cover', (k * 0.5).toFixed(3));
+      });
+    };
+    const tick = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    // Only listen while the section is on (or near) the screen.
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          window.addEventListener('scroll', tick, { passive: true });
+          tick();
+        } else window.removeEventListener('scroll', tick);
+      },
+      { rootMargin: '200px 0px' },
+    );
+    io.observe(section);
+    mq.addEventListener('change', tick, { signal: ctrl.signal });
+    ctrl.signal.addEventListener('abort', () => {
+      io.disconnect();
+      window.removeEventListener('scroll', tick);
+    });
+  }
+  document.addEventListener('astro:page-load', initStack);
 </script>

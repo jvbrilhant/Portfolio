@@ -580,7 +580,7 @@ h3 {
   background:
     radial-gradient(38% 34% at 50% 50%, currentColor, transparent 75%),
     radial-gradient(70% 40% at 50% 78%, currentColor, transparent 70%);
-  opacity: 0.3;
+  opacity: 0.24;
   transition: color 0.8s var(--ease);
   pointer-events: none;
 }
@@ -683,7 +683,7 @@ h3 {
   pointer-events: none;
 }
 .crate-item.is-active::before {
-  opacity: 1;
+  opacity: 0.8;
 }
 .crate-item.is-active .record-spin,
 .crate-item.is-active .record-label {
@@ -901,6 +901,81 @@ h3 {
   .stats {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 48px;
+  }
+}
+.stat-icon {
+  display: none;
+}
+
+/* Phones: each result is a card; cards stick and stack as you scroll. */
+@media (max-width: 759px) {
+  .stats {
+    display: block;
+    margin-top: 32px;
+    border-top: 0;
+  }
+  .stat {
+    position: sticky;
+    top: calc(92px + var(--i, 0) * 12px);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'icon n'
+      'v v'
+      'p p';
+    align-items: start;
+    gap: 0;
+    min-height: 232px;
+    margin-bottom: 18px;
+    padding: 20px 22px 26px;
+    border: 1px solid rgba(241, 237, 247, 0.1);
+    border-radius: 22px;
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(195, 164, 255, 0.1), transparent 60%),
+      linear-gradient(165deg, #1b1726, #110f18);
+    box-shadow: 0 -14px 30px -12px rgba(0, 0, 0, 0.7);
+    transform-origin: 50% 0;
+    scale: var(--s, 1);
+  }
+  .stat::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: #07060a;
+    opacity: var(--cover, 0);
+    pointer-events: none;
+  }
+  .stat:last-child {
+    margin-bottom: 0;
+  }
+  .stat-icon {
+    grid-area: icon;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: rgba(195, 164, 255, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(195, 164, 255, 0.2);
+    color: var(--accent);
+  }
+  .stat .n {
+    grid-area: n;
+    grid-row: auto;
+    justify-self: end;
+    padding-top: 4px;
+  }
+  .stat .v {
+    grid-area: v;
+    margin-top: 26px;
+    font-size: 58px;
+  }
+  .stat p {
+    grid-area: p;
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
 @media (min-width: 1100px) {
