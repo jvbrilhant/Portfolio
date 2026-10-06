@@ -46,7 +46,23 @@ const rows = <T,>(list: T[]): T[][] => {
   {decor.progress && (
     <div class="player" role="progressbar" aria-label={s.project.reading} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-player>
       <div class="player-bar"><span data-player-fill></span></div>
-      <span class="player-time"><span class="player-icon" aria-hidden="true"></span><span data-player-time>0:00 / 0:00</span></span>
+      <div class="player-dock">
+        <button type="button" class="player-time" data-player-toggle aria-expanded="false" aria-controls="tracklist">
+          <span class="player-icon" aria-hidden="true"></span><span data-player-time>0:00 / 0:00</span>
+          <span class="player-caret" aria-hidden="true">▾</span>
+        </button>
+        <ol class="player-list" id="tracklist">
+          {sides.map((sd) => (
+            <li>
+              <a href={`#track-${sd.key}`} data-track-link={sd.key}>
+                <span class="pl-no">{sd.no}</span>
+                <span class="pl-title">{sd.title}</span>
+                <span class="pl-len" data-len={sd.key}>0:00</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   )}
   <article data-article>
@@ -84,7 +100,7 @@ const rows = <T,>(list: T[]): T[][] => {
 
     <div class="wrap">
       {sides.map((sd) => (
-        <section class="side-wrap">
+        <section class="side-wrap" id={`track-${sd.key}`} data-track={sd.key}>
           <div class="side">
             <div class="side-head reveal">
               <span class="side-no">{s.project.side} {sd.no}</span>
@@ -230,9 +246,49 @@ const rows = <T,>(list: T[]): T[][] => {
       player.setAttribute('aria-valuenow', String(Math.round(p * 100)));
       player.classList.toggle('is-playing', p > 0.002 && p < 0.998);
     };
+    // Tracklist: each section is a track with its own length; the current one is highlighted.
+    const tracks = Array.from(document.querySelectorAll<HTMLElement>('[data-track]'));
+    const links = Array.from(player.querySelectorAll<HTMLAnchorElement>('[data-track-link]'));
+    tracks.forEach((t) => {
+      const w = (t.innerText.match(/\S+/g) ?? []).length;
+      const len = player.querySelector(`[data-len="${t.dataset.track}"]`);
+      if (len) len.textContent = fmt(Math.max(10, Math.round((w / 200) * 60)));
+    });
+    const markCurrent = () => {
+      let cur = -1;
+      tracks.forEach((t, i) => {
+        if (t.getBoundingClientRect().top < window.innerHeight * 0.45) cur = i;
+      });
+      links.forEach((l, i) => l.classList.toggle('is-current', i === cur));
+    };
+    const toggle = player.querySelector<HTMLButtonElement>('[data-player-toggle]')!;
+    toggle.addEventListener('click', () => {
+      const open = player.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    links.forEach((l) =>
+      l.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById(l.hash.slice(1));
+        const lenis = (window as unknown as { __lenis?: { scrollTo(t: HTMLElement, o?: object): void } }).__lenis;
+        if (target) lenis ? lenis.scrollTo(target, { offset: -100 }) : target.scrollIntoView({ behavior: 'smooth' });
+        player.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }),
+    );
+
     update();
+    markCurrent();
     window.addEventListener('scroll', update, { passive: true });
-    document.addEventListener('astro:before-swap', () => window.removeEventListener('scroll', update), { once: true });
+    window.addEventListener('scroll', markCurrent, { passive: true });
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        window.removeEventListener('scroll', update);
+        window.removeEventListener('scroll', markCurrent);
+      },
+      { once: true },
+    );
   }
   document.addEventListener('astro:page-load', initPlayer);
 </script>

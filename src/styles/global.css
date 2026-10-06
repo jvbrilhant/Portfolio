@@ -2450,3 +2450,102 @@ html.intro-on .hero .reveal {
   color: var(--ink);
   border-color: rgba(241, 237, 247, 0.3);
 }
+
+/* Player tracklist (project pages): the reading chip opens a tracklist of the case sections */
+.player-dock {
+  position: absolute;
+  right: var(--gutter);
+  top: 20px;
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  pointer-events: auto;
+}
+.player-dock .player-time {
+  position: static;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.player-caret {
+  font-size: 10px;
+  color: var(--muted);
+  transition: transform 0.3s var(--ease);
+}
+.player.is-open .player-caret,
+.player-dock:hover .player-caret {
+  transform: rotate(180deg);
+}
+.player-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  min-width: 250px;
+  border-radius: 14px;
+  background: rgba(16, 14, 22, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 20px 40px -12px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.3s var(--ease),
+    visibility 0.25s;
+}
+.player.is-open .player-list,
+.player-dock:hover .player-list,
+.player-dock:focus-within .player-list {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+.player-list a {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.player-list a:hover {
+  background: rgba(241, 237, 247, 0.06);
+  color: var(--ink);
+}
+.pl-no {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.pl-len {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--dim);
+}
+.player-list a.is-current {
+  color: var(--ink);
+  background: rgba(195, 164, 255, 0.1);
+}
+.player-list a.is-current .pl-title::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 9px;
+  margin-left: 8px;
+  background:
+    linear-gradient(var(--accent), var(--accent)) 0 100% / 2px 60% no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 4px 100% / 2px 100% no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 8px 100% / 2px 40% no-repeat;
+}

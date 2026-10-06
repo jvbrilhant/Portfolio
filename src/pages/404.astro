@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { url } from '../data/i18n';
+---
+
+<Layout lang="en" title="Track skipped" altPath={url('pt/')}>
+  <section class="nf">
+    <div class="wrap nf-grid">
+      <div class="nf-deck" aria-hidden="true">
+        <div class="nf-record">
+          <div class="nf-grooves"></div>
+          <div class="nf-scratch"></div>
+          <div class="nf-label"><span>404</span><small>SIDE ?</small></div>
+        </div>
+        <svg class="nf-arm" viewBox="0 0 200 260">
+          <circle cx="150" cy="40" r="26" fill="#1b1823" stroke="rgba(255,255,255,.14)" />
+          <g class="nf-arm-swing">
+            <path d="M150 40 L 150 170 Q 150 196 132 214" fill="none" stroke="#d9d3e3" stroke-width="5" stroke-linecap="round" />
+            <g transform="rotate(42 128 220)">
+              <rect x="116" y="206" width="24" height="34" rx="4" fill="#e9e4f2" />
+              <rect x="122" y="236" width="12" height="8" rx="2" fill="var(--accent)" />
+            </g>
+            <circle cx="150" cy="40" r="7" fill="#d9d3e3" />
+          </g>
+        </svg>
+      </div>
+      <div>
+        <span class="label">Error 404</span>
+        <h1 class="nf-title">This track skipped.</h1>
+        <p class="nf-text">The page you’re looking for isn’t on this record. It may have moved, or the link is scratched.</p>
+        <p class="nf-text nf-pt" lang="pt-BR">Essa faixa pulou. A página que você procura não está neste disco.</p>
+        <div class="nf-actions">
+          <a class="visit" href={`${url('')}#work`}>Back to the records →</a>
+          <a class="nf-alt" href={`${url('pt/')}#work`} lang="pt-BR">Voltar aos discos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .nf {
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    padding: 120px 0 80px;
+  }
+  .nf-grid {
+    display: grid;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .nf-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .nf-deck {
+    position: relative;
+    width: min(420px, 80vw);
+    aspect-ratio: 1.15;
+  }
+  .nf-record {
+    position: absolute;
+    left: 0;
+    top: 4%;
+    width: 86%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+    /* the needle keeps jumping back over the scratch */
+    animation: nf-skip 1.6s linear infinite;
+  }
+  @keyframes nf-skip {
+    0% {
+      transform: rotate(0deg);
+    }
+    78% {
+      transform: rotate(150deg);
+    }
+    80% {
+      transform: rotate(118deg);
+    }
+    100% {
+      transform: rotate(160deg);
+    }
+  }
+  .nf-grooves {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+      conic-gradient(from 20deg, transparent 0 30deg, rgba(255, 255, 255, 0.09) 50deg, transparent 75deg, transparent 200deg, rgba(255, 255, 255, 0.07) 220deg, transparent 245deg),
+      radial-gradient(circle, transparent 0 34%, #0d0c10 34.5% 36%, transparent 36.5% 96%, #24212b 96.5%),
+      repeating-radial-gradient(circle, #0f0e13 0 1.5px, #1c1922 2px 3.5px);
+  }
+  .nf-scratch {
+    position: absolute;
+    left: 58%;
+    top: 12%;
+    width: 30%;
+    height: 30%;
+    border-top: 1.5px solid rgba(241, 237, 247, 0.55);
+    border-radius: 50%;
+    transform: rotate(28deg);
+    filter: blur(0.3px);
+  }
+  .nf-label {
+    position: absolute;
+    inset: 33%;
+    border-radius: 50%;
+    background: var(--accent);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    color: #1a0f2b;
+    font-weight: 800;
+    font-stretch: 120%;
+  }
+  .nf-label span {
+    font-size: clamp(22px, 4vw, 34px);
+    line-height: 1;
+  }
+  .nf-label small {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+  .nf-arm {
+    position: absolute;
+    right: -4%;
+    top: -2%;
+    width: 46%;
+    max-width: none;
+    overflow: visible;
+    filter: drop-shadow(6px 10px 6px rgba(0, 0, 0, 0.5));
+  }
+  .nf-arm-swing {
+    transform-box: view-box;
+    transform-origin: 150px 40px;
+    transform: rotate(30deg);
+    animation: nf-bump 1.6s linear infinite;
+  }
+  @keyframes nf-bump {
+    0%,
+    77% {
+      transform: rotate(30deg);
+    }
+    79% {
+      transform: rotate(26deg) translateY(-6px);
+    }
+    82% {
+      transform: rotate(31deg);
+    }
+    100% {
+      transform: rotate(30deg);
+    }
+  }
+  .nf-title {
+    margin-top: 16px;
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 800;
+    font-stretch: 115%;
+    letter-spacing: -0.04em;
+  }
+  .nf-text {
+    margin-top: 20px;
+    max-width: 460px;
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .nf-pt {
+    margin-top: 10px;
+    font-size: 15px;
+    color: var(--dim);
+  }
+  .nf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .nf-actions .visit {
+    margin-top: 0;
+  }
+  .nf-alt {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .nf-alt:hover {
+    color: var(--ink);
+  }
+</style>
