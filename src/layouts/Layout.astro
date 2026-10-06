@@ -20,7 +20,7 @@ interface Props {
 
 const { lang, title, description, altPath, image, footer = true } = Astro.props;
 const s = t(lang);
-const pageTitle = title ? `${title} — Brilhante` : s.metaTitle;
+const pageTitle = title ? `${title} | Brilhante` : s.metaTitle;
 const desc = description ?? s.metaDescription;
 const home = homePath(lang);
 const other: Lang = lang === 'en' ? 'pt' : 'en';
@@ -68,7 +68,7 @@ const altHref = new URL(altPath, Astro.site).href;
     </div>
 
     <header class="site-header">
-      <a class="logo" href={home} aria-label="Brilhante — home">
+      <a class="logo" href={home} aria-label="Brilhante: home">
         <span class="logo-disc" aria-hidden="true"></span>
         Brilhante
       </a>

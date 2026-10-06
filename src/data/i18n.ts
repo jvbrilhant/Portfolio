@@ -2,7 +2,7 @@ import type { Lang } from './projects';
 
 export const ui = {
   en: {
-    metaTitle: 'Brilhante — Product Designer & UX/UI Designer',
+    metaTitle: 'Brilhante: Product Designer & UX/UI Designer',
     metaDescription:
       'João Victor Brilhante is a product designer and UX/UI designer based in Dublin, designing digital products for legacy systems, tight constraints and high stakes.',
     nav: { work: 'Work', shipped: 'Results', about: 'About', services: 'Services', contact: 'Contact' },
@@ -96,7 +96,7 @@ export const ui = {
     },
   },
   pt: {
-    metaTitle: 'Brilhante — Product Designer e UX/UI Designer',
+    metaTitle: 'Brilhante: Product Designer e UX/UI Designer',
     metaDescription:
       'João Victor Brilhante é product designer e UX/UI designer em Dublin, criando produtos digitais para sistemas legados, prazos apertados e decisões de alto impacto.',
     nav: { work: 'Projetos', shipped: 'Resultados', about: 'Sobre', services: 'Serviços', contact: 'Contato' },

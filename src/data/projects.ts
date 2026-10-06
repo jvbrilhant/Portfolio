@@ -25,7 +25,7 @@ export interface Project {
   /**
    * Typographic cover to render. See src/components/covers/Cover.astro.
    * To use an image instead, drop a square file in public/covers/ and set
-   * `coverImage: 'covers/<file>.jpg'` — it takes priority over the typographic one.
+   * `coverImage: 'covers/<file>.jpg'`: it takes priority over the typographic one.
    */
   cover: string;
   coverImage?: string;
@@ -291,7 +291,7 @@ export const projects: Project[] = [
     label: '#e9661b',
     link: 'https://stagestagios.com.br/',
     en: {
-      title: 'Stag — Website redesign',
+      title: 'Stag: Website redesign',
       subtitle: 'Giving a 40-year-old brand the modern voice it deserved',
       client: 'Stag, via GIM Digital',
       role: 'Lead Developer and Product Designer, end to end: from briefing to launch',
@@ -311,7 +311,7 @@ export const projects: Project[] = [
       ],
     },
     pt: {
-      title: 'Stag — Redesign do site',
+      title: 'Stag: Redesign do site',
       subtitle: 'Uma voz atual para uma marca com 40 anos de história',
       client: 'Stag, via GIM Digital',
       role: 'Lead Developer e Product Designer, de ponta a ponta: do briefing ao lançamento',
@@ -388,7 +388,7 @@ export const projects: Project[] = [
     label: '#ffc323',
     link: 'https://vilamundo.com/universo-paralello/',
     en: {
-      title: 'Universo Paralello — Vila Mundo',
+      title: 'Universo Paralello: Vila Mundo',
       subtitle: 'Living the festival from the inside',
       client: 'Vila Mundo Hospedagem & Infraestrutura, via GIM Digital',
       role: 'Product Designer, Product Owner',
@@ -408,7 +408,7 @@ export const projects: Project[] = [
       ],
     },
     pt: {
-      title: 'Universo Paralello — Vila Mundo',
+      title: 'Universo Paralello: Vila Mundo',
       subtitle: 'Viver o festival por dentro',
       client: 'Vila Mundo Hospedagem & Infraestrutura, via GIM Digital',
       role: 'Product Designer, Product Owner',
@@ -484,7 +484,7 @@ export const projects: Project[] = [
     cover: 'suindara-app',
     label: '#daa421',
     en: {
-      title: 'Suindara — App',
+      title: 'Suindara: App',
       subtitle: 'Turning everyday people into part of the Cerrado’s real-time monitoring network',
       client: 'Instituto Cerrados',
       role: 'Product Designer',
@@ -504,7 +504,7 @@ export const projects: Project[] = [
       ],
     },
     pt: {
-      title: 'Suindara — App',
+      title: 'Suindara: App',
       subtitle: 'Pessoas comuns como parte da rede de monitoramento do Cerrado em tempo real',
       client: 'Instituto Cerrados',
       role: 'Product Designer',
@@ -532,7 +532,7 @@ export const projects: Project[] = [
     cover: 'suindara-dashboard',
     label: '#daa421',
     en: {
-      title: 'Suindara — Dashboard',
+      title: 'Suindara: Dashboard',
       subtitle: 'Giving program leads a live, readable picture of Cerrado conservation',
       client: 'Instituto Cerrados',
       role: 'Product Designer',
@@ -552,7 +552,7 @@ export const projects: Project[] = [
       ],
     },
     pt: {
-      title: 'Suindara — Dashboard',
+      title: 'Suindara: Dashboard',
       subtitle: 'Uma visão viva e legível da conservação do Cerrado para quem coordena o programa',
       client: 'Instituto Cerrados',
       role: 'Product Designer',
