@@ -41,7 +41,7 @@ const rows = <T,>(list: T[]): T[][] => {
   title={c.title}
   description={c.subtitle}
   altPath={projectPath(other, project.slug)}
-  image={imgs.hero.src}
+  image={`og/${project.slug}.jpg`}
 >
   {decor.progress && (
     <div class="player" role="progressbar" aria-label={s.project.reading} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-player>

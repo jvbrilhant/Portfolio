@@ -34,6 +34,17 @@ Cada projeto tem uma capa tipográfica desenhada em SVG. Para usar uma imagem no
 
 Para só mudar a cor do selo do vinil, altere `label` no mesmo arquivo.
 
+## Imagens de compartilhamento (LinkedIn, WhatsApp…)
+
+Cada projeto tem uma imagem 1200×630 com a capa do disco em `public/og/<projeto>.jpg`.
+Depois de mudar uma capa, gere de novo com:
+
+```bash
+CHROMIUM_PATH=/caminho/do/chrome npm run og
+```
+
+(sem `CHROMIUM_PATH`, instale um navegador com `npx playwright install chromium`).
+
 ## Publicação
 
 Cada push na branch `main` publica o site no GitHub Pages pelo workflow `.github/workflows/deploy.yml`.

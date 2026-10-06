@@ -68,7 +68,7 @@ const name = 'Brilhante';
       <div class="crate-stage">
         <ul class="crate-track">
           {projects.map((p, i) => (
-            <li class="crate-item" data-i={i} data-color={p.label}>
+            <li class="crate-item" data-i={i} data-color={p.label} style={`--c:${p.label}`}>
               <a href={projectPath(lang, p.slug)} aria-label={`${p.cat} · ${p[lang].title}`} data-crate-link>
                 <Album project={p} eager={i < 4} />
               </a>

@@ -7,6 +7,7 @@ export const ui = {
       'João Victor Brilhante is a product designer and UX/UI designer based in Dublin, designing digital products for legacy systems, tight constraints and high stakes.',
     nav: { work: 'Work', shipped: 'Results', about: 'About', services: 'Services', contact: 'Contact' },
     langLabel: 'Ver em português',
+    langSide: 'Side A · English. Flip to side B for Portuguese',
     skip: 'Skip to content',
     hero: {
       eyebrow: 'Product Designer · UX/UI Designer',
@@ -100,6 +101,7 @@ export const ui = {
       'João Victor Brilhante é product designer e UX/UI designer em Dublin, criando produtos digitais para sistemas legados, prazos apertados e decisões de alto impacto.',
     nav: { work: 'Projetos', shipped: 'Resultados', about: 'Sobre', services: 'Serviços', contact: 'Contato' },
     langLabel: 'View in English',
+    langSide: 'Lado B · Português. Vire para o lado A em inglês',
     skip: 'Pular para o conteúdo',
     hero: {
       eyebrow: 'Product Designer · UX/UI Designer',

@@ -45,6 +45,9 @@ const altHref = new URL(altPath, Astro.site).href;
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <ClientRouter />
   </head>
@@ -76,7 +79,11 @@ const altHref = new URL(altPath, Astro.site).href;
         <a href={`${home}#services`}>{s.nav.services}</a>
         <a href={`${home}#contact`}>{s.nav.contact}</a>
       </nav>
-      <a class="lang" href={altPath} hreflang={other} aria-label={s.langLabel} data-lang-switch>
+      <a class="lang" href={altPath} hreflang={other} aria-label={s.langLabel} title={s.langSide} data-lang-switch>
+        <span class="lang-disc" aria-hidden="true">
+          <b class="lang-face">{lang === 'en' ? 'A' : 'B'}</b>
+          <b class="lang-face lang-back">{lang === 'en' ? 'B' : 'A'}</b>
+        </span>
         <span class:list={{ on: lang === 'en' }}>EN</span>
         <span class="lang-sep" aria-hidden="true"></span>
         <span class:list={{ on: lang === 'pt' }}>PT</span>
@@ -98,6 +105,7 @@ const altHref = new URL(altPath, Astro.site).href;
 
     <script>
       import Lenis from 'lenis';
+      import { navigate } from 'astro:transitions/client';
 
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let lenis: Lenis | null = null;
@@ -179,11 +187,28 @@ const altHref = new URL(altPath, Astro.site).href;
         window.onscroll = onScroll;
 
         // Keep the section anchor when switching language.
+        // Language = side of the record: the mini disc flips to the other side, then the page changes.
         document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) => {
-          a.onclick = () => {
+          a.onclick = (e) => {
             const base = a.href.split('#')[0];
-            if (location.hash) a.href = base + location.hash;
+            const href = location.hash ? base + location.hash : base;
+            if (reduce) {
+              a.href = href;
+              return;
+            }
+            e.preventDefault();
+            a.classList.add('is-flipping');
+            try {
+              sessionStorage.setItem('brl-flip', '1');
+            } catch {}
+            window.setTimeout(() => navigate(href), 450);
           };
+          try {
+            if (sessionStorage.getItem('brl-flip')) {
+              sessionStorage.removeItem('brl-flip');
+              a.classList.add('is-landing');
+            }
+          } catch {}
         });
 
         // Header anchors on the same page scroll smoothly instead of navigating.

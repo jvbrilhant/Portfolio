@@ -577,9 +577,11 @@ h3 {
   inset: 0;
   z-index: -1;
   color: var(--accent);
-  background: radial-gradient(42% 46% at 50% 54%, currentColor, transparent 70%);
-  opacity: 0.16;
-  transition: color 0.7s var(--ease);
+  background:
+    radial-gradient(38% 34% at 50% 50%, currentColor, transparent 75%),
+    radial-gradient(70% 40% at 50% 78%, currentColor, transparent 70%);
+  opacity: 0.3;
+  transition: color 0.8s var(--ease);
   pointer-events: none;
 }
 .crate-head {
@@ -657,6 +659,16 @@ h3 {
 }
 .crate-item.is-active .album .record {
   transform: translateX(34%) rotate(24deg);
+}
+/* Halo in the record's own colour behind the front sleeve. */
+.crate-item .sleeve .cover {
+  transition: box-shadow 0.6s var(--ease);
+}
+.crate-item.is-active .sleeve .cover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 80px -6px color-mix(in srgb, var(--c) 70%, transparent),
+    0 30px 60px -20px rgba(0, 0, 0, 0.7);
 }
 .crate-item.is-active .record-spin,
 .crate-item.is-active .record-label {
@@ -2548,4 +2560,50 @@ html.intro-on .hero .reveal {
     linear-gradient(var(--accent), var(--accent)) 0 100% / 2px 60% no-repeat,
     linear-gradient(var(--accent), var(--accent)) 4px 100% / 2px 100% no-repeat,
     linear-gradient(var(--accent), var(--accent)) 8px 100% / 2px 40% no-repeat;
+}
+
+/* Language toggle as a mini record: English is side A, Portuguese side B */
+.lang-disc {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+  transform-style: preserve-3d;
+  transition: transform 0.45s var(--ease);
+}
+.lang-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: #1a0f2b;
+  background:
+    radial-gradient(circle, var(--accent) 0 5.5px, transparent 6px),
+    repeating-radial-gradient(circle, #15131b 0 1px, #2c2836 1.4px 2.2px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
+  backface-visibility: hidden;
+}
+.lang-back {
+  transform: rotateY(180deg);
+}
+.lang:hover .lang-disc {
+  transform: rotateY(28deg);
+}
+.lang.is-flipping .lang-disc {
+  transform: rotateY(180deg);
+}
+.lang.is-landing .lang-disc {
+  animation: lang-land 0.7s var(--ease);
+}
+@keyframes lang-land {
+  from {
+    transform: rotateY(-180deg) rotate(-90deg);
+  }
+  to {
+    transform: none;
+  }
 }
