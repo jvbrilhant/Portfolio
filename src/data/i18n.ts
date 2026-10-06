@@ -20,6 +20,11 @@ export const ui = {
       title: 'Selected work',
       intro: 'More than 100 projects shipped. Twelve of them are on this shelf. Pick a record.',
       open: 'Open project',
+      play: 'Play this record',
+      hint: 'Scroll, drag or use the arrows to flip through the records',
+      prev: 'Previous record',
+      next: 'Next record',
+      select: 'Select record',
     },
     shipped: {
       label: 'Liner notes',
@@ -108,6 +113,11 @@ export const ui = {
       title: 'Projetos selecionados',
       intro: 'Mais de 100 projetos entregues. Doze deles estão nesta prateleira. Escolha um disco.',
       open: 'Abrir projeto',
+      play: 'Tocar este disco',
+      hint: 'Role, arraste ou use as setas para passar pelos discos',
+      prev: 'Disco anterior',
+      next: 'Próximo disco',
+      select: 'Selecionar disco',
     },
     shipped: {
       label: 'Encarte',

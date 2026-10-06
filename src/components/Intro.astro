@@ -1,0 +1,124 @@
+---
+/**
+ * Opening sequence on the home page: a record is placed on a turntable, starts
+ * spinning, the tonearm swings over and the needle drops. Plays once per browser
+ * session, never with reduced motion, and can be skipped (click, key or scroll).
+ */
+import type { Lang } from '../data/projects';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const copy = {
+  en: { now: 'Now playing', what: 'Brilhante — Portfolio', skip: 'Skip intro' },
+  pt: { now: 'Tocando agora', what: 'Brilhante — Portfólio', skip: 'Pular intro' },
+}[lang];
+---
+
+<script is:inline>
+  (function () {
+    try {
+      var seen = sessionStorage.getItem('brl-intro');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!seen && !reduce) {
+        document.documentElement.classList.add('intro-on');
+        // Safety net: never leave the page locked if something fails to load.
+        setTimeout(function () {
+          document.documentElement.classList.remove('intro-on');
+        }, 7000);
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="intro" data-intro>
+  <div class="intro-stage">
+    <div class="tt" aria-hidden="true">
+      <div class="tt-platter">
+        <div class="tt-mat"></div>
+        <div class="tt-record">
+          <div class="tt-grooves"></div>
+          <div class="tt-spin">
+            <div class="tt-label">
+              <span class="tt-label-top">BRILHANTE</span>
+              <span class="tt-label-bottom">SIDE A · 33⅓</span>
+            </div>
+          </div>
+        </div>
+        <div class="tt-spindle"></div>
+      </div>
+
+      <svg class="tt-arm" viewBox="0 0 200 260">
+        <defs>
+          <linearGradient id="tt-metal" x1="0" x2="1">
+            <stop offset="0" stop-color="#8d879a" />
+            <stop offset=".5" stop-color="#f1edf7" />
+            <stop offset="1" stop-color="#9c96aa" />
+          </linearGradient>
+        </defs>
+        <circle cx="150" cy="40" r="30" fill="#1b1823" stroke="rgba(255,255,255,.14)" />
+        <circle cx="150" cy="40" r="17" fill="#26222f" stroke="rgba(255,255,255,.2)" />
+        <g class="tt-arm-swing">
+          <rect x="140" y="-6" width="20" height="26" rx="5" fill="#2e2a38" stroke="rgba(255,255,255,.22)" />
+          <path d="M150 40 L 150 170 Q 150 196 132 214" fill="none" stroke="url(#tt-metal)" stroke-width="5" stroke-linecap="round" />
+          <g transform="rotate(42 128 220)">
+            <rect x="116" y="206" width="24" height="34" rx="4" fill="#e9e4f2" />
+            <rect x="122" y="236" width="12" height="8" rx="2" fill="var(--accent)" />
+          </g>
+          <circle cx="150" cy="40" r="7" fill="url(#tt-metal)" />
+        </g>
+      </svg>
+
+      <div class="tt-controls">
+        <span class="tt-btn"></span>
+        <span class="tt-speed"><b>33</b> 45</span>
+        <span class="tt-led"></span>
+      </div>
+      <div class="tt-pitch"><span></span></div>
+    </div>
+
+    <p class="intro-caption">
+      <span class="intro-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>{copy.now}</span>
+      <strong>{copy.what}</strong>
+    </p>
+  </div>
+  <button type="button" class="intro-skip" data-intro-skip>{copy.skip} →</button>
+</div>
+
+<script>
+  function runIntro() {
+    const root = document.documentElement;
+    const el = document.querySelector<HTMLElement>('[data-intro]');
+    if (!el || !root.classList.contains('intro-on')) return;
+    const lenis = (window as unknown as { __lenis?: { stop(): void; start(): void } }).__lenis;
+    lenis?.stop();
+
+    let done = false;
+    const timers: number[] = [];
+    const finish = () => {
+      if (done) return;
+      done = true;
+      timers.forEach(clearTimeout);
+      el.classList.add('is-exit');
+      try {
+        sessionStorage.setItem('brl-intro', '1');
+      } catch {}
+      window.setTimeout(() => {
+        root.classList.remove('intro-on');
+        el.remove();
+        lenis?.start();
+        window.scrollTo(0, 0);
+      }, 750);
+      ['wheel', 'touchmove', 'keydown'].forEach((t) => window.removeEventListener(t, finish));
+    };
+
+    // Needle lands at ~2.5s; the room fades in shortly after.
+    timers.push(window.setTimeout(finish, 3500));
+    el.querySelector('[data-intro-skip]')?.addEventListener('click', finish);
+    el.addEventListener('click', finish);
+    ['wheel', 'touchmove', 'keydown'].forEach((t) => window.addEventListener(t, finish, { passive: true }));
+  }
+  document.addEventListener('astro:page-load', runIntro);
+</script>
