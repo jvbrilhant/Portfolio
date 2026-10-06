@@ -583,6 +583,10 @@ h3 {
   opacity: 0.24;
   transition: color 0.8s var(--ease);
   pointer-events: none;
+  /* Fade out before the edges of the sticky box, so the light never ends in a hard line
+     (on phones the screen grows taller than the box when the browser toolbar hides). */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 58%, transparent 88%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 58%, transparent 88%);
 }
 .crate-head {
   display: flex;
