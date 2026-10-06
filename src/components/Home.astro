@@ -33,7 +33,7 @@ const name = 'Brilhante';
           ))}
         </p>
       </div>
-      {decor.grooves && <div class="grooves" aria-hidden="true"></div>}
+      {decor.grooves && <div class="grooves-clip" aria-hidden="true"><div class="grooves"></div></div>}
       <h1 class="hero-name" aria-label={name}>
         <span class="clip" aria-hidden="true">
           {name.split('').map((c, i) => <span class="char" style={`--i:${i}`}>{c}</span>)}

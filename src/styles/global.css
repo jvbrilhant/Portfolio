@@ -2093,14 +2093,29 @@ html.cursor-ready .cursor.is-visible {
 .hero-grid {
   position: relative;
 }
-.grooves {
+/* The record is centred on the name, so it runs past the bottom of the hero.
+   The wrapper ends exactly at the hero's edge and fades out before it,
+   instead of letting overflow cut the record with a hard line. */
+.grooves-clip {
+  --size: min(1100px, 120vw);
   position: absolute;
   z-index: -1;
   left: 50%;
-  top: 50%;
-  width: min(1100px, 120vw);
+  top: calc(50% - var(--size) / 2);
+  bottom: calc(-1 * clamp(40px, 7vw, 88px));
+  width: var(--size);
+  translate: -50% 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(to top, transparent, #000 200px);
+  mask: linear-gradient(to top, transparent, #000 200px);
+}
+.grooves {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   aspect-ratio: 1;
-  translate: -50% -50%;
   border-radius: 50%;
   pointer-events: none;
   background:
