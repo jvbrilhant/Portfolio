@@ -280,23 +280,24 @@ const name = 'Brilhante';
     const pad = (v: number) => String(v).padStart(2, '0');
     let active = -1;
 
-    const geo = () => {
+    // Geometry is measured once (and on resize), never inside the scroll loop.
+    // The sticky box height is used instead of innerHeight, which changes while
+    // mobile browser toolbars slide in and out.
+    const sticky = sec.querySelector<HTMLElement>('.crate-sticky')!;
+    let g = { top: 0, run: 1, step: 1 };
+    let w = 1;
+    const measure = () => {
       const top = sec.getBoundingClientRect().top + window.scrollY;
-      const run = Math.max(1, sec.offsetHeight - window.innerHeight);
-      return { top, run, step: run / (n - 1) };
+      const run = Math.max(1, sec.offsetHeight - sticky.offsetHeight);
+      g = { top, run, step: run / (n - 1) };
+      w = items[0].offsetWidth;
     };
-    const progress = () => {
-      const g = geo();
-      return Math.min(n - 1, Math.max(0, (window.scrollY - g.top) / g.step));
-    };
-    const engaged = () => {
-      const g = geo();
-      return window.scrollY >= g.top - 2 && window.scrollY <= g.top + g.run + 2;
-    };
+    measure();
+    const progress = () => Math.min(n - 1, Math.max(0, (window.scrollY - g.top) / g.step));
+    const engaged = () => window.scrollY >= g.top - 2 && window.scrollY <= g.top + g.run + 2;
     let busy = false;
     let busyTimer = 0;
     const go = (i: number, immediate = false) => {
-      const g = geo();
       const y = g.top + Math.min(n - 1, Math.max(0, i)) * g.step;
       busy = !immediate;
       clearTimeout(busyTimer);
@@ -318,9 +319,11 @@ const name = 'Brilhante';
       if (glow) glow.style.color = items[a].dataset.color ?? '';
     };
 
+    let lastP = -1;
     const render = () => {
       const p = progress();
-      const w = items[0].offsetWidth;
+      if (Math.abs(p - lastP) < 0.0005) return;
+      lastP = p;
       items.forEach((el, i) => {
         const d = i - p;
         const a = Math.abs(d);
@@ -336,19 +339,55 @@ const name = 'Brilhante';
 
     let raf = 0;
     let idle = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(render);
-      // Settle on the nearest record once scrolling stops, like a needle finding the track.
+    let touching = false;
+    // Settle on the nearest record once scrolling stops, like a needle finding the track.
+    // On touch screens wait for the finger to lift and the momentum to end, so the snap
+    // never fights the scroll.
+    const settleDelay = window.matchMedia('(pointer: coarse)').matches ? 320 : 160;
+    const scheduleSettle = () => {
       clearTimeout(idle);
       idle = window.setTimeout(() => {
-        if (busy || !engaged()) return;
+        if (busy || touching || !engaged()) return;
         const p = progress();
         if (Math.abs(p - Math.round(p)) > 0.02) go(Math.round(p));
-      }, 160);
+      }, settleDelay);
+    };
+    const onScroll = () => {
+      if (!raf) {
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          render();
+        });
+      }
+      scheduleSettle();
     };
     window.addEventListener('scroll', onScroll, { passive: true, ...opt });
-    window.addEventListener('resize', render, opt);
+    window.addEventListener('touchstart', () => (touching = true), { passive: true, ...opt });
+    window.addEventListener(
+      'touchend',
+      () => {
+        touching = false;
+        scheduleSettle();
+      },
+      { passive: true, ...opt },
+    );
+    let resizeTimer = 0;
+    let lastWidth = window.innerWidth;
+    const onResize = () => {
+      // Ignore height-only resizes (mobile toolbars); re-measure when the width changes.
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        measure();
+        lastP = -1;
+        render();
+      }, 120);
+    };
+    window.addEventListener('resize', onResize, opt);
+    // Fonts and images above the shelf can shift it once they load.
+    window.addEventListener('load', () => (measure(), (lastP = -1), render()), opt);
+    document.fonts?.ready.then(() => (measure(), (lastP = -1), render()));
 
     // Clicking a side record brings it to the front; clicking the front one opens it.
     items.forEach((el, i) =>

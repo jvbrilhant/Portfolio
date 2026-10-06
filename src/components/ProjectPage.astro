@@ -238,12 +238,19 @@ const rows = <T,>(list: T[]): T[][] => {
     const words = (article.innerText.match(/\S+/g) ?? []).length;
     const total = Math.max(60, Math.round((words / 200) * 60));
     const fmt = (sec: number) => `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, '0')}`;
+    // Page metrics are cached and refreshed only when the layout changes (lazy images,
+    // rotation), so scrolling never forces the browser to re-measure the page.
+    let max = 1;
+    let trackTops: number[] = [];
+    let lastText = '';
+    let lastPct = -1;
     const update = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       fill.style.transform = `scaleX(${p})`;
-      time.textContent = `${fmt(p * total)} / ${fmt(total)}`;
-      player.setAttribute('aria-valuenow', String(Math.round(p * 100)));
+      const text = `${fmt(p * total)} / ${fmt(total)}`;
+      if (text !== lastText) time.textContent = lastText = text;
+      const pct = Math.round(p * 100);
+      if (pct !== lastPct) player.setAttribute('aria-valuenow', String((lastPct = pct)));
       player.classList.toggle('is-playing', p > 0.002 && p < 0.998);
     };
     // Tracklist: each section is a track with its own length; the current one is highlighted.
@@ -254,12 +261,20 @@ const rows = <T,>(list: T[]): T[][] => {
       const len = player.querySelector(`[data-len="${t.dataset.track}"]`);
       if (len) len.textContent = fmt(Math.max(10, Math.round((w / 200) * 60)));
     });
+    let lastCur = -2;
     const markCurrent = () => {
+      const line = window.scrollY + window.innerHeight * 0.45;
       let cur = -1;
-      tracks.forEach((t, i) => {
-        if (t.getBoundingClientRect().top < window.innerHeight * 0.45) cur = i;
+      trackTops.forEach((top, i) => {
+        if (top < line) cur = i;
       });
+      if (cur === lastCur) return;
+      lastCur = cur;
       links.forEach((l, i) => l.classList.toggle('is-current', i === cur));
+    };
+    const measure = () => {
+      max = document.documentElement.scrollHeight - window.innerHeight;
+      trackTops = tracks.map((t) => t.getBoundingClientRect().top + window.scrollY);
     };
     const toggle = player.querySelector<HTMLButtonElement>('[data-player-toggle]')!;
     toggle.addEventListener('click', () => {
@@ -277,15 +292,31 @@ const rows = <T,>(list: T[]): T[][] => {
       }),
     );
 
-    update();
-    markCurrent();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('scroll', markCurrent, { passive: true });
+    let raf = 0;
+    const tick = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        update();
+        markCurrent();
+      });
+    };
+    const remeasure = () => {
+      measure();
+      update();
+      markCurrent();
+    };
+    const ro = new ResizeObserver(remeasure);
+    ro.observe(article);
+    remeasure();
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', remeasure);
     document.addEventListener(
       'astro:before-swap',
       () => {
-        window.removeEventListener('scroll', update);
-        window.removeEventListener('scroll', markCurrent);
+        window.removeEventListener('scroll', tick);
+        window.removeEventListener('resize', remeasure);
+        ro.disconnect();
       },
       { once: true },
     );
