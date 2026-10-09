@@ -189,7 +189,7 @@ export const projects: Project[] = [
   {
     slug: 'bioeconomia-brasil',
     cat: 'BRL-004',
-    year: '2022',
+    year: '2023',
     kind: { en: 'Multilingual website', pt: 'Site multilíngue' },
     cover: 'bioeconomia-brasil',
     label: '#e9a07c',
@@ -244,7 +244,7 @@ export const projects: Project[] = [
     en: {
       title: 'Abrace',
       subtitle: 'Supporting families of children with cancer through careful design and resilient engineering',
-      client: 'Abrace (Associação Brasileira de Assistência às Famílias de Crianças Portadoras de Câncer e Hemopatias)',
+      client: 'Abrace (Associação Brasileira de Assistência às Famílias de Crianças Portadoras de Câncer e Hemopatias), via GIM',
       role: 'Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
       services: 'Product design, web development, WordPress, design system, CRM and donation integrations, performance and SEO',
       tools: 'Figma, WordPress, Cielo, RD Station, Google Analytics, Search Console, AI-assisted optimisation',
@@ -258,13 +258,13 @@ export const projects: Project[] = [
         'I led the project end to end: architecture planning, a custom design system built for consistency and scale, and a WordPress rebuild integrated with Cielo for donations and RD Station for CRM. I set up Google Analytics and Search Console to follow performance after launch, and I use AI tools to diagnose issues and guide monthly optimisation.',
       ],
       result: [
-        'Monthly active users grew 47% since launch, and the migration happened with zero downtime and every donor’s history intact. Months after handoff, the client still points to the site’s reliability.',
+        'Monthly active users grew 47% in the first 3 months after launch (Google Analytics), and the migration happened with zero downtime and every donor’s history intact. Months after handoff, the client still points to the site’s reliability.',
       ],
     },
     pt: {
       title: 'Abrace',
       subtitle: 'Apoio a famílias de crianças com câncer, com design cuidadoso e engenharia resiliente',
-      client: 'Abrace (Associação Brasileira de Assistência às Famílias de Crianças Portadoras de Câncer e Hemopatias)',
+      client: 'Abrace (Associação Brasileira de Assistência às Famílias de Crianças Portadoras de Câncer e Hemopatias), via GIM',
       role: 'Desenvolvedor e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
       services: 'Product design, desenvolvimento web, WordPress, design system, integrações de CRM e doações, performance e SEO',
       tools: 'Figma, WordPress, Cielo, RD Station, Google Analytics, Search Console, otimização assistida por IA',
@@ -278,7 +278,7 @@ export const projects: Project[] = [
         'Conduzi o projeto de ponta a ponta: planejamento da arquitetura, um design system próprio pensado para consistência e escala, e a reconstrução em WordPress integrada à Cielo para doações e ao RD Station como CRM. Configurei Google Analytics e Search Console para acompanhar o desempenho depois do lançamento, e uso ferramentas de IA para diagnosticar problemas e orientar a otimização mensal.',
       ],
       result: [
-        'Os usuários ativos mensais cresceram 47% desde o lançamento, e a migração aconteceu sem nenhum minuto fora do ar e com todo o histórico de doadores preservado. Meses depois da entrega, o cliente ainda destaca a estabilidade do site.',
+        'Os usuários ativos mensais cresceram 47% nos 3 primeiros meses depois do lançamento (Google Analytics), e a migração aconteceu sem nenhum minuto fora do ar e com todo o histórico de doadores preservado. Meses depois da entrega, o cliente ainda destaca a estabilidade do site.',
       ],
     },
   },

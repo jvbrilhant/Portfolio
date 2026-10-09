@@ -34,7 +34,7 @@ export const ui = {
       stats: [
         { icon: 'years', value: '10', unit: 'years', text: 'Making complex ideas feel simple, first in advertising, then fully in product design.' },
         { icon: 'time', value: '−60%', unit: '', text: 'Wireframe production time at GIM after I built their design system. Seven days down to three.' },
-        { icon: 'growth', value: '+47%', unit: '', text: 'Monthly active users for Abrace since relaunch, migrated with zero downtime.' },
+        { icon: 'growth', value: '+47%', unit: '', text: 'Monthly active users for Abrace in the first 3 months after launch (Google Analytics), migrated with zero downtime.' },
         { icon: 'launch', value: '2', unit: 'weeks', text: 'From contract to live site for the Bioeconomy Challenge, launched at COP30.' },
         { icon: 'visits', value: '100,000+', unit: '', text: 'Users in 6 months on the new Brasscom website (Google Analytics), after migrating 190 pages, 50+ of them rebuilt.' },
         { icon: 'languages', value: '5', unit: 'languages', text: 'On Bioeconomia Brasil, Arabic right-to-left included, all designed as first-class.' },
@@ -128,7 +128,7 @@ export const ui = {
       stats: [
         { icon: 'years', value: '10', unit: 'anos', text: 'Tornando simples ideias complexas, primeiro na publicidade e depois só em product design.' },
         { icon: 'time', value: '−60%', unit: '', text: 'No tempo de produção de wireframes da GIM depois que criei o design system. De sete dias para três.' },
-        { icon: 'growth', value: '+47%', unit: '', text: 'Em usuários ativos mensais da Abrace desde o relançamento, com migração sem nenhum minuto fora do ar.' },
+        { icon: 'growth', value: '+47%', unit: '', text: 'Em usuários ativos mensais da Abrace nos 3 primeiros meses depois do lançamento (Google Analytics), com migração sem nenhum minuto fora do ar.' },
         { icon: 'launch', value: '2', unit: 'semanas', text: 'Do contrato ao site no ar para o Bioeconomy Challenge, lançado na COP30.' },
         { icon: 'visits', value: '100.000+', unit: '', text: 'Usuários em 6 meses no novo site da Brasscom (Google Analytics), após migrar 190 páginas, mais de 50 delas reconstruídas.' },
         { icon: 'languages', value: '5', unit: 'idiomas', text: 'No Bioeconomia Brasil, incluindo o árabe da direita para a esquerda, todos tratados como principais.' },
