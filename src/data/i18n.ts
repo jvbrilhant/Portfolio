@@ -32,11 +32,11 @@ export const ui = {
       title: 'Results',
       intro: 'Numbers measured after launch, from the projects on this site.',
       stats: [
-        { icon: 'years', value: '9', unit: 'years', text: 'Making complex ideas feel simple, first in advertising, then fully in product design.' },
-        { icon: 'time', value: '−60%', unit: '', text: 'Wireframe production time at GIM Digital after I built their design system. Seven days down to three.' },
+        { icon: 'years', value: '10', unit: 'years', text: 'Making complex ideas feel simple, first in advertising, then fully in product design.' },
+        { icon: 'time', value: '−60%', unit: '', text: 'Wireframe production time at GIM after I built their design system. Seven days down to three.' },
         { icon: 'growth', value: '+47%', unit: '', text: 'Monthly active users for Abrace since relaunch, migrated with zero downtime.' },
         { icon: 'launch', value: '2', unit: 'weeks', text: 'From contract to live site for the Bioeconomy Challenge, launched at COP30.' },
-        { icon: 'visits', value: '100k+', unit: '', text: 'Visits in six months to the new Brasscom website, with more than 180 pages produced.' },
+        { icon: 'visits', value: '100,000+', unit: '', text: 'Users in 6 months on the new Brasscom website (Google Analytics), after migrating 190 pages, 50+ of them rebuilt.' },
         { icon: 'languages', value: '5', unit: 'languages', text: 'On Bioeconomia Brasil, Arabic right-to-left included, all designed as first-class.' },
       ],
     },
@@ -44,7 +44,7 @@ export const ui = {
       label: 'About',
       title: 'Hi, I’m João Victor Brilhante.',
       body: [
-        'I’ve spent the last nine years figuring out how to make complex ideas feel simple, first in advertising, then fully in product design.',
+        'I’ve spent the last ten years figuring out how to make complex ideas feel simple, first in advertising, then fully in product design.',
         'I like the projects people usually find intimidating. A banking dashboard sitting on 100+ legacy products. A nonprofit site losing donors when nobody knows why. The kind of work where you have to dig before you can design anything.',
         'I moved to Dublin to be closer to that kind of challenge, in teams that treat design as more than a final coat of paint. When I’m not in Figma, I’m probably building some automation that saves me time later, or understanding that a feature doesn’t need to be as complicated as everyone thinks.',
       ],
@@ -59,7 +59,7 @@ export const ui = {
         { title: 'Product design', text: 'From the messy first conversation to the screen that ships. I like being in the room early.' },
         { title: 'Design systems', text: 'I’ve built more than one from scratch, out of frustration with starting every project from zero. Both are still in use.' },
         { title: 'Research and accessibility', text: 'Usability testing, stakeholder workshops, and WCAG 2.1 accessibility from the first wireframe.' },
-        { title: 'Data over guessing', text: 'Google Analytics, Hotjar, Mixpanel. I don’t redesign something until I know what’s actually broken.' },
+        { title: 'Data over guessing', text: 'Google Analytics and Hotjar. I don’t redesign something until I know what’s actually broken.' },
         { title: 'AI in the workflow', text: 'I build automation agents that save hours every month, so more time goes into research and design decisions.' },
         { title: 'Technical enough to ship alone', text: 'WordPress, hosting, DNS, SSL. I don’t need to wait for a developer to get something live.' },
       ],
@@ -126,11 +126,11 @@ export const ui = {
       title: 'Resultados',
       intro: 'Números medidos depois do lançamento, dos projetos deste site.',
       stats: [
-        { icon: 'years', value: '9', unit: 'anos', text: 'Tornando simples ideias complexas, primeiro na publicidade e depois só em product design.' },
-        { icon: 'time', value: '−60%', unit: '', text: 'No tempo de produção de wireframes da GIM Digital depois que criei o design system. De sete dias para três.' },
+        { icon: 'years', value: '10', unit: 'anos', text: 'Tornando simples ideias complexas, primeiro na publicidade e depois só em product design.' },
+        { icon: 'time', value: '−60%', unit: '', text: 'No tempo de produção de wireframes da GIM depois que criei o design system. De sete dias para três.' },
         { icon: 'growth', value: '+47%', unit: '', text: 'Em usuários ativos mensais da Abrace desde o relançamento, com migração sem nenhum minuto fora do ar.' },
         { icon: 'launch', value: '2', unit: 'semanas', text: 'Do contrato ao site no ar para o Bioeconomy Challenge, lançado na COP30.' },
-        { icon: 'visits', value: '100 mil+', unit: '', text: 'Acessos em seis meses ao novo site da Brasscom, com mais de 180 páginas produzidas.' },
+        { icon: 'visits', value: '100.000+', unit: '', text: 'Usuários em 6 meses no novo site da Brasscom (Google Analytics), após migrar 190 páginas, mais de 50 delas reconstruídas.' },
         { icon: 'languages', value: '5', unit: 'idiomas', text: 'No Bioeconomia Brasil, incluindo o árabe da direita para a esquerda, todos tratados como principais.' },
       ],
     },
@@ -138,7 +138,7 @@ export const ui = {
       label: 'Sobre',
       title: 'Oi, eu sou o João Victor Brilhante.',
       body: [
-        'Passei os últimos nove anos descobrindo como fazer ideias complexas parecerem simples, primeiro na publicidade e depois só em product design.',
+        'Passei os últimos dez anos descobrindo como fazer ideias complexas parecerem simples, primeiro na publicidade e depois só em product design.',
         'Gosto dos projetos que costumam intimidar as pessoas. Um dashboard bancário apoiado em mais de 100 produtos legados. O site de uma ONG perdendo doadores sem que ninguém saiba por quê. O tipo de trabalho em que é preciso cavar antes de desenhar qualquer coisa.',
         'Me mudei para Dublin para ficar mais perto desse tipo de desafio, em times que tratam design como mais do que uma camada de tinta no final. Quando não estou no Figma, provavelmente estou montando alguma automação que vai me poupar tempo depois, ou entendendo que uma funcionalidade não precisa ser tão complicada quanto todo mundo acha.',
       ],
@@ -153,7 +153,7 @@ export const ui = {
         { title: 'Product design', text: 'Da primeira conversa confusa até a tela que vai para produção. Gosto de estar na sala desde o começo.' },
         { title: 'Design systems', text: 'Já construí mais de um do zero, cansado de começar cada projeto do nada. Os dois continuam em uso.' },
         { title: 'Pesquisa e acessibilidade', text: 'Testes de usabilidade, workshops com stakeholders e acessibilidade WCAG 2.1 desde o primeiro wireframe.' },
-        { title: 'Dados em vez de achismo', text: 'Google Analytics, Hotjar, Mixpanel. Não redesenho nada antes de saber o que realmente está quebrado.' },
+        { title: 'Dados em vez de achismo', text: 'Google Analytics e Hotjar. Não redesenho nada antes de saber o que realmente está quebrado.' },
         { title: 'IA no fluxo de trabalho', text: 'Crio agentes de automação que economizam horas todo mês, e esse tempo vai para pesquisa e decisões de design.' },
         { title: 'Técnico o bastante para publicar sozinho', text: 'WordPress, hospedagem, DNS, SSL. Não preciso esperar um desenvolvedor para colocar algo no ar.' },
       ],
@@ -193,9 +193,9 @@ export const ui = {
 
 export const experience = [
   { company: 'Fóton Informática', role: { en: 'UX/UI Designer', pt: 'UX/UI Designer' }, from: '2025', to: null },
-  { company: 'Instituto Cerrados', role: { en: 'Senior Product Designer', pt: 'Senior Product Designer' }, from: '2024', to: '2024' },
-  { company: 'GIM Digital', role: { en: 'Senior Product Designer', pt: 'Senior Product Designer' }, from: '2021', to: '2026' },
-  { company: 'Freelance', role: { en: 'UX/UI Designer', pt: 'UX/UI Designer' }, from: '2020', to: '2025' },
+  { company: 'Instituto Cerrados', role: { en: 'Product Design Consultant', pt: 'Product Design Consultant' }, from: '2024', to: '2024' },
+  { company: 'GIM Estratégias Digitais', role: { en: 'Junior to Senior Product Designer', pt: 'De Junior a Senior Product Designer' }, from: '2021', to: '2026' },
+  { company: { en: 'Independent', pt: 'Independente' }, role: { en: 'Design Consultant', pt: 'Consultor de design' }, from: '2016', to: null },
   { company: 'BRASAS English Course', role: { en: 'English Teacher', pt: 'Professor de inglês' }, from: '2017', to: '2018' },
 ];
 

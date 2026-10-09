@@ -151,7 +151,7 @@ const name = 'Brilhante';
                 <li class="track">
                   <span class="no">{String(i + 1).padStart(2, '0')}</span>
                   <span class="who">
-                    {e.company}
+                    {typeof e.company === 'string' ? e.company : e.company[lang]}
                     <span>{e.role[lang]}</span>
                   </span>
                   <span class="when">

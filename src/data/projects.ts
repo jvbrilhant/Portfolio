@@ -45,14 +45,14 @@ export const projects: Project[] = [
     cover: 'design-system',
     label: '#a7d8fb',
     en: {
-      title: 'Design System for GIM Digital',
+      title: 'Design System for GIM Estratégias Digitais',
       subtitle: 'A self-initiated Figma system that cut wireframe production time by 60%',
-      client: 'GIM Digital',
+      client: 'GIM',
       role: 'Product Designer (self-initiated)',
       services: 'Design system creation',
       tools: 'Figma',
       overview: [
-        'Every new project at GIM Digital started its wireframes from zero, even when the same components showed up across dozens of client briefs. Nobody asked me to fix this. I built a centralised design system on my own initiative because I could see the pattern costing the team time every single sprint.',
+        'Every new project at GIM started its wireframes from zero, even when the same components showed up across dozens of client briefs. Nobody asked me to fix this. I built a centralised design system on my own initiative because I could see the pattern costing the team time every single sprint.',
       ],
       discovery: [
         'I tracked how long it actually took to move from discovery to high-fidelity handoff across recent projects. The pattern was consistent: teams were rebuilding the same buttons, cards, navigation patterns and form elements from scratch on every brief, with small inconsistencies creeping in depending on who built what.',
@@ -67,14 +67,14 @@ export const projects: Project[] = [
       ],
     },
     pt: {
-      title: 'Design System para a GIM Digital',
+      title: 'Design System para a GIM Estratégias Digitais',
       subtitle: 'Um sistema no Figma, criado por iniciativa própria, que reduziu em 60% o tempo de produção de wireframes',
-      client: 'GIM Digital',
+      client: 'GIM',
       role: 'Product Designer (iniciativa própria)',
       services: 'Criação de design system',
       tools: 'Figma',
       overview: [
-        'Todo projeto novo na GIM Digital começava os wireframes do zero, mesmo quando os mesmos componentes apareciam em dezenas de briefings. Ninguém me pediu para resolver isso. Construí um design system centralizado por conta própria, porque via esse padrão custando tempo ao time em todas as sprints.',
+        'Todo projeto novo na GIM começava os wireframes do zero, mesmo quando os mesmos componentes apareciam em dezenas de briefings. Ninguém me pediu para resolver isso. Construí um design system centralizado por conta própria, porque via esse padrão custando tempo ao time em todas as sprints.',
       ],
       discovery: [
         'Medi quanto tempo realmente levávamos da descoberta até o handoff em alta fidelidade nos projetos recentes. O padrão se repetia: o time reconstruía do zero os mesmos botões, cards, navegações e formulários em cada briefing, com pequenas inconsistências surgindo conforme quem desenhava.',
@@ -147,7 +147,7 @@ export const projects: Project[] = [
       title: 'Bioeconomy Challenge',
       subtitle: 'Shipping a platform for a global bioeconomy coalition in two weeks, backed by the UN and FAO',
       client: 'NatureFinance',
-      role: 'Lead Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
+      role: 'Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
       services: 'Product design, web design, multilingual content structure, WordPress implementation',
       tools: 'WordPress, Elementor, hosting, DNS and SSL configuration, Google Analytics',
       overview: [
@@ -168,7 +168,7 @@ export const projects: Project[] = [
       title: 'Bioeconomy Challenge',
       subtitle: 'Uma plataforma para uma coalizão global de bioeconomia, com apoio da ONU e da FAO, entregue em duas semanas',
       client: 'NatureFinance',
-      role: 'Lead Developer e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
+      role: 'Desenvolvedor e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
       services: 'Product design, web design, estrutura de conteúdo multilíngue, implementação em WordPress',
       tools: 'WordPress, Elementor, configuração de hospedagem, DNS e SSL, Google Analytics',
       overview: [
@@ -196,8 +196,8 @@ export const projects: Project[] = [
     en: {
       title: 'Bioeconomia Brasil',
       subtitle: 'A platform where five languages, including Arabic right-to-left, all feel equally native',
-      client: 'GIZ, via GIM Digital',
-      role: 'Lead Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
+      client: 'GIZ, via GIM',
+      role: 'Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
       services: 'Product design, web design, multilingual content structure, RTL layout, WordPress implementation, localisation coordination',
       tools: 'Figma, WordPress, RTL layout implementation, translation coordination',
       overview: [
@@ -216,8 +216,8 @@ export const projects: Project[] = [
     pt: {
       title: 'Bioeconomia Brasil',
       subtitle: 'Uma plataforma em que cinco idiomas, incluindo o árabe da direita para a esquerda, soam igualmente nativos',
-      client: 'GIZ, via GIM Digital',
-      role: 'Lead Developer e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
+      client: 'GIZ, via GIM',
+      role: 'Desenvolvedor e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
       services: 'Product design, web design, estrutura de conteúdo multilíngue, layout RTL, implementação em WordPress, coordenação de localização',
       tools: 'Figma, WordPress, layout RTL, coordenação de traduções',
       overview: [
@@ -245,11 +245,11 @@ export const projects: Project[] = [
       title: 'Abrace',
       subtitle: 'Supporting families of children with cancer through careful design and resilient engineering',
       client: 'Abrace (Associação Brasileira de Assistência às Famílias de Crianças Portadoras de Câncer e Hemopatias)',
-      role: 'Lead Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
+      role: 'Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
       services: 'Product design, web development, WordPress, design system, CRM and donation integrations, performance and SEO',
       tools: 'Figma, WordPress, Cielo, RD Station, Google Analytics, Search Console, AI-assisted optimisation',
       overview: [
-        'Abrace supports families of children with cancer and blood disorders. When I joined as lead developer and product designer, their digital presence was fragile: at risk of downtime, disconnected from their CRM and donation systems, and not built to last.',
+        'Abrace supports families of children with cancer and blood disorders. When I joined as developer and product designer, their digital presence was fragile: at risk of downtime, disconnected from their CRM and donation systems, and not built to last.',
       ],
       discovery: [
         'The biggest risk was operational. Migrating hosting while keeping every donor record and recurring subscription running without interruption was the hard constraint. Get that wrong, and real donors lose the ability to give in the middle of their relationship with the organisation.',
@@ -265,11 +265,11 @@ export const projects: Project[] = [
       title: 'Abrace',
       subtitle: 'Apoio a famílias de crianças com câncer, com design cuidadoso e engenharia resiliente',
       client: 'Abrace (Associação Brasileira de Assistência às Famílias de Crianças Portadoras de Câncer e Hemopatias)',
-      role: 'Lead Developer e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
+      role: 'Desenvolvedor e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
       services: 'Product design, desenvolvimento web, WordPress, design system, integrações de CRM e doações, performance e SEO',
       tools: 'Figma, WordPress, Cielo, RD Station, Google Analytics, Search Console, otimização assistida por IA',
       overview: [
-        'A Abrace apoia famílias de crianças com câncer e doenças do sangue. Quando entrei como lead developer e product designer, a presença digital deles era frágil: com risco de ficar fora do ar, desconectada do CRM e do sistema de doações, e sem estrutura para durar.',
+        'A Abrace apoia famílias de crianças com câncer e doenças do sangue. Quando entrei como desenvolvedor e product designer, a presença digital deles era frágil: com risco de ficar fora do ar, desconectada do CRM e do sistema de doações, e sem estrutura para durar.',
       ],
       discovery: [
         'O maior risco era operacional. Migrar a hospedagem mantendo cada registro de doador e cada doação recorrente funcionando, sem interrupção, era a restrição mais dura. Se isso desse errado, doadores de verdade perderiam a possibilidade de contribuir no meio da sua relação com a instituição.',
@@ -293,8 +293,8 @@ export const projects: Project[] = [
     en: {
       title: 'Stag: Website redesign',
       subtitle: 'Giving a 40-year-old brand the modern voice it deserved',
-      client: 'Stag, via GIM Digital',
-      role: 'Lead Developer and Product Designer, end to end: from briefing to launch',
+      client: 'Stag, via GIM',
+      role: 'Developer and Product Designer, end to end: from briefing to launch',
       services: 'Product design, web development, WordPress, CRM integration',
       tools: 'Figma, WordPress, Elementor, CRM integration',
       overview: [
@@ -313,8 +313,8 @@ export const projects: Project[] = [
     pt: {
       title: 'Stag: Redesign do site',
       subtitle: 'Uma voz atual para uma marca com 40 anos de história',
-      client: 'Stag, via GIM Digital',
-      role: 'Lead Developer e Product Designer, de ponta a ponta: do briefing ao lançamento',
+      client: 'Stag, via GIM',
+      role: 'Desenvolvedor e Product Designer, de ponta a ponta: do briefing ao lançamento',
       services: 'Product design, desenvolvimento web, WordPress, integração com CRM',
       tools: 'Figma, WordPress, Elementor, integração com CRM',
       overview: [
@@ -341,7 +341,7 @@ export const projects: Project[] = [
     en: {
       title: 'Cepel NZEB',
       subtitle: 'Bringing a building that didn’t exist yet to life through an interactive virtual tour',
-      client: 'GIZ, via GIM Digital',
+      client: 'GIZ, via GIM',
       role: 'Product Designer, Product Owner',
       services: 'Product design, web design, interactive virtual tour, WordPress, front-end and back-end customisation',
       tools: 'Figma, WordPress, custom-configured virtual tour plugin',
@@ -361,7 +361,7 @@ export const projects: Project[] = [
     pt: {
       title: 'Cepel NZEB',
       subtitle: 'Um prédio que ainda não existia, apresentado por meio de um tour virtual interativo',
-      client: 'GIZ, via GIM Digital',
+      client: 'GIZ, via GIM',
       role: 'Product Designer, Product Owner',
       services: 'Product design, web design, tour virtual interativo, WordPress, customização de front-end e back-end',
       tools: 'Figma, WordPress, plugin de tour virtual configurado sob medida',
@@ -390,7 +390,7 @@ export const projects: Project[] = [
     en: {
       title: 'Universo Paralello: Vila Mundo',
       subtitle: 'Living the festival from the inside',
-      client: 'Vila Mundo Hospedagem & Infraestrutura, via GIM Digital',
+      client: 'Vila Mundo Hospedagem & Infraestrutura, via GIM',
       role: 'Product Designer, Product Owner',
       services: 'Product design, web design',
       tools: 'Figma, WordPress, multilingual content structure, Google Analytics',
@@ -410,7 +410,7 @@ export const projects: Project[] = [
     pt: {
       title: 'Universo Paralello: Vila Mundo',
       subtitle: 'Viver o festival por dentro',
-      client: 'Vila Mundo Hospedagem & Infraestrutura, via GIM Digital',
+      client: 'Vila Mundo Hospedagem & Infraestrutura, via GIM',
       role: 'Product Designer, Product Owner',
       services: 'Product design, web design',
       tools: 'Figma, WordPress, estrutura de conteúdo multilíngue, Google Analytics',

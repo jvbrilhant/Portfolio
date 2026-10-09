@@ -949,7 +949,8 @@ h3 {
   .stat .v {
     grid-area: v;
     margin-top: 26px;
-    font-size: 58px;
+    /* scales down on narrow phones so long figures like 100,000+ stay inside the card */
+    font-size: min(58px, 14.5vw);
   }
   .stat p {
     grid-area: p;
