@@ -243,6 +243,8 @@ const name = 'Brilhante';
 </Layout>
 
 <script>
+  import { navigate } from 'astro:transitions/client';
+
   function initCopy() {
     document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
       const label = btn.textContent;
@@ -391,19 +393,23 @@ const name = 'Brilhante';
     window.addEventListener('load', () => (measure(), (lastP = -1), render()), opt);
     document.fonts?.ready.then(() => (measure(), (lastP = -1), render()));
 
-    // Clicking a side record brings it to the front; clicking the front one opens it.
+    // Clicking any cover opens its project. A side record first slides to the front,
+    // then the page opens, so the shelf never jumps away from under the click.
+    let opening = 0;
     items.forEach((el, i) =>
       el.querySelector('a')?.addEventListener(
         'click',
         (e) => {
-          if (i !== active) {
-            e.preventDefault();
-            go(i);
-          } else {
-            try {
-              sessionStorage.setItem('brl-crate', String(i));
-            } catch {}
-          }
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button > 0) return;
+          try {
+            sessionStorage.setItem('brl-crate', String(i));
+          } catch {}
+          if (i === active) return;
+          e.preventDefault();
+          const href = (e.currentTarget as HTMLAnchorElement).href;
+          go(i);
+          clearTimeout(opening);
+          opening = window.setTimeout(() => navigate(href), 650);
         },
         opt,
       ),
