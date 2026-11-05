@@ -1,10 +1,13 @@
 ---
 /**
- * Opening sequence on the home page: a record is placed on a turntable, starts
- * spinning, the tonearm swings over and the needle drops. Plays once per browser
- * session, never with reduced motion, and can be skipped (click, key or scroll).
+ * Opening sequence on the home page: a record is placed on a turntable, the
+ * tonearm swings over, the needle drops and the record spins up. Plays once per
+ * browser session, never with reduced motion, and can be skipped (click, key or scroll).
+ * The turntable art lives in public/intro as three SVGs drawn upright (portrait)
+ * and turned 90deg into landscape by .tt-inner.
  */
 import type { Lang } from '../data/projects';
+import { url } from '../data/i18n';
 
 interface Props {
   lang: Lang;
@@ -35,47 +38,13 @@ const copy = {
 <div class="intro" data-intro>
   <div class="intro-stage">
     <div class="tt" aria-hidden="true">
-      <div class="tt-platter">
-        <div class="tt-mat"></div>
-        <div class="tt-record">
-          <div class="tt-grooves"></div>
-          <div class="tt-spin">
-            <div class="tt-label">
-              <span class="tt-label-top">BRILHANTE</span>
-              <span class="tt-label-bottom">SIDE A · 33⅓</span>
-            </div>
-          </div>
+      <div class="tt-inner">
+        <img class="tt-base" src={url('intro/tt-base.svg')} alt="" decoding="async" />
+        <div class="tt-rec" data-tt-rec>
+          <img class="tt-spin" data-tt-spin src={url('intro/tt-record.svg')} alt="" decoding="async" />
         </div>
-        <div class="tt-spindle"></div>
+        <img class="tt-arm" data-tt-arm src={url('intro/tt-arm.svg')} alt="" decoding="async" />
       </div>
-
-      <svg class="tt-arm" viewBox="0 0 200 260">
-        <defs>
-          <linearGradient id="tt-metal" x1="0" x2="1">
-            <stop offset="0" stop-color="#8d879a" />
-            <stop offset=".5" stop-color="#f1edf7" />
-            <stop offset="1" stop-color="#9c96aa" />
-          </linearGradient>
-        </defs>
-        <circle cx="150" cy="40" r="30" fill="#1b1823" stroke="rgba(255,255,255,.14)" />
-        <circle cx="150" cy="40" r="17" fill="#26222f" stroke="rgba(255,255,255,.2)" />
-        <g class="tt-arm-swing">
-          <rect x="140" y="-6" width="20" height="26" rx="5" fill="#2e2a38" stroke="rgba(255,255,255,.22)" />
-          <path d="M150 40 L 150 170 Q 150 196 132 214" fill="none" stroke="url(#tt-metal)" stroke-width="5" stroke-linecap="round" />
-          <g transform="rotate(42 128 220)">
-            <rect x="116" y="206" width="24" height="34" rx="4" fill="#e9e4f2" />
-            <rect x="122" y="236" width="12" height="8" rx="2" fill="var(--accent)" />
-          </g>
-          <circle cx="150" cy="40" r="7" fill="url(#tt-metal)" />
-        </g>
-      </svg>
-
-      <div class="tt-controls">
-        <span class="tt-btn"></span>
-        <span class="tt-speed"><b>33</b> 45</span>
-        <span class="tt-led"></span>
-      </div>
-      <div class="tt-pitch"><span></span></div>
     </div>
 
     <p class="intro-caption">
@@ -114,11 +83,64 @@ const copy = {
       ['wheel', 'touchmove', 'keydown'].forEach((t) => window.removeEventListener(t, finish));
     };
 
-    // Needle lands at ~2.5s; the room fades in shortly after.
-    timers.push(window.setTimeout(finish, 3500));
     el.querySelector('[data-intro-skip]')?.addEventListener('click', finish);
     el.addEventListener('click', finish);
     ['wheel', 'touchmove', 'keydown'].forEach((t) => window.addEventListener(t, finish, { passive: true }));
+
+    // Start once the three drawings are decoded (or after 1.2s, whichever comes first).
+    const imgs = [...el.querySelectorAll<HTMLImageElement>('.tt img')];
+    const ready = Promise.all(imgs.map((i) => i.decode().catch(() => {})));
+    const late = new Promise((r) => window.setTimeout(r, 1200));
+    Promise.race([ready, late]).then(() => {
+      if (done) return;
+      el.classList.add('is-ready');
+      play(el);
+      // Needle lands at 2.5s; the room fades in a second later.
+      timers.push(window.setTimeout(finish, 3500));
+    });
+  }
+
+  /** Record glides in and settles (1.4s), arm swings over and lowers (1s), record spins up to 33⅓ rpm. */
+  function play(el: HTMLElement) {
+    const rec = el.querySelector<HTMLElement>('[data-tt-rec]');
+    const spin = el.querySelector<HTMLElement>('[data-tt-spin]');
+    const arm = el.querySelector<HTMLElement>('[data-tt-arm]');
+    const tt = el.querySelector<HTMLElement>('.tt');
+    if (!rec || !spin || !arm || !tt) return;
+    const w = tt.getBoundingClientRect().width;
+    const lift = 'drop-shadow(30px 0 30px rgba(0,0,0,.45))';
+    const rest = 'drop-shadow(2px 0 3px rgba(0,0,0,.4))';
+    rec.animate(
+      [
+        { transform: `translate(${w * 0.03}px, ${w * 1.15}px) rotate(-140deg) scale(1.06)`, filter: lift },
+        { transform: 'translate(0, 0) rotate(0deg) scale(1.06)', filter: lift, offset: 0.82 },
+        { transform: 'translate(0, 0) rotate(0deg) scale(1)', filter: rest },
+      ],
+      { duration: 1400, easing: 'cubic-bezier(.3,.6,.35,1)', fill: 'forwards' },
+    );
+    const armLow = 'drop-shadow(2px 0 2px rgba(0,0,0,.35))';
+    const armHigh = 'drop-shadow(14px 0 10px rgba(0,0,0,.4))';
+    const swing = arm.animate(
+      [
+        { transform: 'rotate(0deg) scale(1)', filter: armLow },
+        { transform: 'rotate(1deg) scale(1.015)', filter: armHigh, offset: 0.15 },
+        { transform: 'rotate(19deg) scale(1.015)', filter: armHigh, offset: 0.75 },
+        { transform: 'rotate(19deg) scale(1)', filter: armLow },
+      ],
+      { duration: 1000, easing: 'ease-in-out', fill: 'forwards', delay: 1500 },
+    );
+    // 33⅓ rpm is 1.8s per turn; the ramp ends at that speed.
+    swing.finished
+      .then(() => spin.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(117deg)' }], {
+        duration: 700,
+        easing: 'cubic-bezier(.5,0,1,1)',
+        fill: 'forwards',
+      }).finished)
+      .then(() => spin.animate([{ transform: 'rotate(117deg)' }, { transform: 'rotate(477deg)' }], {
+        duration: 1800,
+        iterations: Infinity,
+      }))
+      .catch(() => {});
   }
   document.addEventListener('astro:page-load', runIntro);
 </script>

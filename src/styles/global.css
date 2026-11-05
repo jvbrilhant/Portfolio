@@ -2269,6 +2269,7 @@ html.intro-on .intro {
   z-index: 9000;
   display: grid;
   place-items: center;
+  overflow: hidden;
   background: var(--bg);
   transition:
     opacity 0.7s var(--ease),
@@ -2293,30 +2294,22 @@ html.intro-on .hero .reveal {
   display: grid;
   justify-items: center;
   gap: 28px;
-  width: min(86vw, 620px);
+  width: min(86vw, 620px, (100svh - 160px) * 1424 / 1167);
   transition: transform 0.75s var(--ease);
 }
 .intro.is-exit .intro-stage {
   transform: scale(1.35);
 }
 
-/* Turntable, in units of its own width (100cqw) */
+/* Turntable: vector art drawn upright (1167x1424) and turned 90deg into landscape */
 .tt {
-  container-type: inline-size;
   position: relative;
   width: 100%;
-  aspect-ratio: 1.32;
-  border-radius: 3.2cqw;
-  background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.07), transparent 40%),
-    linear-gradient(180deg, #1d1a26, #121019);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 40px 80px -30px rgba(0, 0, 0, 0.9);
+  aspect-ratio: 1424 / 1167;
   opacity: 0;
-  transform: translateY(24px) scale(0.96);
-  animation: tt-in 0.6s var(--ease) 0.05s forwards;
+}
+.intro.is-ready .tt {
+  animation: tt-in 0.4s var(--ease) forwards;
 }
 @keyframes tt-in {
   to {
@@ -2324,182 +2317,37 @@ html.intro-on .hero .reveal {
     transform: none;
   }
 }
-.tt-platter {
-  position: absolute;
-  left: 6cqw;
-  top: 4.9cqw;
-  width: 66cqw;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: conic-gradient(from 30deg, #77727f, #e6e2ec, #6f6a78, #d8d3df, #77727f);
-  box-shadow: 0 2cqw 4cqw -1cqw rgba(0, 0, 0, 0.7);
-}
-.tt-mat {
-  position: absolute;
-  inset: 1.4cqw;
-  border-radius: 50%;
-  background: repeating-radial-gradient(circle, #121016 0 0.4cqw, #17141c 0.45cqw 0.8cqw);
-}
-.tt-record {
-  position: absolute;
-  inset: 2cqw;
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-48cqw, -46cqw) rotate(-28deg) scale(1.14);
-  box-shadow: 4cqw 7cqw 7cqw rgba(0, 0, 0, 0.55);
-  animation: tt-drop 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s forwards;
-}
-@keyframes tt-drop {
-  60% {
-    opacity: 1;
-    transform: translate(0, 0) rotate(-4deg) scale(1.03);
-    box-shadow: 2cqw 3cqw 4cqw rgba(0, 0, 0, 0.5);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-    box-shadow: 0 0.6cqw 1.2cqw rgba(0, 0, 0, 0.6);
-  }
-}
-.tt-grooves {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background:
-    conic-gradient(from 25deg, transparent 0 30deg, rgba(255, 255, 255, 0.1) 50deg, transparent 75deg, transparent 205deg, rgba(255, 255, 255, 0.08) 225deg, transparent 250deg),
-    radial-gradient(circle, transparent 0 34%, #0d0c10 34.5% 36%, transparent 36.5% 96%, #24212b 96.5%),
-    repeating-radial-gradient(circle, #0f0e13 0 0.25cqw, #1c1922 0.32cqw 0.55cqw);
-}
-.tt-spin {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 0 40deg, rgba(255, 255, 255, 0.05) 55deg, transparent 70deg, transparent 160deg, rgba(195, 164, 255, 0.07) 178deg, transparent 195deg, transparent 290deg, rgba(255, 255, 255, 0.05) 305deg, transparent 320deg);
-  animation:
-    tt-spinup 0.9s cubic-bezier(0.55, 0, 1, 1) 1.35s forwards,
-    spin 1.8s linear 2.25s infinite;
-}
-@keyframes tt-spinup {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.tt-label {
-  position: absolute;
-  inset: 33%;
-  border-radius: 50%;
-  background: radial-gradient(circle, #0b0a10 0 4%, transparent 4.5%), var(--accent);
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  gap: 9cqw;
-  color: #1a0f2b;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-}
-.tt-label-top {
-  font-size: 1.9cqw;
-  font-stretch: 118%;
-}
-.tt-label-bottom {
-  font-size: 1.1cqw;
-  font-weight: 700;
-  opacity: 0.7;
-}
-.tt-spindle {
+.tt-inner {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 1.6cqw;
-  height: 1.6cqw;
-  margin: -0.8cqw 0 0 -0.8cqw;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #fff, #8a8495);
-  box-shadow: 0 0.2cqw 0.4cqw rgba(0, 0, 0, 0.6);
+  width: calc(1167 / 1424 * 100%);
+  height: calc(1424 / 1167 * 100%);
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.tt-inner > * {
+  position: absolute;
+  display: block;
+}
+.tt-base,
+.tt-arm {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.tt-rec {
+  left: calc(92 / 1167 * 100%);
+  top: calc(353 / 1424 * 100%);
+  width: calc(981 / 1167 * 100%);
+  aspect-ratio: 1;
+}
+.tt-spin {
+  width: 100%;
+  height: 100%;
 }
 .tt-arm {
-  position: absolute;
-  left: 60.5cqw;
-  top: 6cqw;
-  width: 30cqw;
-  height: auto;
-  max-width: none;
-  overflow: visible;
-  filter: drop-shadow(2.4cqw 3.6cqw 1.6cqw rgba(0, 0, 0, 0.55));
-  animation: tt-lower 0.35s ease-out 2.3s forwards;
-}
-@keyframes tt-lower {
-  to {
-    filter: drop-shadow(0.6cqw 1cqw 0.6cqw rgba(0, 0, 0, 0.6));
-  }
-}
-.tt-arm-swing {
-  transform-box: view-box;
-  transform-origin: 150px 40px;
-  transform: rotate(-6deg);
-  animation: tt-swing 0.85s cubic-bezier(0.45, 0, 0.2, 1) 1.45s forwards;
-}
-@keyframes tt-swing {
-  to {
-    transform: rotate(28deg);
-  }
-}
-.tt-controls {
-  position: absolute;
-  left: 76cqw;
-  bottom: 6cqw;
-  display: flex;
-  align-items: center;
-  gap: 1.8cqw;
-  font-size: 1.6cqw;
-  font-weight: 700;
-  color: var(--dim);
-  letter-spacing: 0.08em;
-}
-.tt-btn {
-  width: 4.6cqw;
-  height: 4.6cqw;
-  border-radius: 50%;
-  background: linear-gradient(160deg, #2c2836, #17141e);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-.tt-speed b {
-  color: var(--ink);
-}
-.tt-led {
-  width: 1.2cqw;
-  height: 1.2cqw;
-  border-radius: 50%;
-  background: #3a3542;
-  animation: tt-led 0.2s linear 1.35s forwards;
-}
-@keyframes tt-led {
-  to {
-    background: var(--accent);
-    box-shadow: 0 0 1.6cqw var(--accent);
-  }
-}
-.tt-pitch {
-  position: absolute;
-  right: 5.5cqw;
-  top: 36cqw;
-  width: 1.4cqw;
-  height: 22cqw;
-  border-radius: 1cqw;
-  background: #0c0b10;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-.tt-pitch span {
-  position: absolute;
-  left: -1.2cqw;
-  top: 45%;
-  width: 3.8cqw;
-  height: 2.2cqw;
-  border-radius: 0.5cqw;
-  background: linear-gradient(180deg, #3a3546, #22202a);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  transform-origin: calc(292 / 1167 * 100%) calc(203 / 1424 * 100%);
+  filter: drop-shadow(2px 0 2px rgba(0, 0, 0, 0.35));
 }
 
 .intro-caption {
@@ -2512,6 +2360,8 @@ html.intro-on .hero .reveal {
   color: var(--muted);
   opacity: 0;
   transform: translateY(8px);
+}
+.intro.is-ready .intro-caption {
   animation: tt-in 0.5s var(--ease) 2.55s forwards;
 }
 .intro-caption strong {
