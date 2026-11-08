@@ -338,30 +338,12 @@ h3 {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background:
-    conic-gradient(
-      from 30deg,
-      rgba(255, 255, 255, 0) 0deg,
-      rgba(255, 255, 255, 0.09) 30deg,
-      rgba(255, 255, 255, 0) 70deg,
-      rgba(255, 255, 255, 0) 180deg,
-      rgba(255, 255, 255, 0.07) 215deg,
-      rgba(255, 255, 255, 0) 250deg
-    ),
-    repeating-radial-gradient(circle at 50% 50%, #121016 0 1.2px, #211e28 1.6px 2.8px),
-    #121016;
+  /* Top-down photo of a record, tinted to the site palette (public/record.webp) */
+  background: #121016 var(--record-img) center / cover no-repeat;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
     0 0 40px -8px rgba(195, 164, 255, 0.18),
     0 20px 50px -10px rgba(0, 0, 0, 0.8);
-}
-.record-disc::before {
-  /* run-out groove + lead-in edge */
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, transparent 0 34%, #0d0c10 34.5% 36%, transparent 36.5% 95%, #1f1c24 95.5% 96.5%, transparent 97%);
 }
 .record-label {
   position: absolute;

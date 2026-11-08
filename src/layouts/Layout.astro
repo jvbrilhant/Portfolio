@@ -16,9 +16,11 @@ interface Props {
   image?: string;
   /** The home page renders its own footer inside the contact block. */
   footer?: boolean;
+  /** Error pages: keep them out of search results and give them no canonical URL. */
+  noindex?: boolean;
 }
 
-const { lang, title, description, altPath, image, footer = true } = Astro.props;
+const { lang, title, description, altPath, image, footer = true, noindex = false } = Astro.props;
 const s = t(lang);
 const pageTitle = title ? `${title} | Brilhante` : s.metaTitle;
 const desc = description ?? s.metaDescription;
@@ -37,9 +39,17 @@ const altHref = new URL(altPath, Astro.site).href;
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
     <meta name="theme-color" content="#0b0a10" />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={lang === 'pt' ? 'pt-BR' : 'en'} href={canonical} />
-    <link rel="alternate" hreflang={other === 'pt' ? 'pt-BR' : 'en'} href={altHref} />
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <>
+          <link rel="canonical" href={canonical} />
+          <link rel="alternate" hreflang={lang === 'pt' ? 'pt-BR' : 'en'} href={canonical} />
+          <link rel="alternate" hreflang={other === 'pt' ? 'pt-BR' : 'en'} href={altHref} />
+        </>
+      )
+    }
     <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -222,7 +232,7 @@ const altHref = new URL(altPath, Astro.site).href;
             } else {
               scrollToHash(target.hash);
             }
-            history.replaceState(null, '', target.hash === '#top' ? target.pathname : target.hash);
+            history.replaceState(history.state, '', target.hash === '#top' ? target.pathname : target.hash);
           });
         });
 

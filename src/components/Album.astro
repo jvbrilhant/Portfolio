@@ -1,6 +1,7 @@
 ---
 import Cover from './Cover.astro';
 import type { Project } from '../data/projects';
+import { url } from '../data/i18n';
 
 interface Props {
   project: Project;
@@ -11,7 +12,7 @@ interface Props {
 const { project, out = false, eager = false } = Astro.props;
 ---
 
-<div class:list={['album', { out }]} data-album style={`--label:${project.label}`}>
+<div class:list={['album', { out }]} data-album style={`--label:${project.label};--record-img:url(${url('record.webp')})`}>
   <div class="record" aria-hidden="true">
     <div class="record-disc"></div>
     <div class="record-spin"></div>
