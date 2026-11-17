@@ -308,13 +308,21 @@ const name = 'Brilhante';
     const engaged = () => window.scrollY >= g.top - 2 && window.scrollY <= g.top + g.run + 2;
     let busy = false;
     let busyTimer = 0;
+    // Touch screens get a shorter glide: a long one feels like the shelf is stuck.
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    const glide = coarse ? 0.5 : 0.9;
     const go = (i: number, immediate = false) => {
       const y = g.top + Math.min(n - 1, Math.max(0, i)) * g.step;
       busy = !immediate;
       clearTimeout(busyTimer);
-      busyTimer = window.setTimeout(() => (busy = false), 1100);
-      if (lenis) lenis.scrollTo(y, { duration: 0.9, immediate, force: true, onComplete: () => (busy = false) });
+      busyTimer = window.setTimeout(() => (busy = false), glide * 1000 + 200);
+      if (lenis) lenis.scrollTo(y, { duration: glide, immediate, force: true, onComplete: () => (busy = false) });
       else window.scrollTo({ top: y, behavior: immediate ? 'auto' : 'smooth' });
+    };
+    // Instant jump, used while a finger drags the shelf sideways.
+    const jump = (y: number) => {
+      if (lenis) lenis.scrollTo(y, { immediate: true, force: true });
+      else window.scrollTo(0, y);
     };
 
     const setActive = (a: number) => {
@@ -331,6 +339,9 @@ const name = 'Brilhante';
     };
 
     let lastP = -1;
+    // Last written stacking order and visibility, so a frame only touches what changed.
+    const lastZ: string[] = [];
+    const lastO: string[] = [];
     const render = () => {
       const p = progress();
       if (Math.abs(p - lastP) < 0.0005) return;
@@ -342,8 +353,10 @@ const name = 'Brilhante';
         const rot = -Math.max(-1, Math.min(1, d)) * 58;
         const z = -Math.min(a, 1) * w * 0.5 - Math.max(a - 1, 0) * w * 0.06;
         el.style.transform = `translate3d(${x.toFixed(1)}px, 0, ${z.toFixed(1)}px) rotateY(${rot.toFixed(2)}deg)`;
-        el.style.zIndex = String(100 - Math.round(a * 10));
-        el.style.opacity = a > 4.6 ? '0' : '1';
+        const zi = String(100 - Math.round(a * 10));
+        if (zi !== lastZ[i]) el.style.zIndex = lastZ[i] = zi;
+        const op = a > 4.6 ? '0' : '1';
+        if (op !== lastO[i]) el.style.opacity = lastO[i] = op;
       });
       setActive(Math.round(p));
     };
@@ -354,7 +367,7 @@ const name = 'Brilhante';
     // Settle on the nearest record once scrolling stops, like a needle finding the track.
     // On touch screens wait for the finger to lift and the momentum to end, so the snap
     // never fights the scroll.
-    const settleDelay = window.matchMedia('(pointer: coarse)').matches ? 320 : 160;
+    const settleDelay = coarse ? 320 : 160;
     const scheduleSettle = () => {
       clearTimeout(idle);
       idle = window.setTimeout(() => {
@@ -465,20 +478,82 @@ const name = 'Brilhante';
       },
       { passive: false, ...opt },
     );
-    let x0: number | null = null;
-    let y0 = 0;
-    stage.addEventListener('touchstart', (e) => ((x0 = e.touches[0].clientX), (y0 = e.touches[0].clientY)), { passive: true, ...opt });
+    // Touch drag: the shelf follows the finger sideways and lets go with a flick.
+    // The direction is decided in the first few pixels; a sideways drag takes over
+    // the gesture (so a slightly diagonal swipe still counts), a vertical one is left
+    // to the page scroll, which also flips through the records.
+    let tid: number | null = null;
+    let tx = 0;
+    let ty = 0;
+    let lastX = 0;
+    let lastT = 0;
+    let vx = 0;
+    let startP = 0;
+    let lock: 'x' | 'y' | null = null;
+    const touchById = (list: TouchList) => Array.from(list).find((t) => t.identifier === tid);
     stage.addEventListener(
-      'touchend',
+      'touchstart',
       (e) => {
-        if (x0 === null) return;
-        const dx = e.changedTouches[0].clientX - x0;
-        const dy = e.changedTouches[0].clientY - y0;
-        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(active + (dx < 0 ? 1 : -1));
-        x0 = null;
+        if (e.touches.length !== 1) {
+          tid = null;
+          return;
+        }
+        const t = e.touches[0];
+        tid = t.identifier;
+        tx = lastX = t.clientX;
+        ty = t.clientY;
+        lastT = e.timeStamp;
+        vx = 0;
+        lock = null;
       },
-      opt,
+      { passive: true, ...opt },
     );
+    stage.addEventListener(
+      'touchmove',
+      (e) => {
+        if (tid === null || lock === 'y') return;
+        const t = touchById(e.touches);
+        if (!t) return;
+        const dx = t.clientX - tx;
+        const dy = t.clientY - ty;
+        if (!lock) {
+          if (Math.hypot(dx, dy) < 8) return;
+          // A sideways drag wins unless it is clearly vertical, and only while the
+          // browser still lets us keep the page from scrolling.
+          lock = Math.abs(dx) > Math.abs(dy) * 0.7 && e.cancelable ? 'x' : 'y';
+          if (lock === 'y') return;
+          startP = progress();
+          busy = true;
+          clearTimeout(busyTimer);
+        }
+        if (e.cancelable) e.preventDefault();
+        // Lenis listens on the window and would cancel the shelf's own scrolling.
+        (e as TouchEvent & { lenisStopPropagation?: boolean }).lenisStopPropagation = true;
+        const dt = e.timeStamp - lastT;
+        if (dt > 0) vx = 0.75 * ((t.clientX - lastX) / dt) + 0.25 * vx;
+        lastX = t.clientX;
+        lastT = e.timeStamp;
+        const p = Math.min(n - 1, Math.max(0, startP - dx / (w * 0.9)));
+        jump(g.top + p * g.step);
+      },
+      { passive: false, ...opt },
+    );
+    const release = (e: TouchEvent) => {
+      if (lock === 'x') {
+        (e as TouchEvent & { lenisStopPropagation?: boolean }).lenisStopPropagation = true;
+        const dx = lastX - tx;
+        // Project the flick a little ahead, at most three records.
+        const fling = Math.max(-3, Math.min(3, (-vx * 160) / (w * 0.9)));
+        let target = Math.round(progress() + fling);
+        const from = Math.round(startP);
+        if (target === from && Math.abs(dx) > 30) target = from + (dx < 0 ? 1 : -1);
+        go(target);
+      }
+      lock = null;
+      tid = null;
+    };
+    stage.addEventListener('touchend', (e) => touchById(e.changedTouches) && release(e), opt);
+    stage.addEventListener('touchcancel', release, opt);
 
     render();
 

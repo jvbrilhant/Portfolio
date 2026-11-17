@@ -2564,4 +2564,9 @@ html.intro-on .hero .reveal {
   .crate-item .sleeve {
     -webkit-box-reflect: unset;
   }
+  /* the shelf light covers the whole screen: fading its colour repaints it on every
+     frame while the records move, so on phones it switches at once */
+  .crate-glow {
+    transition: none;
+  }
 }
