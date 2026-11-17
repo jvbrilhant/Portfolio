@@ -48,7 +48,7 @@ const { project } = Astro.props as { project: Project };
     grid-template-columns: 560px 1fr;
     align-items: center;
     gap: 40px;
-    padding: 0 72px 0 70px;
+    padding: 0 72px;
     box-sizing: border-box;
     background: #0b0a10;
   }
@@ -69,7 +69,7 @@ const { project } = Astro.props as { project: Project };
     color: var(--muted);
   }
   .og-title {
-    margin-top: 18px;
+    margin-top: 16px;
     font-size: 64px;
     font-weight: 800;
     font-stretch: 112%;
@@ -87,8 +87,8 @@ const { project } = Astro.props as { project: Project };
     color: var(--accent);
   }
   .og-disc {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background:
       radial-gradient(circle, var(--accent) 0 4px, #1a1624 4.5px 8px, transparent 8.5px),

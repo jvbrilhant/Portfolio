@@ -416,20 +416,26 @@ const name = 'Brilhante';
     // Clicking any cover opens its project. A side record first slides to the front,
     // then the page opens, so the shelf never jumps away from under the click.
     let opening = 0;
+    const hrefOf = (i: number) => items[i].querySelector('a')?.href ?? '';
+    const openRecord = (i: number) => {
+      try {
+        sessionStorage.setItem('brl-crate', String(i));
+      } catch {}
+      clearTimeout(opening);
+      if (i === active) {
+        navigate(hrefOf(i));
+        return;
+      }
+      go(i);
+      opening = window.setTimeout(() => navigate(hrefOf(i)), 650);
+    };
     items.forEach((el, i) =>
       el.querySelector('a')?.addEventListener(
         'click',
         (e) => {
           if (e.metaKey || e.ctrlKey || e.shiftKey || e.button > 0) return;
-          try {
-            sessionStorage.setItem('brl-crate', String(i));
-          } catch {}
-          if (i === active) return;
           e.preventDefault();
-          const href = (e.currentTarget as HTMLAnchorElement).href;
-          go(i);
-          clearTimeout(opening);
-          opening = window.setTimeout(() => navigate(href), 650);
+          openRecord(i);
         },
         opt,
       ),
@@ -489,6 +495,7 @@ const name = 'Brilhante';
     let lastT = 0;
     let vx = 0;
     let startP = 0;
+    let startT = 0;
     let lock: 'x' | 'y' | null = null;
     const touchById = (list: TouchList) => Array.from(list).find((t) => t.identifier === tid);
     stage.addEventListener(
@@ -502,7 +509,7 @@ const name = 'Brilhante';
         tid = t.identifier;
         tx = lastX = t.clientX;
         ty = t.clientY;
-        lastT = e.timeStamp;
+        lastT = startT = e.timeStamp;
         vx = 0;
         lock = null;
       },
@@ -538,7 +545,35 @@ const name = 'Brilhante';
       },
       { passive: false, ...opt },
     );
+    // A tap on a record opens it. The records are 3D-transformed and on iOS Safari a
+    // tap can be hit-tested against the shelf behind them instead of the cover, so
+    // the tap is matched against each record's box on screen rather than relying on
+    // the browser's click.
+    const recordAt = (x: number, y: number) => {
+      let hit = -1;
+      let best = -Infinity;
+      items.forEach((el, i) => {
+        if (el.style.opacity === '0') return;
+        const r = el.getBoundingClientRect();
+        if (x < r.left || x > r.right || y < r.top || y > r.bottom) return;
+        const z = Number(el.style.zIndex) || 0;
+        if (z > best) {
+          best = z;
+          hit = i;
+        }
+      });
+      return hit;
+    };
     const release = (e: TouchEvent) => {
+      const t = touchById(e.changedTouches);
+      if (e.type === 'touchend' && !lock && t && e.timeStamp - startT < 600 && Math.hypot(t.clientX - tx, t.clientY - ty) < 10) {
+        const i = recordAt(t.clientX, t.clientY);
+        if (i >= 0) {
+          // stop the browser's own click so the record does not open twice
+          if (e.cancelable) e.preventDefault();
+          openRecord(i);
+        }
+      }
       if (lock === 'x') {
         (e as TouchEvent & { lenisStopPropagation?: boolean }).lenisStopPropagation = true;
         const dx = lastX - tx;

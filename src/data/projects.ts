@@ -39,6 +39,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'design-system',
+    coverImage: 'covers/design-system.webp',
     cat: 'BRL-001',
     year: '2026',
     kind: { en: 'Design system', pt: 'Design system' },
@@ -91,6 +92,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'redesigning-legal-filing-workflows',
+    coverImage: 'covers/redesigning-legal-filing-workflows.webp',
     cat: 'BRL-002',
     year: '2026',
     kind: { en: 'Dashboard', pt: 'Dashboard' },
@@ -137,6 +139,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'bioeconomy-challenge',
+    coverImage: 'covers/bioeconomy-challenge.webp',
     cat: 'BRL-003',
     year: '2025',
     kind: { en: 'Web platform', pt: 'Plataforma web' },
@@ -188,6 +191,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'bioeconomia-brasil',
+    coverImage: 'covers/bioeconomia-brasil.webp',
     cat: 'BRL-004',
     year: '2023',
     kind: { en: 'Multilingual website', pt: 'Site multilíngue' },
@@ -236,6 +240,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'abrace',
+    coverImage: 'covers/abrace.webp',
     cat: 'BRL-005',
     year: '2025',
     kind: { en: 'Website & donations', pt: 'Site e doações' },
@@ -284,6 +289,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'stag',
+    coverImage: 'covers/stag.webp',
     cat: 'BRL-006',
     year: '2026',
     kind: { en: 'Website redesign', pt: 'Redesign de site' },
@@ -333,6 +339,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'cepel-nzeb',
+    coverImage: 'covers/cepel-nzeb.webp',
     cat: 'BRL-007',
     year: '2025',
     kind: { en: 'Virtual tour', pt: 'Tour virtual' },
@@ -381,6 +388,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'universo-paralello',
+    coverImage: 'covers/universo-paralello.webp',
     cat: 'BRL-008',
     year: '2025',
     kind: { en: 'Festival website', pt: 'Site de festival' },
@@ -430,6 +438,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'logali',
+    coverImage: 'covers/logali.webp',
     cat: 'BRL-009',
     year: '2022',
     kind: { en: 'Mobile app', pt: 'App mobile' },
@@ -478,6 +487,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'suindara-app',
+    coverImage: 'covers/suindara-app.webp',
     cat: 'BRL-010',
     year: '2024',
     kind: { en: 'Mobile app', pt: 'App mobile' },
@@ -526,6 +536,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'suindara-dashboard',
+    coverImage: 'covers/suindara-dashboard.webp',
     cat: 'BRL-011',
     year: '2024',
     kind: { en: 'Dashboard', pt: 'Dashboard' },
@@ -574,6 +585,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'e-statis',
+    coverImage: 'covers/e-statis.webp',
     cat: 'BRL-012',
     year: '2022',
     kind: { en: 'App prototype', pt: 'Protótipo de app' },

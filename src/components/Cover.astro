@@ -52,7 +52,7 @@ const bracketY = [70, 110, 150, 190, 230, 270, 310, 350];
 
 <div class="cover" data-cover={v}>
   {project.coverImage ? (
-    <img src={url(project.coverImage)} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    <img src={url(project.coverImage)} alt="" width="1200" height="1200" loading={eager ? 'eager' : 'lazy'} decoding="async" />
   ) : (
     <svg viewBox="0 0 400 400" role="img" aria-label={`${project.en.title} cover`} xmlns="http://www.w3.org/2000/svg">
       {v === 'design-system' && (

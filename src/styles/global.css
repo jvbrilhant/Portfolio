@@ -76,15 +76,15 @@ h3 {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .skip {
   position: fixed;
   left: 16px;
-  top: -60px;
+  top: -64px;
   z-index: 100;
-  padding: 10px 16px;
+  padding: 12px 16px;
   background: var(--ink);
   color: var(--bg);
   border-radius: 999px;
@@ -93,6 +93,19 @@ h3 {
 }
 .skip:focus {
   top: 16px;
+}
+
+/* No double-tap zoom delay on links and buttons (pinch zoom still works). */
+a,
+button {
+  touch-action: manipulation;
+}
+/* Even line lengths in titles, so none ends on a single orphan word. */
+h2,
+h3,
+.p-title,
+.crate-title {
+  text-wrap: balance;
 }
 
 .wrap {
@@ -193,15 +206,15 @@ h3 {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-weight: 800;
   font-stretch: 118%;
   font-size: 19px;
   letter-spacing: -0.01em;
 }
 .logo-disc {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background:
     radial-gradient(circle, var(--accent) 0 3px, #1a1624 3.5px 6px, transparent 6.5px),
@@ -232,7 +245,7 @@ h3 {
   align-items: center;
   gap: 8px;
   height: 36px;
-  padding: 0 14px;
+  padding: 0 16px;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 12px;
@@ -273,7 +286,7 @@ h3 {
 .label {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -282,12 +295,12 @@ h3 {
 }
 .label::before {
   content: '';
-  width: 18px;
+  width: 16px;
   height: 1px;
   background: currentColor;
 }
 .section-title {
-  margin-top: 18px;
+  margin-top: 16px;
   font-size: clamp(38px, 6.4vw, 84px);
   font-stretch: 112%;
   font-weight: 750;
@@ -429,7 +442,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
+  padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 13px;
@@ -437,8 +450,8 @@ h3 {
 }
 .available::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #7cf29b;
   box-shadow: 0 0 0 0 rgba(124, 242, 155, 0.5);
@@ -491,7 +504,7 @@ h3 {
   letter-spacing: -0.01em;
 }
 .hero-based {
-  margin-top: 14px;
+  margin-top: 16px;
   color: var(--muted);
   font-size: 15px;
 }
@@ -499,7 +512,7 @@ h3 {
   justify-self: start;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   font-weight: 600;
   font-size: 15px;
 }
@@ -570,7 +583,7 @@ h3 {
   gap: 12px 40px;
 }
 .crate-head .section-title {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: clamp(38px, 5.4vw, 76px);
 }
 .crate-intro {
@@ -593,15 +606,20 @@ h3 {
 }
 
 .crate-stage {
+  /* the records never get closer than this to the text above or below them */
+  --air: 32px;
   position: relative;
   display: grid;
   place-items: center;
   perspective: 1400px;
   min-height: 0;
   touch-action: pan-y;
+  /* the record size follows the room the stage really has (cqh), so short screens
+     and open browser toolbars shrink it instead of pushing it into the text */
+  container-type: size;
 }
 .crate-track {
-  --w: clamp(190px, min(26vw, 40svh), 380px);
+  --w: clamp(160px, min(26vw, 100cqh - 2 * var(--air)), 380px);
   position: relative;
   width: var(--w);
   aspect-ratio: 1;
@@ -609,6 +627,10 @@ h3 {
   padding: 0;
   list-style: none;
   transform-style: preserve-3d;
+  /* The list shares the z=0 plane with the front record; when the scroll stops a
+     fraction off, the record sits a hair behind it and taps would land on the list.
+     Only the records take pointer events. */
+  pointer-events: none;
 }
 .crate-item {
   position: absolute;
@@ -616,6 +638,7 @@ h3 {
   transform-style: preserve-3d;
   will-change: transform;
   transition: opacity 0.3s;
+  pointer-events: auto;
 }
 .crate-item > a {
   display: block;
@@ -661,7 +684,7 @@ h3 {
   /* every title sits in the same grid cell, so the block is as tall as the longest
      one (two-line titles on phones included) and the arrows never get covered */
   display: grid;
-  margin-top: 18px;
+  margin-top: 16px;
 }
 .crate-info-item {
   grid-area: 1 / 1;
@@ -699,9 +722,9 @@ h3 {
 .crate-open {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 6px;
-  padding: 9px 16px 9px 10px;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 16px 8px 8px;
   border-radius: 999px;
   background: var(--ink);
   color: var(--bg);
@@ -713,27 +736,27 @@ h3 {
   transform: translateY(-2px);
 }
 .crate-play {
-  width: 22px;
-  height: 22px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--bg);
-  position: relative;
 }
 .crate-play::after {
   content: '';
-  position: absolute;
-  left: 8px;
-  top: 6px;
+  /* the triangle's mass sits left of its box; nudge it right to look centred */
+  translate: 1px 0;
   border-left: 8px solid var(--ink);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
 }
 
 .crate-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   margin-top: 16px;
 }
 .crate-arrow {
@@ -757,7 +780,7 @@ h3 {
 }
 .crate-index {
   display: flex;
-  gap: 2px;
+  gap: 4px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -768,8 +791,8 @@ h3 {
   place-items: center;
   padding: 0;
   line-height: 1;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border: 0;
   background: transparent;
   color: var(--dim);
@@ -789,8 +812,8 @@ h3 {
 .crate-index button::after {
   content: '';
   position: absolute;
-  left: 10px;
-  right: 10px;
+  left: 8px;
+  right: 8px;
   bottom: 4px;
   height: 2px;
   border-radius: 1px;
@@ -820,14 +843,36 @@ h3 {
   .crate-intro p:first-child {
     display: none;
   }
+  .crate-stage {
+    --air: 24px;
+  }
   .crate-track {
-    --w: min(60vw, 36svh);
+    --w: max(120px, min(60vw, 100cqh - 2 * var(--air)));
   }
   .crate-index {
     display: none;
   }
   .crate-count {
     display: inline-block;
+  }
+}
+
+/* Short phones (iPhone SE, landscape-ish heights): tighter heading so the record keeps
+   its room and its distance from the text. */
+@media (max-width: 760px) and (max-height: 640px) {
+  .crate-sticky {
+    padding-top: 76px;
+    padding-bottom: 16px;
+  }
+  .crate-head .section-title {
+    margin-top: 4px;
+    font-size: 32px;
+  }
+  .crate-hint {
+    margin-top: 4px;
+  }
+  .crate-info {
+    margin-top: 8px;
   }
 }
 
@@ -851,7 +896,7 @@ h3 {
   font-size: 12px;
   font-weight: 600;
   color: var(--dim);
-  padding-top: 14px;
+  padding-top: 16px;
   font-variant-numeric: tabular-nums;
 }
 .stat .v {
@@ -870,7 +915,7 @@ h3 {
   color: var(--muted);
 }
 .stat p {
-  margin-top: 10px;
+  margin-top: 12px;
   color: var(--muted);
   max-width: 380px;
   font-size: 15px;
@@ -904,10 +949,10 @@ h3 {
     align-items: start;
     gap: 0;
     min-height: 232px;
-    margin-bottom: 18px;
-    padding: 20px 22px 26px;
+    margin-bottom: 16px;
+    padding: 20px 24px 24px;
     border: 1px solid rgba(241, 237, 247, 0.1);
-    border-radius: 22px;
+    border-radius: 24px;
     background:
       radial-gradient(120% 80% at 100% 0%, rgba(195, 164, 255, 0.1), transparent 60%),
       linear-gradient(165deg, #1b1726, #110f18);
@@ -945,7 +990,7 @@ h3 {
   }
   .stat .v {
     grid-area: v;
-    margin-top: 26px;
+    margin-top: 24px;
     /* scales down on narrow phones so long figures like 100,000+ stay inside the card */
     font-size: min(58px, 14.5vw);
   }
@@ -1071,7 +1116,7 @@ h3 {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
   column-gap: 0;
-  row-gap: 10px;
+  row-gap: 12px;
   align-items: center;
   padding: 28px 0;
   border-top: 1px solid var(--line);
@@ -1237,14 +1282,14 @@ h3 {
 .socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-top: 28px;
 }
 .socials a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border: 1px solid var(--c-line);
   border-radius: 999px;
   font-size: 14px;
@@ -1273,7 +1318,7 @@ h3 {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: 50% 42%;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .contact-foot {
   display: flex;
@@ -1301,7 +1346,7 @@ h3 {
   }
   .channel .k {
     width: auto;
-    min-width: 110px;
+    min-width: 112px;
   }
   .channel {
     flex-wrap: nowrap;
@@ -1338,7 +1383,7 @@ h3 {
 .back {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 14px;
   font-weight: 500;
   color: var(--muted);
@@ -1378,7 +1423,7 @@ h3 {
   line-height: 0.96;
 }
 .p-sub {
-  margin-top: 22px;
+  margin-top: 24px;
   max-width: 560px;
   font-size: clamp(18px, 1.8vw, 22px);
   line-height: 1.4;
@@ -1415,7 +1460,7 @@ h3 {
   color: var(--muted);
 }
 .credits dd {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   font-size: 17px;
   font-weight: 500;
   line-height: 1.45;
@@ -1546,14 +1591,14 @@ h3 {
   cursor: zoom-in;
   font: inherit;
   color: inherit;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 .frame-btn img,
 .frame-btn video {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: filter 0.4s var(--ease);
 }
 .frame-btn:hover img,
@@ -1569,7 +1614,7 @@ h3 {
   align-items: center;
   gap: 0;
   height: 32px;
-  padding: 0 9px;
+  padding: 0 8px;
   border-radius: 999px;
   background: rgba(11, 10, 16, 0.72);
   color: var(--ink);
@@ -1720,7 +1765,7 @@ html.lb-open {
 }
 .tools li {
   list-style: none;
-  padding: 6px 12px;
+  padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 13px;
@@ -1733,7 +1778,7 @@ html.lb-open {
 .visit {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin-top: 28px;
   padding: 12px 20px;
   border-radius: 999px;
@@ -1769,7 +1814,7 @@ html.lb-open {
   color: var(--accent);
 }
 .next-title {
-  margin-top: 14px;
+  margin-top: 16px;
   font-size: clamp(30px, 4vw, 56px);
   font-weight: 780;
   font-stretch: 112%;
@@ -1781,7 +1826,7 @@ html.lb-open {
   color: var(--accent);
 }
 .next-sub {
-  margin-top: 14px;
+  margin-top: 16px;
   color: var(--muted);
   max-width: 480px;
 }
@@ -1844,14 +1889,14 @@ html.lb-open {
 .val.phone {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 .flag {
   display: inline-flex;
   flex: none;
-  width: 30px;
-  height: 20px;
-  border-radius: 3px;
+  width: 36px;
+  height: 24px;
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
@@ -1951,9 +1996,9 @@ html.cursor-ready .cursor.is-visible {
   top: 0;
 }
 .cursor-disc {
-  width: 22px;
-  height: 22px;
-  margin: -11px 0 0 -11px;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
   border-radius: 50%;
   background:
     radial-gradient(circle, #0b0a10 0 1.5px, var(--accent) 2px 5px, transparent 5.5px),
@@ -1971,9 +2016,9 @@ html.cursor-ready .cursor.is-visible {
     transform 0.2s var(--ease);
 }
 .cursor-icon {
-  width: 18px;
-  height: 18px;
-  margin: -9px 0 0 -9px;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
   color: #0b0a10;
   opacity: 0;
   transform: scale(0.5);
@@ -1983,9 +2028,9 @@ html.cursor-ready .cursor.is-visible {
 }
 .cursor.is-link .cursor-disc,
 .cursor.is-zoom .cursor-disc {
-  width: 46px;
-  height: 46px;
-  margin: -23px 0 0 -23px;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
   background: var(--accent);
   animation-play-state: paused;
 }
@@ -2043,7 +2088,7 @@ html.cursor-ready .cursor.is-visible {
   display: inline-flex;
   align-items: flex-end;
   gap: 2px;
-  height: 11px;
+  height: 12px;
   margin-left: 12px;
   vertical-align: -1px;
 }
@@ -2080,7 +2125,7 @@ html.cursor-ready .cursor.is-visible {
   align-items: center;
 }
 .foot-made .eq {
-  margin: 0 10px 0 0;
+  margin: 0 8px 0 0;
   color: var(--accent);
 }
 .contact-foot .foot-made .eq {
@@ -2153,7 +2198,7 @@ html.cursor-ready .cursor.is-visible {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
   background: rgba(11, 10, 16, 0.78);
   -webkit-backdrop-filter: blur(10px);
@@ -2337,7 +2382,7 @@ html.intro-on .hero .reveal {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 6px 12px;
+  gap: 8px 12px;
   font-size: 14px;
   color: var(--muted);
   opacity: 0;
@@ -2424,8 +2469,8 @@ html.intro-on .hero .reveal {
   list-style: none;
   margin: 0;
   padding: 8px;
-  min-width: 250px;
-  border-radius: 14px;
+  min-width: 256px;
+  border-radius: 16px;
   background: rgba(16, 14, 22, 0.92);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -2452,7 +2497,7 @@ html.intro-on .hero .reveal {
   grid-template-columns: 30px 1fr auto;
   align-items: center;
   gap: 8px;
-  padding: 9px 10px;
+  padding: 8px 12px;
   border-radius: 8px;
   font-size: 14px;
   color: var(--muted);
@@ -2496,7 +2541,7 @@ html.intro-on .hero .reveal {
   position: relative;
   width: 20px;
   height: 20px;
-  margin-right: 2px;
+  margin-right: 4px;
   transform-style: preserve-3d;
   transition: transform 0.45s var(--ease);
 }
