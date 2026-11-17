@@ -12,8 +12,11 @@ import { url } from '../data/i18n';
 interface Props {
   project: Project;
   eager?: boolean;
+  /** How wide the cover shows, so phones load the 480/800px version, not the 1200px one. */
+  sizes?: string;
 }
-const { project, eager = false } = Astro.props;
+const { project, eager = false, sizes = '(max-width: 760px) 64vw, 380px' } = Astro.props;
+const variant = (w: number) => url(project.coverImage!.replace(/\.webp$/, `-${w}.webp`)) + ` ${w}w`;
 const v = project.cover;
 
 // Bioeconomy Challenge: 60 dots on the outer ring, one per coalition member.
@@ -52,7 +55,16 @@ const bracketY = [70, 110, 150, 190, 230, 270, 310, 350];
 
 <div class="cover" data-cover={v}>
   {project.coverImage ? (
-    <img src={url(project.coverImage)} alt="" width="1200" height="1200" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    <img
+      src={url(project.coverImage)}
+      srcset={[variant(480), variant(800), `${url(project.coverImage)} 1200w`].join(', ')}
+      sizes={sizes}
+      alt=""
+      width="1200"
+      height="1200"
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
   ) : (
     <svg viewBox="0 0 400 400" role="img" aria-label={`${project.en.title} cover`} xmlns="http://www.w3.org/2000/svg">
       {v === 'design-system' && (

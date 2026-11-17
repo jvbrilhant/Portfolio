@@ -95,6 +95,20 @@ h3 {
   top: 16px;
 }
 
+/* Decorative loops (equaliser bars, the contact marquee) only run while on screen:
+   off-screen they would still cost the phone a frame of work every frame.
+   Layout.astro marks the visible ones with [data-on]. */
+.eq:not([data-on]) i,
+.marquee:not([data-on]) .marquee-track {
+  animation-play-state: paused;
+}
+/* Section anchors land below the fixed header (Lenis adds this offset on desktop). */
+:where(section[id]) {
+  scroll-margin-top: 72px;
+}
+:where([data-track]) {
+  scroll-margin-top: 100px;
+}
 /* No double-tap zoom delay on links and buttons (pinch zoom still works). */
 a,
 button {
@@ -550,6 +564,28 @@ h3,
   margin-top: clamp(40px, 6vw, 80px);
   scroll-margin-top: 0;
 }
+/* One snap point per record. Touch screens snap to them natively, so the shelf settles
+   on a record in the same motion as the flick instead of gliding there afterwards. */
+.crate-snap {
+  position: absolute;
+  left: 0;
+  top: calc(var(--i) * var(--step));
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+@media (pointer: coarse) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+  /* paused while a finger drags the shelf sideways */
+  html.crate-free {
+    scroll-snap-type: none;
+  }
+  .crate-snap {
+    scroll-snap-align: start;
+  }
+}
 .crate-sticky {
   position: sticky;
   top: 0;
@@ -637,8 +673,19 @@ h3,
   inset: 0;
   transform-style: preserve-3d;
   will-change: transform;
-  transition: opacity 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0s;
   pointer-events: auto;
+}
+/* records far off the shelf: no layer to paint or composite */
+.crate-item[data-far] {
+  opacity: 0;
+  visibility: hidden;
+  will-change: auto;
+  transition:
+    opacity 0.3s,
+    visibility 0s 0.3s;
 }
 .crate-item > a {
   display: block;
@@ -649,9 +696,10 @@ h3,
 .crate-item:not(.is-active) .album .record {
   transform: none !important;
 }
+/* only the front record spins; the others carry no animation (and no extra layers) */
 .crate-item:not(.is-active) .record-spin,
 .crate-item:not(.is-active) .record-label {
-  animation-play-state: paused !important;
+  animation: none !important;
 }
 .crate-item:not(.is-active) .sleeve {
   transform: none !important;

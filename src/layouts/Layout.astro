@@ -118,8 +118,11 @@ const altHref = new URL(altPath, Astro.site).href;
       import { navigate } from 'astro:transitions/client';
 
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Touch screens keep the browser's own scrolling: Lenis never smooths a finger anyway,
+      // and its frame loop and programmatic scrolls only fight native momentum and snapping.
+      const coarse = window.matchMedia('(pointer: coarse)').matches;
       let lenis: Lenis | null = null;
-      if (!reduce) {
+      if (!reduce && !coarse) {
         lenis = new Lenis({ lerp: 0.11, anchors: { offset: -72 } });
         const raf = (time: number) => {
           lenis?.raf(time);
@@ -189,7 +192,19 @@ const altHref = new URL(altPath, Astro.site).href;
         else (el as HTMLElement).scrollIntoView({ behavior: immediate ? 'auto' : 'smooth' });
       }
 
+      // Run the decorative loops only while they are on screen (see .eq:not([data-on])).
+      let loopIO: IntersectionObserver | null = null;
+      function watchLoops() {
+        loopIO?.disconnect();
+        loopIO = new IntersectionObserver(
+          (entries) => entries.forEach((en) => en.target.toggleAttribute('data-on', en.isIntersecting)),
+          { rootMargin: '80px 0px' },
+        );
+        document.querySelectorAll('.eq, .marquee').forEach((el) => loopIO!.observe(el));
+      }
+
       function init() {
+        watchLoops();
         // Header state once the hero scrolls away.
         const header = document.querySelector('.site-header');
         const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 24);

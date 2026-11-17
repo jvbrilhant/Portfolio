@@ -71,7 +71,7 @@ const rows = <T,>(list: T[]): T[][] => {
         <a class="back" href={`${homePath(lang)}#work`}><span>←</span> {s.project.back}</a>
         <div class="p-head">
           <div class="p-album">
-            <Album project={project} out eager />
+            <Album project={project} out eager sizes="(max-width: 760px) 78vw, 420px" />
             {decor.tonearm && <Tonearm />}
           </div>
           <div>
