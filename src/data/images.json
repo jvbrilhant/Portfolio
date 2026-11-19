@@ -80,26 +80,51 @@
   ],
   "solution": [
    {
-    "src": "work/redesigning-legal-filing-workflows/03.webp",
+    "src": "work/redesigning-legal-filing-workflows/10-quick-filters.webp",
     "w": 2000,
-    "h": 2499
+    "h": 1250
    },
    {
-    "src": "work/redesigning-legal-filing-workflows/04.webp",
+    "src": "work/redesigning-legal-filing-workflows/11-advanced-filters.webp",
     "w": 2000,
-    "h": 2188
+    "h": 1279
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/12-results.webp",
+    "w": 2000,
+    "h": 2804
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/13-tab-contract.webp",
+    "w": 2000,
+    "h": 2543
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/14-tab-parties.webp",
+    "w": 2000,
+    "h": 2699
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/23-tab-assets.webp",
+    "w": 2000,
+    "h": 3024
    }
   ],
   "result": [
    {
-    "src": "work/redesigning-legal-filing-workflows/05.webp",
-    "w": 2000,
-    "h": 2188
+    "src": "work/redesigning-legal-filing-workflows/20-dialogs.webp",
+    "w": 2400,
+    "h": 1089
    },
    {
-    "src": "work/redesigning-legal-filing-workflows/06.webp",
+    "src": "work/redesigning-legal-filing-workflows/22-summary.webp",
     "w": 2000,
-    "h": 2182
+    "h": 3006
+   },
+   {
+    "src": "work/redesigning-legal-filing-workflows/24-tab-other.webp",
+    "w": 2000,
+    "h": 2693
    }
   ]
  },
