@@ -3,59 +3,99 @@
   "hero": {
    "src": "work/design-system/hero.webp",
    "w": 1440,
-   "h": 1050
+   "h": 1050,
+   "alt": {
+    "en": "Design system cover: the title on dark purple, beside a card with sample components and two buttons",
+    "pt": "Capa do design system: o título sobre roxo escuro, ao lado de um card com componentes de exemplo e dois botões"
+   }
   },
   "overview": [
    {
     "src": "work/design-system/01.webp",
     "w": 2000,
-    "h": 1125
+    "h": 1125,
+    "alt": {
+     "en": "Overview of the component library in Figma, with forms, cards, buttons and icon sets laid out in frames",
+     "pt": "Visão geral da biblioteca de componentes no Figma, com formulários, cards, botões e conjuntos de ícones organizados em frames"
+    }
    },
    {
     "src": "work/design-system/02.webp",
     "w": 1440,
-    "h": 675
+    "h": 675,
+    "alt": {
+     "en": "Guidelines page with three core principles: visual consistency, accessibility and instant feedback",
+     "pt": "Página de diretrizes com três princípios: consistência visual, acessibilidade e feedback instantâneo"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/design-system/03.webp",
     "w": 903,
-    "h": 1142
+    "h": 1142,
+    "alt": {
+     "en": "Social media icon set for Facebook, Instagram, Twitter, LinkedIn and Dribbble, in light, dark, borderless and no-background versions",
+     "pt": "Conjunto de ícones de redes sociais para Facebook, Instagram, Twitter, LinkedIn e Dribbble, nas versões clara, escura, sem borda e sem fundo"
+    }
    },
    {
     "src": "work/design-system/04.webp",
     "w": 1064,
-    "h": 1291
+    "h": 1291,
+    "alt": {
+     "en": "Product card component in default, hover and unavailable states, with optional price and buy button",
+     "pt": "Componente de card de produto nos estados padrão, hover e indisponível, com preço e botão de compra opcionais"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/design-system/05.webp",
     "w": 2000,
-    "h": 877
+    "h": 877,
+    "alt": {
+     "en": "Documentation boards for buttons, the carousel and icons, shown side by side",
+     "pt": "Pranchas de documentação de botões, carrossel e ícones, lado a lado"
+    }
    },
    {
     "src": "work/design-system/06.webp",
     "w": 2000,
-    "h": 660
+    "h": 660,
+    "alt": {
+     "en": "Footer component variants, from a simple version to one with newsletter sign-up and social links",
+     "pt": "Variantes do componente de rodapé, da versão simples a uma com cadastro de newsletter e links sociais"
+    }
    },
    {
     "src": "work/design-system/07.webp",
     "w": 2000,
-    "h": 685
+    "h": 685,
+    "alt": {
+     "en": "Type scale, from the high-impact display style down to captions, with size and line height for each step",
+     "pt": "Escala tipográfica, do estilo de destaque até as legendas, com tamanho e entrelinha de cada nível"
+    }
    }
   ],
   "result": [
    {
     "src": "work/design-system/08.webp",
     "w": 1460,
-    "h": 2389
+    "h": 2389,
+    "alt": {
+     "en": "Guideline pages for principles, spacing on an 8px grid and corner radius, with interactive component examples",
+     "pt": "Páginas de diretrizes de princípios, espaçamento em grid de 8px e arredondamento, com exemplos de componentes interativos"
+    }
    },
    {
     "src": "work/design-system/09.webp",
     "w": 1780,
-    "h": 1937
+    "h": 1937,
+    "alt": {
+     "en": "Form fields in default, hover and disabled states, above an accordion component shown open and closed",
+     "pt": "Campos de formulário nos estados padrão, hover e desabilitado, acima de um componente de acordeão aberto e fechado"
+    }
    }
   ]
  },
@@ -63,68 +103,116 @@
   "hero": {
    "src": "work/redesigning-legal-filing-workflows/hero.webp",
    "w": 1920,
-   "h": 1080
+   "h": 1080,
+   "alt": {
+    "en": "Cover of the filing module prototype: “Law system, Filing module” on dark green",
+    "pt": "Capa do protótipo do módulo de protocolo: “Law system, Filing module” sobre verde escuro"
+   }
   },
   "overview": [],
   "discovery": [
    {
     "src": "work/redesigning-legal-filing-workflows/01.webp",
     "w": 1767,
-    "h": 891
+    "h": 891,
+    "alt": {
+     "en": "CSD matrix listing the open questions about drafts, file formats, security, validation and collaboration, with the answers found",
+     "pt": "Matriz CSD com as perguntas em aberto sobre minutas, formatos de arquivo, segurança, validação e colaboração, e as respostas encontradas"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/02.webp",
     "w": 1160,
-    "h": 643
+    "h": 643,
+    "alt": {
+     "en": "Opportunity map with four notes: conditional fields, a built-in document viewer, an edit log and criticality alerts",
+     "pt": "Mapa de oportunidades com quatro notas: campos condicionais, visualizador de documentos integrado, histórico de edições e alertas de criticidade"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/redesigning-legal-filing-workflows/10-quick-filters.webp",
     "w": 2000,
-    "h": 1250
+    "h": 1250,
+    "alt": {
+     "en": "Filing system home with the quick search filters collapsed to one row",
+     "pt": "Tela inicial do sistema de protocolo com os filtros rápidos recolhidos em uma linha"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/11-advanced-filters.webp",
     "w": 2000,
-    "h": 1279
+    "h": 1279,
+    "alt": {
+     "en": "The same screen with advanced filters open: dates, value ranges and more fields",
+     "pt": "A mesma tela com os filtros avançados abertos: datas, faixas de valor e mais campos"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/12-results.webp",
     "w": 2000,
-    "h": 2804
+    "h": 2804,
+    "alt": {
+     "en": "Search results as expandable cards with status tags, bulk actions and pagination",
+     "pt": "Resultados da busca em cards expansíveis, com tags de status, ações em lote e paginação"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/13-tab-contract.webp",
     "w": 2000,
-    "h": 2543
+    "h": 2543,
+    "alt": {
+     "en": "Expanded case with the contract tab open, showing the form fields and accept, reject and amend buttons",
+     "pt": "Processo expandido com a aba de contrato aberta, mostrando os campos do formulário e os botões de aceitar, rejeitar e emendar"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/14-tab-parties.webp",
     "w": 2000,
-    "h": 2699
+    "h": 2699,
+    "alt": {
+     "en": "Parties tab listing each party with toggles and edit actions",
+     "pt": "Aba de partes, com cada parte listada com chaves de ativação e ações de edição"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/23-tab-assets.webp",
     "w": 2000,
-    "h": 3024
+    "h": 3024,
+    "alt": {
+     "en": "Assets tab with a list of items, each with its own details and actions",
+     "pt": "Aba de bens, com uma lista de itens, cada um com seus detalhes e ações"
+    }
    }
   ],
   "result": [
    {
     "src": "work/redesigning-legal-filing-workflows/20-dialogs.webp",
     "w": 2400,
-    "h": 1089
+    "h": 1089,
+    "alt": {
+     "en": "Dialogs for adding items, rejecting a request and confirming changes",
+     "pt": "Diálogos para adicionar itens, rejeitar uma solicitação e confirmar alterações"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/22-summary.webp",
     "w": 2000,
-    "h": 3006
+    "h": 3006,
+    "alt": {
+     "en": "Summary table comparing groups side by side, with values, toggles and actions per column",
+     "pt": "Tabela de resumo comparando grupos lado a lado, com valores, chaves e ações por coluna"
+    }
    },
    {
     "src": "work/redesigning-legal-filing-workflows/24-tab-other.webp",
     "w": 2000,
-    "h": 2693
+    "h": 2693,
+    "alt": {
+     "en": "“Other” tab with a long form of additional fields above the remaining cases",
+     "pt": "Aba “Outros”, com um formulário longo de campos adicionais acima dos demais processos"
+    }
    }
   ]
  },
@@ -132,62 +220,84 @@
   "hero": {
    "src": "work/bioeconomy-challenge/hero.webp",
    "w": 2000,
-   "h": 1500
+   "h": 1125,
+   "alt": {
+    "en": "The new Bioeconomy Challenge site on a laptop and a phone: the home page on the laptop, the Working Groups page on the phone",
+    "pt": "O novo site do Bioeconomy Challenge em um laptop e um celular: a home no laptop, a página de Working Groups no celular"
+   }
   },
   "overview": [
    {
     "src": "work/bioeconomy-challenge/01.webp",
     "w": 2000,
-    "h": 1299,
-    "video": "work/bioeconomy-challenge/01.mp4"
+    "h": 1253,
+    "video": "work/bioeconomy-challenge/01.mp4",
+    "alt": {
+     "en": "Home page hero: “Making the bioeconomy work at scale” over an aerial photo of forest, with the sun from the logo in mint green",
+     "pt": "Hero da home: “Making the bioeconomy work at scale” sobre uma foto aérea de floresta, com o sol do logo em verde-menta"
+    }
    },
    {
     "src": "work/bioeconomy-challenge/02.webp",
     "w": 2000,
-    "h": 1158
+    "h": 1253,
+    "alt": {
+     "en": "About us page with the title in orange, a photo from a panel and key figures: 2025 to 2028, 4 priorities, 100+ organisations, 60+ countries",
+     "pt": "Página About us com o título em laranja, uma foto de um painel e os números principais: 2025 a 2028, 4 prioridades, mais de 100 organizações, mais de 60 países"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/bioeconomy-challenge/03.webp",
-    "w": 1298,
-    "h": 3086
-   },
-   {
-    "src": "work/bioeconomy-challenge/04.webp",
-    "w": 1299,
-    "h": 3086
+    "w": 2000,
+    "h": 1253,
+    "alt": {
+     "en": "Two phones showing the mobile Working Groups page and the News & Events list with category filters",
+     "pt": "Dois celulares mostrando a página de Working Groups e a lista de News & Events com filtros por categoria, no mobile"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/bioeconomy-challenge/05.webp",
     "w": 2000,
-    "h": 1299,
-    "video": "work/bioeconomy-challenge/05.mp4"
+    "h": 1253,
+    "video": "work/bioeconomy-challenge/05.mp4",
+    "alt": {
+     "en": "Working Groups page with the introduction text and tabs for the four groups: Metrics and Indicators, Finance, Market Development and Trade, Sociobioeconomy",
+     "pt": "Página de Working Groups com o texto de introdução e abas para os quatro grupos: Metrics and Indicators, Finance, Market Development and Trade, Sociobioeconomy"
+    }
    },
    {
     "src": "work/bioeconomy-challenge/06.webp",
     "w": 2000,
-    "h": 1299
+    "h": 1253,
+    "alt": {
+     "en": "News & Events page with filters for all, events and news, above a row of article cards",
+     "pt": "Página de News & Events com filtros de todos, eventos e notícias, acima de uma linha de cards de artigos"
+    }
    },
    {
     "src": "work/bioeconomy-challenge/07.webp",
     "w": 2000,
-    "h": 1299,
-    "video": "work/bioeconomy-challenge/07.mp4"
+    "h": 1253,
+    "video": "work/bioeconomy-challenge/07.mp4",
+    "alt": {
+     "en": "Article page with the title and share links fixed on the left while the text runs on the right",
+     "pt": "Página de artigo com o título e os links de compartilhamento fixos à esquerda enquanto o texto corre à direita"
+    }
    }
   ],
   "result": [
    {
     "src": "work/bioeconomy-challenge/08.webp",
-    "w": 1299,
-    "h": 3086
-   },
-   {
-    "src": "work/bioeconomy-challenge/09.webp",
-    "w": 1298,
-    "h": 3086
+    "w": 2000,
+    "h": 1253,
+    "alt": {
+     "en": "Two phones showing the mobile home page and the open menu, with the About items expanded",
+     "pt": "Dois celulares mostrando a home no mobile e o menu aberto, com os itens de About expandidos"
+    }
    }
   ]
  },
@@ -195,59 +305,99 @@
   "hero": {
    "src": "work/bioeconomia-brasil/hero.webp",
    "w": 2000,
-   "h": 1500
+   "h": 1500,
+   "alt": {
+    "en": "The Bioeconomia Brasil site on two laptops and two phones, in Portuguese and Arabic, over a table of Amazon produce",
+    "pt": "O site Bioeconomia Brasil em dois laptops e dois celulares, em português e árabe, sobre uma mesa com produtos da Amazônia"
+   }
   },
   "overview": [
    {
     "src": "work/bioeconomia-brasil/01.webp",
     "w": 2000,
-    "h": 1299
+    "h": 1299,
+    "alt": {
+     "en": "Home page in Arabic, with the menu and title aligned right to left over the illustrated hero",
+     "pt": "Home em árabe, com o menu e o título alinhados da direita para a esquerda sobre o hero ilustrado"
+    }
    },
    {
     "src": "work/bioeconomia-brasil/02.webp",
     "w": 2000,
-    "h": 1299
+    "h": 1299,
+    "alt": {
+     "en": "Home page in Portuguese: “Bioeconomia: Inclusão, Floresta em Pé e Sustentabilidade” over the same illustration",
+     "pt": "Home em português: “Bioeconomia: Inclusão, Floresta em Pé e Sustentabilidade” sobre a mesma ilustração"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/bioeconomia-brasil/03.webp",
     "w": 1320,
-    "h": 2868
+    "h": 2868,
+    "alt": {
+     "en": "Mobile carousel in French on the principle of dignity with the standing forest",
+     "pt": "Carrossel no mobile em francês sobre o princípio de dignidade com a floresta em pé"
+    }
    },
    {
     "src": "work/bioeconomia-brasil/04.webp",
     "w": 1320,
-    "h": 2868
+    "h": 2868,
+    "alt": {
+     "en": "The same mobile carousel in Arabic, with the arrows and text mirrored",
+     "pt": "O mesmo carrossel no mobile em árabe, com as setas e o texto espelhados"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/bioeconomia-brasil/05.webp",
     "w": 2000,
-    "h": 1299
+    "h": 1299,
+    "alt": {
+     "en": "Section in Arabic introducing three people who make the bioeconomy happen, each with a portrait and a short quote",
+     "pt": "Seção em árabe que apresenta três pessoas que fazem a bioeconomia acontecer, cada uma com retrato e uma citação curta"
+    }
    },
    {
     "src": "work/bioeconomia-brasil/06.webp",
     "w": 2000,
-    "h": 1299
+    "h": 1299,
+    "alt": {
+     "en": "“Why bioeconomy?” carousel on desktop in Portuguese, with an açaí illustration beside the text",
+     "pt": "Carrossel “Por que bioeconomia?” no desktop em português, com uma ilustração de açaí ao lado do texto"
+    }
    },
    {
     "src": "work/bioeconomia-brasil/07.webp",
     "w": 2000,
-    "h": 1299
+    "h": 1299,
+    "alt": {
+     "en": "The same carousel in Arabic, with the illustration moved to the right and the text set right to left",
+     "pt": "O mesmo carrossel em árabe, com a ilustração à direita e o texto da direita para a esquerda"
+    }
    }
   ],
   "result": [
    {
     "src": "work/bioeconomia-brasil/08.webp",
     "w": 1892,
-    "h": 4096
+    "h": 4096,
+    "alt": {
+     "en": "Mobile home page in Portuguese on a phone browser",
+     "pt": "Home no mobile em português, no navegador do celular"
+    }
    },
    {
     "src": "work/bioeconomia-brasil/09.webp",
     "w": 1892,
-    "h": 4096
+    "h": 4096,
+    "alt": {
+     "en": "Mobile home page in Arabic, with the menu button moved to the left",
+     "pt": "Home no mobile em árabe, com o botão de menu à esquerda"
+    }
    }
   ]
  },
@@ -255,59 +405,99 @@
   "hero": {
    "src": "work/abrace/hero.webp",
    "w": 2000,
-   "h": 1125
+   "h": 1125,
+   "alt": {
+    "en": "The Abrace site on a laptop and a phone, over an orange geometric pattern",
+    "pt": "O site da Abrace em um laptop e um celular, sobre uma estampa geométrica laranja"
+   }
   },
   "overview": [
    {
     "src": "work/abrace/01.webp",
     "w": 2000,
-    "h": 1253
+    "h": 1253,
+    "alt": {
+     "en": "Home page banner: “Doar ficou mais fácil!”, inviting visitors to set up a recurring Pix donation, next to a photo of a girl blowing bubbles",
+     "pt": "Banner da home: “Doar ficou mais fácil!”, convidando a configurar o Pix recorrente, ao lado da foto de uma menina fazendo bolhas de sabão"
+    }
    },
    {
     "src": "work/abrace/02.webp",
     "w": 2000,
-    "h": 1297
+    "h": 1297,
+    "alt": {
+     "en": "Institutional page on social assistance, with a photo of a boy on a toy bike and four impact figures",
+     "pt": "Página institucional sobre assistência social, com a foto de um menino numa bicicleta de brinquedo e quatro números de impacto"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/abrace/03.webp",
     "w": 1488,
-    "h": 1477
+    "h": 1477,
+    "alt": {
+     "en": "“Why trust Abrace?” section with three figures for 2024: people assisted, appointments and volunteers",
+     "pt": "Seção “Por que confiar na Abrace?” com três números de 2024: pessoas assistidas, atendimentos e voluntários"
+    }
    },
    {
     "src": "work/abrace/04.webp",
     "w": 650,
-    "h": 1543
+    "h": 1543,
+    "alt": {
+     "en": "Mobile “Why donate?” section with three illustrated cards on what a donation does",
+     "pt": "Seção “Por que doar?” no mobile, com três cards ilustrados sobre o que uma doação faz"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/abrace/05.webp",
     "w": 2000,
-    "h": 1253
+    "h": 1253,
+    "alt": {
+     "en": "Credit card donation block with buttons to give monthly or once",
+     "pt": "Bloco de doação por cartão de crédito, com botões para doar todo mês ou uma vez só"
+    }
    },
    {
     "src": "work/abrace/06.webp",
     "w": 2000,
-    "h": 1253
+    "h": 1253,
+    "alt": {
+     "en": "Page on the Sustainable Development Goals, with colour cards that reveal more on hover",
+     "pt": "Página sobre os Objetivos de Desenvolvimento Sustentável, com cards coloridos que mostram mais no hover"
+    }
    },
    {
     "src": "work/abrace/07.webp",
     "w": 2000,
-    "h": 1253
+    "h": 1253,
+    "alt": {
+     "en": "Tabs for Abrace’s spaces, with the Family Space open: a description beside a photo of the building",
+     "pt": "Abas com os espaços da Abrace, com o Espaço da Família aberto: uma descrição ao lado de uma foto do prédio"
+    }
    }
   ],
   "result": [
    {
     "src": "work/abrace/08.webp",
     "w": 649,
-    "h": 1543
+    "h": 1543,
+    "alt": {
+     "en": "Mobile campaigns page with a card for the McDia Feliz campaign",
+     "pt": "Página de campanhas no mobile, com um card da campanha McDia Feliz"
+    }
    },
    {
     "src": "work/abrace/09.webp",
     "w": 650,
-    "h": 1543
+    "h": 1543,
+    "alt": {
+     "en": "Mobile financial donation page asking visitors to choose a payment method",
+     "pt": "Página de doação financeira no mobile, pedindo para escolher a forma de pagamento"
+    }
    }
   ]
  },
@@ -315,59 +505,99 @@
   "hero": {
    "src": "work/stag/hero.webp",
    "w": 2000,
-   "h": 1116
+   "h": 1116,
+   "alt": {
+    "en": "The Stag site on a laptop and a phone, set on orange and white blocks",
+    "pt": "O site da Stag em um laptop e um celular, sobre blocos laranja e brancos"
+   }
   },
   "overview": [
    {
     "src": "work/stag/01.webp",
     "w": 1728,
-    "h": 1117
+    "h": 1117,
+    "alt": {
+     "en": "Home page with two entry points, one for companies and one for students, above a row of client logos",
+     "pt": "Home com duas entradas, uma para empresas e outra para estudantes, acima de uma linha de logos de clientes"
+    }
    },
    {
     "src": "work/stag/02.webp",
     "w": 1728,
-    "h": 1117
+    "h": 1117,
+    "alt": {
+     "en": "Key figures in an orange band above a photo of a smiling student and the line “Aqui, a gente leva estágio a sério”",
+     "pt": "Números principais numa faixa laranja acima da foto de uma estudante sorrindo e da frase “Aqui, a gente leva estágio a sério”"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/stag/03.webp",
     "w": 649,
-    "h": 1543
+    "h": 1543,
+    "alt": {
+     "en": "Mobile student section with a photo of a student and a button to see open positions",
+     "pt": "Seção para estudantes no mobile, com a foto de uma estudante e um botão para ver vagas"
+    }
    },
    {
     "src": "work/stag/04.webp",
     "w": 650,
-    "h": 1543
+    "h": 1543,
+    "alt": {
+     "en": "Mobile home with the two entry cards for companies and students stacked",
+     "pt": "Home no mobile com os dois cards de entrada, para empresas e estudantes, empilhados"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/stag/05.webp",
     "w": 1786,
-    "h": 644
+    "h": 644,
+    "alt": {
+     "en": "Orange banner inviting students to find real opportunities, with a button to apply",
+     "pt": "Banner laranja convidando estudantes a encontrar oportunidades reais, com um botão para se candidatar"
+    }
    },
    {
     "src": "work/stag/06.webp",
     "w": 1728,
-    "h": 1117
+    "h": 1117,
+    "alt": {
+     "en": "Student page hero: a student with a backpack in front of a painted wall",
+     "pt": "Hero da página de estudantes: uma estudante de mochila na frente de um muro pintado"
+    }
    },
    {
     "src": "work/stag/07.webp",
     "w": 1728,
-    "h": 1117
+    "h": 1117,
+    "alt": {
+     "en": "About page with the key figures and cards for mission, vision and values",
+     "pt": "Página institucional com os números principais e cards de missão, visão e valores"
+    }
    }
   ],
   "result": [
    {
     "src": "work/stag/08.webp",
     "w": 650,
-    "h": 1543
+    "h": 1543,
+    "alt": {
+     "en": "Mobile company section offering internship programmes, with a photo of a professional",
+     "pt": "Seção para empresas no mobile, oferecendo programas de estágio, com a foto de uma profissional"
+    }
    },
    {
     "src": "work/stag/09.webp",
     "w": 649,
-    "h": 1543
+    "h": 1543,
+    "alt": {
+     "en": "Mobile mission and vision cards",
+     "pt": "Cards de missão e visão no mobile"
+    }
    }
   ]
  },
@@ -375,14 +605,22 @@
   "hero": {
    "src": "work/cepel-nzeb/hero.webp",
    "w": 2000,
-   "h": 1334
+   "h": 1334,
+   "alt": {
+    "en": "The Espaço NZEB site on a laptop, against a landscape of mountains and sky",
+    "pt": "O site do Espaço NZEB em um laptop, sobre uma paisagem de montanhas e céu"
+   }
   },
   "overview": [
    {
     "src": "work/cepel-nzeb/01.webp",
     "w": 2000,
     "h": 1299,
-    "video": "work/cepel-nzeb/01.mp4"
+    "video": "work/cepel-nzeb/01.mp4",
+    "alt": {
+     "en": "Home page hero: “Espaço NZEB” over a photo of the white building, the first in Brazil with near-zero energy use and carbon emissions",
+     "pt": "Hero da home: “Espaço NZEB” sobre a foto do prédio branco, o primeiro do Brasil com consumo de energia e emissões de carbono quase zero"
+    }
    }
   ],
   "discovery": [],
@@ -391,18 +629,30 @@
     "src": "work/cepel-nzeb/02.webp",
     "w": 2000,
     "h": 1299,
-    "video": "work/cepel-nzeb/02.mp4"
+    "video": "work/cepel-nzeb/02.mp4",
+    "alt": {
+     "en": "Another version of the hero, with a closer photo of the building among trees and a button to take the tour",
+     "pt": "Outra versão do hero, com uma foto mais próxima do prédio entre árvores e um botão para fazer o tour"
+    }
    },
    {
     "src": "work/cepel-nzeb/03.webp",
     "w": 2000,
-    "h": 1158
+    "h": 1158,
+    "alt": {
+     "en": "Virtual tour section on a lime green background, with a 360° view of the building’s exterior and clickable points",
+     "pt": "Seção do tour virtual sobre fundo verde-limão, com uma vista 360° da área externa do prédio e pontos clicáveis"
+    }
    },
    {
     "src": "work/cepel-nzeb/04.webp",
     "w": 2000,
     "h": 1299,
-    "video": "work/cepel-nzeb/04.mp4"
+    "video": "work/cepel-nzeb/04.mp4",
+    "alt": {
+     "en": "Technologies page with a card on the weather station that monitors the building, beside a photo of the equipment",
+     "pt": "Página de tecnologias com um card sobre a estação meteorológica que monitora o prédio, ao lado de uma foto do equipamento"
+    }
    }
   ],
   "result": []
@@ -411,59 +661,99 @@
   "hero": {
    "src": "work/universo-paralello/hero.webp",
    "w": 1920,
-   "h": 1080
+   "h": 1080,
+   "alt": {
+    "en": "The Vila Mundo site on a laptop and a phone, over a photo of the festival crowd and stage",
+    "pt": "O site da Vila Mundo em um laptop e um celular, sobre uma foto do público e do palco do festival"
+   }
   },
   "overview": [
    {
     "src": "work/universo-paralello/01.webp",
     "w": 1919,
-    "h": 1030
+    "h": 1030,
+    "alt": {
+     "en": "Home page hero: “Vila Mundo, official lodging at Universo Paralello 19”, with a countdown to the festival",
+     "pt": "Hero da home: “Vila Mundo, sua hospedagem oficial no Universo Paralello 19”, com uma contagem regressiva para o festival"
+    }
    },
    {
     "src": "work/universo-paralello/02.webp",
     "w": 1919,
-    "h": 1030
+    "h": 1030,
+    "alt": {
+     "en": "Lodging card for the two-person Nomad Dome, with a photo, what is included and a sales notice",
+     "pt": "Card de hospedagem do Domo Nômade para duas pessoas, com foto, o que está incluso e um aviso de vendas"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/universo-paralello/03.webp",
     "w": 251,
-    "h": 561
+    "h": 561,
+    "alt": {
+     "en": "Mobile hero with the countdown and a fixed bar to join the waiting list",
+     "pt": "Hero no mobile com a contagem regressiva e uma barra fixa para entrar na lista"
+    }
    },
    {
     "src": "work/universo-paralello/04.webp",
     "w": 325,
-    "h": 772
+    "h": 772,
+    "alt": {
+     "en": "Mobile location section with an aerial photo of the beach in Pratigi, Bahia",
+     "pt": "Seção de localização no mobile, com uma foto aérea da praia de Pratigi, na Bahia"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/universo-paralello/05.webp",
     "w": 1919,
-    "h": 1031
+    "h": 1031,
+    "alt": {
+     "en": "Location section on desktop: the beach photo beside the story of Pratigi, under the countdown",
+     "pt": "Seção de localização no desktop: a foto da praia ao lado da história de Pratigi, abaixo da contagem regressiva"
+    }
    },
    {
     "src": "work/universo-paralello/06.webp",
     "w": 1919,
-    "h": 1031
+    "h": 1031,
+    "alt": {
+     "en": "“Diferenciais da Vila” section with tabs for experience and comfort and a list of what is included",
+     "pt": "Seção “Diferenciais da Vila” com abas de experiência e conforto e uma lista do que está incluso"
+    }
    },
    {
     "src": "work/universo-paralello/07.webp",
     "w": 1919,
-    "h": 1030
+    "h": 1030,
+    "alt": {
+     "en": "Photo gallery of life at the festival: DJs, the crowd and the camp among palm trees",
+     "pt": "Galeria de fotos da vida no festival: DJs, o público e o acampamento entre coqueiros"
+    }
    }
   ],
   "result": [
    {
     "src": "work/universo-paralello/08.webp",
     "w": 325,
-    "h": 772
+    "h": 772,
+    "alt": {
+     "en": "Mobile “Diferenciais da Vila” section with the comfort tab open",
+     "pt": "Seção “Diferenciais da Vila” no mobile, com a aba de conforto aberta"
+    }
    },
    {
     "src": "work/universo-paralello/09.webp",
     "w": 325,
-    "h": 772
+    "h": 772,
+    "alt": {
+     "en": "Mobile lodging card for the Nomad Dome with the list of what is included",
+     "pt": "Card de hospedagem do Domo Nômade no mobile, com a lista do que está incluso"
+    }
    }
   ]
  },
@@ -471,59 +761,99 @@
   "hero": {
    "src": "work/logali/hero.webp",
    "w": 984,
-   "h": 501
+   "h": 501,
+   "alt": {
+    "en": "Logali logo in yellow over a pink photo of the National Congress in Brasília",
+    "pt": "Logo da Logali em amarelo sobre uma foto rosa do Congresso Nacional, em Brasília"
+   }
   },
   "overview": [
    {
     "src": "work/logali/01.webp",
     "w": 2000,
-    "h": 621
+    "h": 621,
+    "alt": {
+     "en": "Onboarding screens: splash, login, a welcome step and questions about interests and location",
+     "pt": "Telas de onboarding: abertura, login, uma etapa de boas-vindas e perguntas sobre interesses e localização"
+    }
    },
    {
     "src": "work/logali/02.webp",
     "w": 2000,
-    "h": 621
+    "h": 621,
+    "alt": {
+     "en": "Main app screens: home feed, side menu, search, map, event page and chat",
+     "pt": "Telas principais do app: feed inicial, menu lateral, busca, mapa, página de evento e chat"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/logali/03.webp",
     "w": 600,
-    "h": 880
+    "h": 880,
+    "alt": {
+     "en": "Phone in hand showing the “Vamos começar!” onboarding step, with the brand’s arrows",
+     "pt": "Celular na mão mostrando a etapa “Vamos começar!” do onboarding, com as setas da marca"
+    }
    },
    {
     "src": "work/logali/04.webp",
     "w": 600,
-    "h": 880
+    "h": 880,
+    "alt": {
+     "en": "Search screen listing nearby events as yellow cards, on a yellow background",
+     "pt": "Tela de busca listando eventos próximos em cards amarelos, sobre fundo amarelo"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/logali/05.webp",
     "w": 2000,
-    "h": 1333
+    "h": 1333,
+    "alt": {
+     "en": "A person holding a phone with the Logali home feed, over a cobblestone pavement",
+     "pt": "Uma pessoa segurando um celular com o feed inicial da Logali, sobre uma calçada de pedras portuguesas"
+    }
    },
    {
     "src": "work/logali/06.webp",
     "w": 2000,
-    "h": 621
+    "h": 621,
+    "alt": {
+     "en": "Search, filters, “my events” and event detail screens side by side",
+     "pt": "Telas de busca, filtros, “meus rolês” e detalhe de evento lado a lado"
+    }
    },
    {
     "src": "work/logali/07.webp",
     "w": 2000,
-    "h": 445
+    "h": 445,
+    "alt": {
+     "en": "UI kit with buttons, tags and the logo variations in white, yellow, pink and purple",
+     "pt": "Kit de interface com botões, tags e as variações do logo em branco, amarelo, rosa e roxo"
+    }
    }
   ],
   "result": [
    {
     "src": "work/logali/08.webp",
     "w": 600,
-    "h": 880
+    "h": 880,
+    "alt": {
+     "en": "Event page for Ginga Brasília, with a button to confirm attendance and buy tickets",
+     "pt": "Página do evento Ginga Brasília, com botão para confirmar presença e comprar ingresso"
+    }
    },
    {
     "src": "work/logali/09.webp",
     "w": 600,
-    "h": 880
+    "h": 880,
+    "alt": {
+     "en": "Map screen with event pins across Brasília",
+     "pt": "Tela de mapa com marcadores de eventos por Brasília"
+    }
    }
   ]
  },
@@ -531,59 +861,99 @@
   "hero": {
    "src": "work/suindara-app/hero.webp",
    "w": 2000,
-   "h": 1500
+   "h": 1500,
+   "alt": {
+    "en": "Two phones with the Suindara app among the yellow flowers of an ipê tree",
+    "pt": "Dois celulares com o app Suindara entre as flores amarelas de um ipê"
+   }
   },
   "overview": [
    {
     "src": "work/suindara-app/01.webp",
     "w": 2000,
-    "h": 1000
+    "h": 1000,
+    "alt": {
+     "en": "Hand tapping the Suindara splash screen, in front of a dry cerrado landscape",
+     "pt": "Mão tocando a tela de abertura do Suindara, diante de uma paisagem seca de cerrado"
+    }
    },
    {
     "src": "work/suindara-app/02.webp",
     "w": 2000,
-    "h": 677
+    "h": 677,
+    "alt": {
+     "en": "Four app screens: splash, map with an alert, alert details and map legend",
+     "pt": "Quatro telas do app: abertura, mapa com alerta, detalhes do alerta e legenda do mapa"
+    }
    }
   ],
   "discovery": [
    {
     "src": "work/suindara-app/03.webp",
     "w": 846,
-    "h": 1741
+    "h": 1741,
+    "alt": {
+     "en": "Resources panel listing volunteer brigades and landing points for each area",
+     "pt": "Painel de recursos com brigadas voluntárias e pontos de pouso de cada área"
+    }
    },
    {
     "src": "work/suindara-app/04.webp",
     "w": 842,
-    "h": 1737
+    "h": 1737,
+    "alt": {
+     "en": "Heat spot card with territory, satellite and observation time, and buttons to log an incident or get the distance",
+     "pt": "Card de foco de calor com território, satélite e horário da observação, e botões para registrar ocorrência ou ver a distância"
+    }
    }
   ],
   "solution": [
    {
     "src": "work/suindara-app/05.webp",
     "w": 2000,
-    "h": 1331
+    "h": 1331,
+    "alt": {
+     "en": "Hand holding the app’s map view in a fire station, next to a fire engine",
+     "pt": "Mão segurando a tela de mapa do app em um quartel de bombeiros, ao lado de um caminhão"
+    }
    },
    {
     "src": "work/suindara-app/06.webp",
     "w": 2000,
-    "h": 677
+    "h": 677,
+    "alt": {
+     "en": "Map screens showing alerts, layers and a route to an incident",
+     "pt": "Telas de mapa com alertas, camadas e uma rota até uma ocorrência"
+    }
    },
    {
     "src": "work/suindara-app/07.webp",
     "w": 2000,
-    "h": 1000
+    "h": 1000,
+    "alt": {
+     "en": "A smiling person in an orange sweater pointing at the app on a phone",
+     "pt": "Uma pessoa sorrindo, de suéter laranja, apontando para o app no celular"
+    }
    }
   ],
   "result": [
    {
     "src": "work/suindara-app/08.webp",
     "w": 650,
-    "h": 1544
+    "h": 1544,
+    "alt": {
+     "en": "Incident report form, step one: personal details and an emergency contact",
+     "pt": "Formulário de registro de ocorrência, passo um: dados pessoais e um contato de emergência"
+    }
    },
    {
     "src": "work/suindara-app/09.webp",
     "w": 650,
-    "h": 1544
+    "h": 1544,
+    "alt": {
+     "en": "Profile menu with About the programme, user guide, contact and log out",
+     "pt": "Menu de perfil com Sobre o programa, guia do usuário, fale conosco e sair"
+    }
    }
   ]
  },
@@ -591,13 +961,21 @@
   "hero": {
    "src": "work/suindara-dashboard/hero.webp",
    "w": 2000,
-   "h": 1500
+   "h": 1500,
+   "alt": {
+    "en": "Laptop with the Suindara logo on screen, over a cerrado landscape at dusk",
+    "pt": "Laptop com o logo do Suindara na tela, sobre uma paisagem de cerrado ao entardecer"
+   }
   },
   "overview": [
    {
     "src": "work/suindara-dashboard/01.webp",
     "w": 2000,
-    "h": 848
+    "h": 848,
+    "alt": {
+     "en": "Chart of heat spots by type of territory, with totals per territory and a line for each one across the year",
+     "pt": "Gráfico de focos de calor por tipo de território, com totais por território e uma linha para cada um ao longo do ano"
+    }
    }
   ],
   "discovery": [],
@@ -605,12 +983,20 @@
    {
     "src": "work/suindara-dashboard/02.webp",
     "w": 2000,
-    "h": 1406
+    "h": 1406,
+    "alt": {
+     "en": "Fuel map page with the side menu, an upload area and a table of the maps already sent",
+     "pt": "Página de mapas de combustível, com o menu lateral, uma área de envio e uma tabela dos mapas já enviados"
+    }
    },
    {
     "src": "work/suindara-dashboard/03.webp",
     "w": 2000,
-    "h": 848
+    "h": 848,
+    "alt": {
+     "en": "User table with name, phone, email, role, start date and notification channels",
+     "pt": "Tabela de usuários com nome, telefone, e-mail, função, data de embarque e canais de notificação"
+    }
    }
   ],
   "result": []
@@ -619,18 +1005,30 @@
   "hero": {
    "src": "work/e-statis/hero.webp",
    "w": 2000,
-   "h": 1000
+   "h": 1000,
+   "alt": {
+    "en": "Hand holding a phone with live match statistics comparing two teams",
+    "pt": "Mão segurando um celular com as estatísticas ao vivo de uma partida entre dois times"
+   }
   },
   "overview": [
    {
     "src": "work/e-statis/01.webp",
     "w": 1903,
-    "h": 597
+    "h": 597,
+    "alt": {
+     "en": "Overview of the prototype screens, from the splash screen to news, teams and profile",
+     "pt": "Visão geral das telas do protótipo, da abertura até notícias, times e perfil"
+    }
    },
    {
     "src": "work/e-statis/02.webp",
     "w": 2000,
-    "h": 1000
+    "h": 1000,
+    "alt": {
+     "en": "Hand holding a phone with a championship’s news tab, in front of a desktop computer",
+     "pt": "Mão segurando um celular com a aba de notícias de um campeonato, diante de um computador"
+    }
    }
   ],
   "discovery": [],
@@ -638,7 +1036,11 @@
    {
     "src": "work/e-statis/03.webp",
     "w": 2000,
-    "h": 1000
+    "h": 1000,
+    "alt": {
+     "en": "Match overview, live stats, championship news and an article, side by side",
+     "pt": "Visão geral da partida, estatísticas ao vivo, notícias do campeonato e um artigo, lado a lado"
+    }
    }
   ],
   "result": []

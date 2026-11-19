@@ -141,51 +141,51 @@ export const projects: Project[] = [
     slug: 'bioeconomy-challenge',
     coverImage: 'covers/bioeconomy-challenge.webp',
     cat: 'BRL-003',
-    year: '2025',
-    kind: { en: 'Web platform', pt: 'Plataforma web' },
+    year: '2026',
+    kind: { en: 'Website redesign', pt: 'Redesign de site' },
     cover: 'bioeconomy-challenge',
     label: '#e2a549',
     link: 'https://bioeconomychallenge.org/',
     en: {
-      title: 'Bioeconomy Challenge',
-      subtitle: 'Shipping a platform for a global bioeconomy coalition in two weeks, backed by the UN and FAO',
+      title: 'Bioeconomy Challenge: Year one',
+      subtitle: 'Redesigning a two-week launch site for a coalition that now has more than 100 organisations',
       client: 'NatureFinance',
-      role: 'Developer and Product Designer, end to end: from briefing to launch and ongoing maintenance',
-      services: 'Product design, web design, multilingual content structure, WordPress implementation',
-      tools: 'WordPress, Elementor, hosting, DNS and SSL configuration, Google Analytics',
+      role: 'Product Designer and Developer, end to end: from the content brief to launch and ongoing maintenance',
+      services: 'Product design, UI and interaction design, WordPress development, custom Elementor widgets, responsive design, newsletter integration',
+      tools: 'Figma, WordPress, Elementor, PHP, JavaScript, Mailchimp, Weglot',
       overview: [
-        'The Bioeconomy Challenge needed a public home in time for its official launch at COP30 in Belém, backed by Brazil’s Ministry of Environment and Climate Change, NatureFinance, the FAO, the IDB Group, UNCTAD and the World Resources Institute. The catch: two weeks from contract to live site, for a platform meant to represent a coalition of 60+ global organisations from day one.',
+        'A year after its launch at COP30, the Bioeconomy Challenge had more than 100 organisations involved and four working groups under way. NatureFinance sent a new content brief with a page map: About us with governance and members, Working Groups, News & Events, Resources, an FAQ, a community directory and a newsletter. The site I had built in two weeks for the launch wasn’t designed to hold that much, so I redesigned it.',
       ],
       discovery: [
-        'Two weeks for an institutional, multilingual platform with this many stakeholders left no room for the usual discovery-then-design sequence. I compressed research and decisions into a few days and still had to deliver something credible enough to represent UN agencies and government ministries at launch.',
+        'I started with two homepage proposals in different tones. Editorial read like a publication. Sun Flow was built around the sun in the logo and large blocks of colour. The client chose parts of each: Sun Flow’s yellow roadmap and its “Why it matters” layout stayed, while the orange bars on headings, the news ticker and the background textures were cut. That feedback became one direction, which I carried into the inner pages over several rounds of layouts for About us and Working Groups. Every page was approved in Figma before I started building.',
       ],
       solution: [
-        'I chose WordPress with Elementor for speed without giving up structure: it got me from wireframe to a working, editable site fast enough to hit the deadline, and left the client with a platform they could maintain themselves. I handled hosting, DNS and SSL myself, which removed a dependency on a separate technical team that could have cost days.',
-        'The site supports English, Portuguese and Spanish from the structure up, reflecting the international audience the coalition serves. SEO and Google Analytics were set up before launch, so the client saw traffic from day one.',
+        'I rebuilt the site in WordPress with Elementor, so the team can keep editing it on their own. Where Elementor’s own widgets couldn’t do what the design needed, I wrote my own plugins: a roadmap that fills in as you scroll, a quote carousel, a list that reveals a photo on hover, a tab explorer for the ten principles, and a motion plugin for entrances and colour panels that grow to the edge of the screen. All of their settings live in the Elementor panel, so changing a date or a photo doesn’t need a developer.',
+        'News & Events got category filters and an article layout that keeps the title and share links in view while the text scrolls. Each publication in Resources has its own page, with a download button that only appears when a file is attached. On mobile, every section follows the same spacing, links to a section stop below the fixed header, and the menu shows which items open a submenu. Visitors can join the newsletter from the home page or from a pop-up that appears at most once a month.',
       ],
       result: [
-        'The site launched on time for COP30 and has drawn 30,000+ visits in seven months. It now represents the Bioeconomy Challenge publicly, with founding partners including the FAO, IDB Group, UNCTAD and WRI. The two-week deadline shaped every technical choice in the project.',
+        'The redesign also took two weeks. The new site went live in November 2026 for the first anniversary, in English, Portuguese and Spanish, alongside four new stories based on conversations with the working group leads. Since launch, 256 people have signed up for the newsletter: a small list by design, made up of the members and partners the coalition exists to reach.',
       ],
     },
     pt: {
-      title: 'Bioeconomy Challenge',
-      subtitle: 'Uma plataforma para uma coalizão global de bioeconomia, com apoio da ONU e da FAO, entregue em duas semanas',
+      title: 'Bioeconomy Challenge: Ano um',
+      subtitle: 'O redesign de um site feito em duas semanas, para uma coalizão que hoje reúne mais de 100 organizações',
       client: 'NatureFinance',
-      role: 'Desenvolvedor e Product Designer, de ponta a ponta: do briefing ao lançamento e à manutenção',
-      services: 'Product design, web design, estrutura de conteúdo multilíngue, implementação em WordPress',
-      tools: 'WordPress, Elementor, configuração de hospedagem, DNS e SSL, Google Analytics',
+      role: 'Product Designer e Desenvolvedor, de ponta a ponta: do briefing de conteúdo ao lançamento e à manutenção',
+      services: 'Product design, design de interface e de interação, desenvolvimento em WordPress, widgets próprios para Elementor, design responsivo, integração de newsletter',
+      tools: 'Figma, WordPress, Elementor, PHP, JavaScript, Mailchimp, Weglot',
       overview: [
-        'O Bioeconomy Challenge precisava de uma casa pública a tempo do lançamento oficial na COP30, em Belém, com apoio do Ministério do Meio Ambiente e Mudança do Clima, NatureFinance, FAO, Grupo BID, UNCTAD e World Resources Institute. O detalhe: duas semanas entre o contrato e o site no ar, para uma plataforma que representaria uma coalizão de mais de 60 organizações globais desde o primeiro dia.',
+        'Um ano depois do lançamento na COP30, o Bioeconomy Challenge tinha mais de 100 organizações envolvidas e quatro grupos de trabalho em andamento. A NatureFinance mandou um novo briefing de conteúdo com o mapa de páginas: About us com governança e membros, Working Groups, News & Events, Resources, FAQ, um diretório da comunidade e uma newsletter. O site que eu tinha feito em duas semanas para o lançamento não foi pensado para tanto conteúdo, então eu o redesenhei.',
       ],
       discovery: [
-        'Duas semanas para uma plataforma institucional e multilíngue com tantos envolvidos não deixavam espaço para a sequência habitual de descoberta e depois design. Comprimi pesquisa e decisões em poucos dias e ainda precisava entregar algo à altura de agências da ONU e ministérios no lançamento.',
+        'Comecei com duas propostas de home com tons diferentes. A Editorial lembrava uma publicação. A Sun Flow partia do sol do logo e de grandes blocos de cor. A cliente escolheu partes de cada uma: ficaram o roadmap amarelo e o layout de “Why it matters” da Sun Flow, e saíram as barras laranja nos títulos, o letreiro de notícias e as texturas de fundo. Esse retorno virou uma direção única, que levei para as páginas internas em algumas rodadas de layout de About us e Working Groups. Todas as páginas foram aprovadas no Figma antes de eu começar a construir.',
       ],
       solution: [
-        'Escolhi WordPress com Elementor pela velocidade sem abrir mão de estrutura: ele me levou do wireframe a um site funcional e editável a tempo do prazo, e deixou o cliente com uma plataforma que ele mesmo consegue manter. Cuidei eu mesmo de hospedagem, DNS e SSL, o que eliminou a dependência de um time técnico à parte, que poderia custar dias.',
-        'O site foi estruturado desde a base para inglês, português e espanhol, refletindo o público internacional da coalizão. SEO e Google Analytics foram configurados antes do lançamento, e o cliente acompanhou o tráfego desde o primeiro dia.',
+        'Reconstruí o site em WordPress com Elementor, para que a equipe continue editando sozinha. Onde os widgets do Elementor não davam conta do design, escrevi meus próprios plugins: um roadmap que se preenche com a rolagem, um carrossel de citações, uma lista que revela uma foto no hover, um explorador em abas para os dez princípios e um plugin de movimento para as entradas e para os painéis de cor que crescem até a borda da tela. Todos os ajustes ficam no painel do Elementor, então trocar uma data ou uma foto não depende de um desenvolvedor.',
+        'News & Events ganhou filtros por categoria e um layout de artigo que mantém o título e os links de compartilhamento à vista enquanto o texto rola. Cada publicação em Resources tem página própria, com um botão de download que só aparece quando há arquivo anexado. No celular, todas as seções seguem o mesmo espaçamento, os links para seções param abaixo do cabeçalho fixo e o menu mostra quais itens abrem um submenu. A newsletter pode ser assinada na home ou num pop-up que aparece no máximo uma vez por mês.',
       ],
       result: [
-        'O site entrou no ar a tempo da COP30 e já soma mais de 30 mil visitas em sete meses. Hoje ele é a cara pública do Bioeconomy Challenge, com parceiros fundadores como FAO, Grupo BID, UNCTAD e WRI. O prazo de duas semanas definiu cada escolha técnica do projeto.',
+        'O redesign também levou duas semanas. O novo site entrou no ar em novembro de 2026, no primeiro aniversário, em inglês, português e espanhol, junto com quatro novas histórias baseadas em conversas com os líderes dos grupos de trabalho. Desde o lançamento, 256 pessoas assinaram a newsletter: uma lista pequena de propósito, formada pelos membros e parceiros que a coalizão existe para alcançar.',
       ],
     },
   },
@@ -634,7 +634,7 @@ export const projects: Project[] = [
   },
 ];
 
-type Img = { src: string; w: number; h: number };
+type Img = { src: string; w: number; h: number; video?: string; alt?: Record<Lang, string> };
 type ImageSet = { hero: Img; overview: Img[]; discovery: Img[]; solution: Img[]; result: Img[] };
 
 export function projectImages(slug: string): ImageSet {

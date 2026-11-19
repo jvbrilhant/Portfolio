@@ -94,7 +94,7 @@ const rows = <T,>(list: T[]): T[][] => {
           {c.tools && <div><dt>{s.project.tools}</dt><dd>{c.tools}</dd></div>}
         </dl>
 
-        <div class="g-row single p-cover"><Frame class="reveal" img={imgs.hero} alt={c.title} eager zoomLabel={s.project.zoom} /></div>
+        <div class="g-row single p-cover"><Frame class="reveal" img={imgs.hero} alt={imgs.hero.alt?.[lang] ?? c.title} eager zoomLabel={s.project.zoom} /></div>
       </div>
     </header>
 
@@ -122,7 +122,7 @@ const rows = <T,>(list: T[]): T[][] => {
                       class="reveal"
                       style={`--d:${(i % 2) * 0.08}s`}
                       img={im}
-                      alt={`${c.title}: ${sd.title} ${i + 1}`}
+                      alt={im.alt?.[lang] ?? `${c.title}: ${sd.title} ${i + 1}`}
                       zoomLabel={s.project.zoom}
                     />
                   ))}
