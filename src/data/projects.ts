@@ -105,13 +105,13 @@ export const projects: Project[] = [
       role: 'UX/UI Designer, UX Researcher',
       services: 'Dashboard design',
       overview: [
-        'The judicial filing team worked through a slow, fragmented process built on a legacy system and a manually updated Excel spreadsheet. Critical information was spread across tools that didn’t match, so people struggled to find what they needed to finish a task. The core problem was the sheer number of actions it took to process a single filing, which added friction and room for error at every step.',
+        'The legal filing team worked in a legacy system and a manually updated Excel spreadsheet. The system itself was too complex for daily use: every piece of information sat in the same table layout with the same weight, and the people using it spend their whole day there. There wasn’t one cause, so I treated each problem separately.',
       ],
       discovery: [
-        'I ran three rounds of user research directly with the filing team before opening Figma. I needed to know which fields people checked constantly, which ones they only needed now and then, and where the process broke down under the daily workload. That distinction became the backbone of the whole redesign.',
+        'I ran three rounds of user research directly with the filing team before opening Figma. I needed to know which fields people checked constantly, which ones they only needed now and then, and where the process broke down under the daily workload. Card sorting in Maze with 10 users, in three tiers, showed that only 4 of 24 requested fields were used every day. That distinction became the backbone of the whole redesign.',
       ],
       solution: [
-        'Every filing meant jumping between the legacy system and the spreadsheet just to find the information needed to act. Critical data lived in two places that never talked to each other, and every extra click was another chance to miss or duplicate something. The new dashboard brings both into one view, with the high-frequency fields up front and the occasional ones a step away.',
+        'The dashboard brings both sources into one view. A request for 24 real-time fields became 4 quick filters for what people use daily, with the other 20 in an advanced panel. Navigation moved to tabs, and every screen was rebuilt with Caixa’s design system components.',
       ],
       result: [
         'The dashboard shipped to strong praise from both the product owner and the people who use it every day, replacing a fragmented, error-prone workflow with a single source of truth. It’s part of a wider effort across Caixa’s ecosystem of 100+ legacy products, where the same tension between data density and usability keeps coming back.',
@@ -124,13 +124,13 @@ export const projects: Project[] = [
       role: 'UX/UI Designer, UX Researcher',
       services: 'Design de dashboard',
       overview: [
-        'O time de protocolo judicial trabalhava num fluxo lento e fragmentado, apoiado num sistema legado e numa planilha de Excel atualizada à mão. As informações críticas estavam espalhadas por ferramentas que não conversavam, e as pessoas tinham dificuldade para achar o que precisavam para concluir uma tarefa. O problema central era a quantidade de ações necessárias para processar um único protocolo, o que aumentava o atrito e a chance de erro a cada passo.',
+        'O time de protocolo judicial trabalhava num sistema legado e numa planilha de Excel atualizada à mão. O próprio sistema era complexo demais para o uso diário: todas as informações ficavam no mesmo layout de tabela, com o mesmo peso, e as pessoas que o usam passam o dia inteiro nele. Não havia uma causa única, então tratei cada problema separadamente.',
       ],
       discovery: [
-        'Fiz três rodadas de pesquisa diretamente com o time antes de abrir o Figma. Precisava entender quais campos eram consultados o tempo todo, quais eram usados só de vez em quando e onde o processo quebrava no volume do dia a dia. Essa distinção virou a espinha dorsal do redesign.',
+        'Fiz três rodadas de pesquisa diretamente com o time antes de abrir o Figma. Precisava entender quais campos eram consultados o tempo todo, quais eram usados só de vez em quando e onde o processo quebrava no volume do dia a dia. Um card sorting no Maze com 10 usuários, em três níveis, mostrou que só 4 dos 24 campos solicitados eram usados todos os dias. Essa distinção virou a espinha dorsal do redesign.',
       ],
       solution: [
-        'Cada protocolo exigia pular entre o sistema legado e a planilha só para encontrar a informação necessária. Dados críticos viviam em dois lugares que nunca se falavam, e cada clique a mais era uma nova chance de esquecer ou duplicar algo. O novo dashboard reúne tudo numa única visão, com os campos mais usados em primeiro plano e os ocasionais a um passo de distância.',
+        'O dashboard reúne as duas fontes numa única visão. Um pedido de 24 campos em tempo real virou 4 filtros rápidos para o que as pessoas usam todos os dias, com os outros 20 num painel avançado. A navegação passou para abas, e todas as telas foram reconstruídas com os componentes do design system da Caixa.',
       ],
       result: [
         'O dashboard foi entregue com elogios do product owner e de quem usa a plataforma todos os dias, substituindo um fluxo fragmentado e sujeito a erros por uma fonte única de informação. Ele faz parte de um esforço maior no ecossistema da Caixa, com mais de 100 produtos legados, onde a mesma tensão entre densidade de dados e usabilidade aparece o tempo todo.',
