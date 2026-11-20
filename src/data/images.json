@@ -407,8 +407,8 @@
    "w": 2000,
    "h": 1125,
    "alt": {
-    "en": "The Abrace site on a laptop and a phone, over an orange geometric pattern",
-    "pt": "O site da Abrace em um laptop e um celular, sobre uma estampa geométrica laranja"
+    "en": "The Abrace site on a laptop and a phone: the Christmas campaign banner on the laptop, the financial donation page on the phone",
+    "pt": "O site da Abrace em um laptop e um celular: o banner da campanha de Natal no laptop, a página de doação financeira no celular"
    }
   },
   "overview": [
@@ -416,9 +416,10 @@
     "src": "work/abrace/01.webp",
     "w": 2000,
     "h": 1253,
+    "video": "work/abrace/01.mp4",
     "alt": {
-     "en": "Home page banner: “Doar ficou mais fácil!”, inviting visitors to set up a recurring Pix donation, next to a photo of a girl blowing bubbles",
-     "pt": "Banner da home: “Doar ficou mais fácil!”, convidando a configurar o Pix recorrente, ao lado da foto de uma menina fazendo bolhas de sabão"
+     "en": "The Abrace home page on a laptop, scrolling from the banner through the ways to help and the 2025 figures",
+     "pt": "A home da Abrace em um laptop, rolando do banner pelas formas de ajudar até os números de 2025"
     }
    },
    {
@@ -443,15 +444,25 @@
    },
    {
     "src": "work/abrace/04.webp",
-    "w": 650,
-    "h": 1543,
+    "w": 756,
+    "h": 1100,
     "alt": {
-     "en": "Mobile “Why donate?” section with three illustrated cards on what a donation does",
-     "pt": "Seção “Por que doar?” no mobile, com três cards ilustrados sobre o que uma doação faz"
+     "en": "A phone scrolling through the hair donation page, from the “Why donate?” cards to the donation rules",
+     "pt": "Um celular rolando a página de doação de cabelo, dos cards de “Por que doar?” até as regras de doação"
     }
    }
   ],
   "solution": [
+   {
+    "src": "work/abrace/10.webp",
+    "w": 2000,
+    "h": 1253,
+    "video": "work/abrace/10.mp4",
+    "alt": {
+     "en": "Two phones scrolling through the mobile site: the donation page with bank transfer, Pix and card options, and the programmes page",
+     "pt": "Dois celulares rolando o site no mobile: a página de doação, com transferência, Pix e cartão, e a página de programas"
+    }
+   },
    {
     "src": "work/abrace/05.webp",
     "w": 2000,
@@ -483,20 +494,12 @@
   "result": [
    {
     "src": "work/abrace/08.webp",
-    "w": 649,
-    "h": 1543,
+    "w": 2000,
+    "h": 1253,
+    "video": "work/abrace/08.mp4",
     "alt": {
-     "en": "Mobile campaigns page with a card for the McDia Feliz campaign",
-     "pt": "Página de campanhas no mobile, com um card da campanha McDia Feliz"
-    }
-   },
-   {
-    "src": "work/abrace/09.webp",
-    "w": 650,
-    "h": 1543,
-    "alt": {
-     "en": "Mobile financial donation page asking visitors to choose a payment method",
-     "pt": "Página de doação financeira no mobile, pedindo para escolher a forma de pagamento"
+     "en": "Two phones scrolling through the mobile site: the home page with the 2025 figures, and the About page with the timeline since 1986",
+     "pt": "Dois celulares rolando o site no mobile: a home, com os números de 2025, e a página Sobre, com a linha do tempo desde 1986"
     }
    }
   ]
