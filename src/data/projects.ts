@@ -362,7 +362,7 @@ export const projects: Project[] = [
         'I prototyped the whole experience in Figma before touching code, then built the site in WordPress with a dedicated virtual tour plugin. Making the plugin follow the interaction model I had designed took extensive front-end and back-end customisation. I owned it end to end: concept, design and implementation, with no handoff to a separate developer.',
       ],
       result: [
-        'The site gave Cepel a way to present the NZEB concept at conferences before construction was complete, turning an unfinished building into something people could explore. I no longer have access to the live site and some content has changed since handoff, so this case uses archived screens.',
+        'The site gave Cepel a way to present the NZEB concept at conferences before construction was complete, turning an unfinished building into something people could explore. Some content has changed since handoff: the recordings show the site as it is today, and the virtual tour and technology screens are archived.',
       ],
     },
     pt: {
@@ -382,7 +382,7 @@ export const projects: Project[] = [
         'Prototipei toda a experiência no Figma antes de escrever código e depois construí o site em WordPress com um plugin de tour virtual. Fazer o plugin seguir o modelo de interação que eu tinha desenhado exigiu bastante customização de front-end e back-end. Fui responsável de ponta a ponta: conceito, design e implementação, sem repassar para outro desenvolvedor.',
       ],
       result: [
-        'O site deu ao Cepel uma forma de apresentar o conceito NZEB em congressos antes do fim da obra, transformando um prédio inacabado em algo que as pessoas podiam explorar. Não tenho mais acesso ao site no ar e parte do conteúdo mudou depois da entrega, por isso este case usa telas arquivadas.',
+        'O site deu ao Cepel uma forma de apresentar o conceito NZEB em congressos antes do fim da obra, transformando um prédio inacabado em algo que as pessoas podiam explorar. Parte do conteúdo mudou depois da entrega: as gravações mostram o site como está hoje, e as telas do tour virtual e de tecnologias são arquivadas.',
       ],
     },
   },
