@@ -252,9 +252,10 @@
     "src": "work/bioeconomy-challenge/03.webp",
     "w": 2000,
     "h": 1253,
+    "video": "work/bioeconomy-challenge/03.mp4",
     "alt": {
-     "en": "Two phones showing the mobile Working Groups page and the News & Events list with category filters",
-     "pt": "Dois celulares mostrando a página de Working Groups e a lista de News & Events com filtros por categoria, no mobile"
+     "en": "Two phones scrolling through the mobile site: the yellow roadmap to 2028 filling in on the home page, and the About us page",
+     "pt": "Dois celulares rolando o site no mobile: o roadmap amarelo até 2028 se preenchendo na home, e a página About us"
     }
    }
   ],
@@ -294,9 +295,10 @@
     "src": "work/bioeconomy-challenge/08.webp",
     "w": 2000,
     "h": 1253,
+    "video": "work/bioeconomy-challenge/08.mp4",
     "alt": {
-     "en": "Two phones showing the mobile home page and the open menu, with the About items expanded",
-     "pt": "Dois celulares mostrando a home no mobile e o menu aberto, com os itens de About expandidos"
+     "en": "Two phones scrolling through the mobile site: the home page from the hero to the challenge pillars, and the News & Events list",
+     "pt": "Dois celulares rolando o site no mobile: a home, do hero até os pilares do desafio, e a lista de News & Events"
     }
    }
   ]
