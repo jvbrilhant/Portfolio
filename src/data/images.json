@@ -534,20 +534,12 @@
   "discovery": [
    {
     "src": "work/stag/03.webp",
-    "w": 649,
-    "h": 1543,
+    "w": 2000,
+    "h": 1253,
+    "video": "work/stag/03.mp4",
     "alt": {
-     "en": "Mobile student section with a photo of a student and a button to see open positions",
-     "pt": "Seção para estudantes no mobile, com a foto de uma estudante e um botão para ver vagas"
-    }
-   },
-   {
-    "src": "work/stag/04.webp",
-    "w": 650,
-    "h": 1543,
-    "alt": {
-     "en": "Mobile home with the two entry cards for companies and students stacked",
-     "pt": "Home no mobile com os dois cards de entrada, para empresas e estudantes, empilhados"
+     "en": "Two phones scrolling through the mobile site: the home page with its hero and entry cards, and the student page",
+     "pt": "Dois celulares rolando o site no mobile: a home, com o hero e os cards de entrada, e a página para estudantes"
     }
    }
   ],
@@ -583,20 +575,12 @@
   "result": [
    {
     "src": "work/stag/08.webp",
-    "w": 650,
-    "h": 1543,
+    "w": 2000,
+    "h": 1253,
+    "video": "work/stag/08.mp4",
     "alt": {
-     "en": "Mobile company section offering internship programmes, with a photo of a professional",
-     "pt": "Seção para empresas no mobile, oferecendo programas de estágio, com a foto de uma profissional"
-    }
-   },
-   {
-    "src": "work/stag/09.webp",
-    "w": 649,
-    "h": 1543,
-    "alt": {
-     "en": "Mobile mission and vision cards",
-     "pt": "Cards de missão e visão no mobile"
+     "en": "Two phones scrolling through the mobile site: the company page with its services, and the About page with key figures",
+     "pt": "Dois celulares rolando o site no mobile: a página para empresas, com os serviços, e a página institucional, com os números principais"
     }
    }
   ]
