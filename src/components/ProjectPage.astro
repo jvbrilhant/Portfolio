@@ -80,7 +80,8 @@ const rows = <T,>(list: T[]): T[][] => {
             <p class="p-sub reveal" style="--d:.16s">{c.subtitle}</p>
             {project.link && (
               <a class="visit reveal" style="--d:.24s" href={project.link} target="_blank" rel="noopener">
-                {s.project.visit} ↗
+                {s.project.visit}
+                <svg class="ext-arrow" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
               </a>
             )}
           </div>

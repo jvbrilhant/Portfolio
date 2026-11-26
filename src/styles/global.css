@@ -1347,6 +1347,12 @@ h3,
     color 0.2s,
     border-color 0.2s;
 }
+/* External-link arrow as SVG: the "↗" character turns into a blue emoji on iOS. */
+.ext-arrow {
+  flex: none;
+  width: 11px;
+  height: 11px;
+}
 .socials a:hover {
   background: var(--c-ink);
   color: var(--c-bg);
