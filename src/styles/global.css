@@ -541,7 +541,9 @@ h3,
     background 0.3s,
     transform 0.5s var(--ease);
 }
-.hero-cta:hover .spin {
+.hero-cta:hover .spin,
+.hero-cta:focus-visible .spin,
+.hero-cta:active .spin {
   background: var(--ink);
   color: var(--bg);
   transform: rotate(90deg);
