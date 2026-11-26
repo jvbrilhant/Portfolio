@@ -71,7 +71,7 @@ export const ui = {
       phone: 'WhatsApp',
       copy: 'Copy',
       copied: 'Copied',
-      photoAlt: 'João Victor Brilhante smiling in sunglasses',
+      photoAlt: 'João Victor Brilhante smiling, in a black t-shirt',
     },
     footer: { top: 'Back to top', made: 'Designed by João Victor Brilhante' },
     project: {
@@ -165,7 +165,7 @@ export const ui = {
       phone: 'WhatsApp',
       copy: 'Copiar',
       copied: 'Copiado',
-      photoAlt: 'João Victor Brilhante sorrindo, de óculos escuros',
+      photoAlt: 'João Victor Brilhante sorrindo, de camiseta preta',
     },
     footer: { top: 'Voltar ao topo', made: 'Design de João Victor Brilhante' },
     project: {
