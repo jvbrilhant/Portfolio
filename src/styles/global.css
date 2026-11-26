@@ -1355,19 +1355,6 @@ h3,
 .contact .flag {
   box-shadow: 0 0 0 1px var(--c-line);
 }
-.contact-photo {
-  margin: 0;
-  max-width: 340px;
-}
-.contact-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 50% 42%;
-  border-radius: 8px;
-}
 .contact-foot {
   display: flex;
   flex-wrap: wrap;
@@ -1387,11 +1374,6 @@ h3,
   color: var(--c-muted);
 }
 @media (min-width: 960px) {
-  .contact-grid {
-    grid-template-columns: 1fr minmax(260px, 320px);
-    align-items: end;
-    gap: 96px;
-  }
   .channel .k {
     width: auto;
     min-width: 112px;
