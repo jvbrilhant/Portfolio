@@ -3,20 +3,22 @@
  * Tonearm drawn in album-width units (the album is 100 wide). The pivot sits up and to the
  * right of the record; on load the arm swings in and the stylus lands on the exposed grooves.
  * The arm itself (counterweight, tube, headshell) is a top-down photo in public/tonearm.webp,
- * scaled and turned so its pivot sits on (132,-2) and its stylus lands on (108.3,43.2).
+ * scaled and turned so its pivot sits on (132,22) and its stylus lands on (108.3,67.2).
+ * The drawing starts 24 units down inside the box and the CSS lifts the box back up by the same
+ * amount: Safari clips an SVG to its box, so the pivot would be cut if it sat above the top edge.
  */
 import { url } from '../data/i18n';
 ---
 
-<svg class="tonearm" viewBox="0 0 150 120" aria-hidden="true">
+<svg class="tonearm" viewBox="0 0 150 144" aria-hidden="true">
   <g class="tonearm-base">
-    <circle cx="132" cy="-2" r="9" fill="#1d1a26" stroke="rgba(255,255,255,.18)" stroke-width=".6" />
-    <circle cx="132" cy="-2" r="4.2" fill="#2c2836" stroke="rgba(255,255,255,.25)" stroke-width=".5" />
+    <circle cx="132" cy="22" r="9" fill="#1d1a26" stroke="rgba(255,255,255,.18)" stroke-width=".6" />
+    <circle cx="132" cy="22" r="4.2" fill="#2c2836" stroke="rgba(255,255,255,.25)" stroke-width=".5" />
   </g>
   <g class="tonearm-arm">
-    <g transform="translate(132 -2) rotate(25.77)">
+    <g transform="translate(132 22) rotate(25.77)">
       <image href={url('tonearm.webp')} x="-3.725" y="-18.085" width="11.70" height="69.46" />
     </g>
-    <circle cx="132" cy="-2" r="2.1" fill="#d9d3e3" stroke="rgba(11,10,16,.45)" stroke-width=".4" />
+    <circle cx="132" cy="22" r="2.1" fill="#d9d3e3" stroke="rgba(11,10,16,.45)" stroke-width=".4" />
   </g>
 </svg>

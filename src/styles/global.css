@@ -2102,13 +2102,15 @@ html.cursor-ready .cursor.is-visible {
   height: auto;
   max-width: none;
   overflow: visible;
+  /* The drawing sits 24 of 144 units down in its box (see Tonearm.astro). */
+  transform: translateY(-16.6667%);
   pointer-events: none;
   z-index: 3;
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
 }
 .tonearm-arm {
   transform-box: view-box;
-  transform-origin: 132px -2px;
+  transform-origin: 132px 22px;
   transform: rotate(-30deg);
   animation: needle-drop 1.6s var(--ease) 0.6s forwards;
 }
